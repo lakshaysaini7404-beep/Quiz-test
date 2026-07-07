@@ -239,7 +239,57 @@ init();
   { "q": "Loss is 10% and SP is 450. Find CP.", "options": ["500", "550", "480", "520"], "ans": "500" },
   { "q": "30% of 200 + 20% of 300 equals?", "options": ["120", "150", "180", "200"], "ans": "120" },
   { "q": "Ratio of ages of A and B is 4:5. After 5 years it becomes 5:6. Find A's present age.", "options": ["20", "24", "25", "30"], "ans": "24" },
-  { "q": "Difference is 12. After 6 years ratio becomes 5:7. Find younger.", "options": ["18", "24", "30", "36"], "ans": "18" }
+  { "q": "Difference is 12. After 6 years ratio becomes 5:7. Find younger.", "options": ["18", "24", "30", "36"], "ans": "18" },
+ {
+    "q": "A shopkeeper marks goods 50% above CP and gives a discount of 20%. Find profit %. ",
+    "options": ["20%", "25%", "30%", "15%"],
+    "ans": "20%"
+  },
+  {
+    "q": "A’s age is 4 times B. After 10 years, A will be twice B. Find present age of B.",
+    "options": ["10", "15", "20", "12"],
+    "ans": "10"
+  },
+  {
+    "q": "Price increases by 20% and consumption decreases by 10%. Find change in expenditure.",
+    "options": ["8% increase", "10% increase", "5% increase", "2% decrease"],
+    "ans": "8% increase"
+  },
+  {
+    "q": "A mixture contains milk and water in ratio 4:1. 10L mixture removed and replaced with water → ratio becomes 3:2. Find total mixture.",
+    "options": ["40L", "50L", "60L", "30L"],
+    "ans": "40L"
+  },
+  {
+    "q": "A sells an article at 20% profit. If he had sold it for 50 more, profit would be 30%. Find CP.",
+    "options": ["500", "400", "600", "450"],
+    "ans": "500"
+  },
+  {
+    "q": "Income increases by 25% and expenditure increases by 20%. What happens to savings?",
+    "options": ["Increase", "Decrease", "Same", "Cannot determine"],
+    "ans": "Increase"
+  },
+  {
+    "q": "A is 6 years older than B. 6 years ago, A was twice B. Find present age of B.",
+    "options": ["6", "12", "18", "10"],
+    "ans": "6"
+  },
+  {
+    "q": "Two successive discounts of 30% and 20% are equivalent to single discount of?",
+    "options": ["44%", "50%", "40%", "42%"],
+    "ans": "44%"
+  },
+  {
+    "q": "Milk is 75% in mixture. 10L removed and replaced with water → becomes 60%. Find total mixture.",
+    "options": ["40L", "50L", "60L", "30L"],
+    "ans": "40L"
+  },
+  {
+    "q": "A trader mixes 10kg rice at 20/kg with 20kg rice at 40/kg. Find average price.",
+    "options": ["33.33/kg", "30/kg", "35/kg", "32/kg"],
+    "ans": "33.33/kg"
+  }
 ];
   
 let totalTime = 0;
@@ -247,7 +297,7 @@ let timerInterval = null;
 const timerElement = document.getElementById("timer");
 
 function startTimer() {
-    totalTime = Math.floor(1.5 * questions.length * 60);
+    totalTime = Math.floor( questions.length * 60);
 
     function updateTimer() {
         let hours = Math.floor(totalTime / 3600);
