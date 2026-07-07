@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Math Quiz</title>
+
+<style>
+body{
+font-family:Segoe UI;
+background:#eef2f7;
+display:flex;
+justify-content:center;
+padding:30px;
+}
+
+#startScreen{
+width:100%;
+display:flex;
+justify-content:center;
+margin-top:100px;
+}
+
+.start-box{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+text-align:center;
+}
+
+.wrapper{
+display:flex;
+gap:30px;
+display:none;
+}
+
+.container{
+background:white;
+width:700px;
+padding:30px;
+border-radius:10px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+}
+
+.score-panel{
+width:220px;
+background:white;
+padding:20px;
+border-radius:10px;
+box-shadow:0 10px 20px rgba(0,0,0,0.1);
+display:none;
+}
+
+.score-box{
+margin:10px 0;
+padding:8px;
+background:#f1f1f1;
+border-radius:5px;
+}
+
+h1{text-align:center;color:#4a90e2;}
+.question{font-size:20px;margin:20px 0;}
+
+.options{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+.option{
+padding:12px;
+background:#f1f1f1;
+border-radius:6px;
+cursor:pointer;
+border:2px solid transparent;
+}
+
+.option.selected{
+border:2px solid #4a90e2;
+background:#ebf5fb;
+}
+
+.option.correct{
+border:2px solid #27ae60;
+background:#eafaf1;
+}
+
+.option.wrong{
+border:2px solid #c0392b;
+background:#fdecea;
+}
+
+.controls{
+margin-top:20px;
+display:flex;
+justify-content:space-between;
+}
+
+button{
+padding:10px 20px;
+border:none;
+border-radius:5px;
+cursor:pointer;
+color:white;
+}
+
+.prev{background:#7f8c8d;}
+.next{background:#4a90e2;}
+.submit{background:#27ae60;}
+
+.nav-grid{
+display:grid;
+grid-template-columns:repeat(10,1fr);
+gap:10px;
+margin-top:30px;
+}
+
+.nav-box{
+padding:10px;
+text-align:center;
+border:1px solid #ccc;
+cursor:pointer;
+background:white;
+}
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script>
+(function(){
+emailjs.init("VS2zZjRXbOFQt68fQ");
+})();
+</script>
+
+</head>
+
+<body>
+
+<div id="startScreen">
+<div class="start-box">
+<h2>Enter Your Email</h2>
+<input type="email" id="userEmail" placeholder="Enter email" style="padding:10px;width:250px;">
+<br><br>
+<button onclick="startQuiz()" style="background:#4a90e2;">Start Quiz</button>
+</div>
+</div>
+
+<div class="wrapper">
+
+<div class="container">
+<h1>Math Quiz       <span id="timer"></span></h1>
+<div id="question"></div>
+<div class="options" id="options"></div>
+
+<div class="controls">
+<button class="prev" id="prevBtn" onclick="prevQuestion()">Previous</button>
+<button class="next" id="nextBtn" onclick="nextQuestion()">Next</button>
+<button class="submit" id="submitBtn" onclick="submitQuiz()">Submit</button>
+</div>
+
+<div class="nav-grid" id="navGrid"></div>
+</div>
+
+<div class="score-panel" id="scorePanel">
+<h3>Score Panel</h3>
+<div class="score-box">Total: <span id="totalQ"></span></div>
+<div class="score-box">Attempted: <span id="attemptedQ"></span></div>
+<div class="score-box">Correct: <span id="correctQ"></span></div>
+<div class="score-box">Wrong: <span id="wrongQ"></span></div>
+<div class="score-box">Score %: <span id="percent"></span></div>
+</div>
+
+</div>
+
+<script>
+    
+
+let userEmail="";
+
+function startQuiz(){
+let email=document.getElementById("userEmail").value;
+if(email===""){ alert("Enter email"); return; }
+
+userEmail=email;
+document.getElementById("startScreen").style.display="none";
+document.querySelector(".wrapper").style.display="flex";
+
+init();
+}
+ const questions = [
+  { "q": "Profit is 40% and CP is 250. Find SP.", "options": ["300", "325", "350", "360"], "ans": "350" },
+  { "q": "A number increased by 10% then 20%. Net increase?", "options": ["30%", "32%", "28%", "35%"], "ans": "32%" },
+  { "q": "A:B = 3:4 and B:C = 5:6. If A = 15, find C.", "options": ["20", "24", "30", "36"], "ans": "30" },
+  { "q": "Loss is 20% and CP is 400. Find SP.", "options": ["300", "320", "350", "360"], "ans": "320" },
+  { "q": "Difference of ages is 8 and ratio is 3:5. Find younger.", "options": ["10", "12", "16", "20"], "ans": "10" },
+  { "q": "Price decreases by 10%. How much should consumption increase to keep expenditure same?", "options": ["10%", "11.11%", "9%", "12%"], "ans": "11.11%" },
+  { "q": "CP = 800 with 20% loss. Find SP.", "options": ["600", "640", "700", "720"], "ans": "640" },
+  { "q": "A is 25% more than B. B is what percent less than A?", "options": ["20%", "25%", "30%", "15%"], "ans": "20%" },
+  { "q": "Ratio of father and son is 7:2. After 10 years it becomes 9:4. Find father's age.", "options": ["35", "42", "49", "56"], "ans": "49" },
+  { "q": "MP = 1000, discount 20%, profit 25%. Find CP.", "options": ["600", "640", "700", "750"], "ans": "640" },
+  { "q": "A's age after 10 years is twice his age 10 years ago. Find present age.", "options": ["10", "15", "20", "25"], "ans": "20" },
+  { "q": "Profit is 25% and SP is 250. Find CP.", "options": ["150", "180", "200", "220"], "ans": "200" },
+  { "q": "A number becomes 150 after 25% increase. Find original.", "options": ["100", "110", "120", "130"], "ans": "120" },
+  { "q": "Father is 5 times son. After 10 years he becomes 3 times. Find son.", "options": ["5", "10", "15", "20"], "ans": "10" },
+  { "q": "CP = 500 and SP = 600. Find profit percent.", "options": ["10%", "15%", "20%", "25%"], "ans": "20%" },
+  { "q": "A is 3 years older than B and B is twice C. Sum is 27. Find C.", "options": ["3", "4", "5", "6"], "ans": "4" },
+  { "q": "A number increased by 50% then decreased by 50%. Result?", "options": ["Same", "-25%", "+25%", "-50%"], "ans": "-25%" },
+  { "q": "MP = 500, discount 10%, profit 20%. Find CP.", "options": ["300", "350", "375", "400"], "ans": "375" },
+  { "q": "Sum of ages of A and B is 40. After 5 years ratio becomes 3:2. Find A.", "options": ["24", "26", "28", "30"], "ans": "28" },
+  { "q": "25% of a number is 50. Find number.", "options": ["150", "200", "250", "300"], "ans": "200" },
+
+  { "q": "Profit is 33.33% and CP is 300. Find SP.", "options": ["350", "375", "400", "450"], "ans": "400" },
+  { "q": "Sum of three persons is 72 and ratio is 2:3:4. Find youngest.", "options": ["12", "16", "18", "20"], "ans": "16" },
+  { "q": "Marked price is 1000 with 20% discount. Find SP.", "options": ["700", "750", "800", "850"], "ans": "800" },
+  { "q": "Population increases by 20% then decreases by 25%. Net change?", "options": ["0%", "-5%", "+5%", "-10%"], "ans": "0%" },
+  { "q": "A is 6 years older than B. After 6 years ratio is 4:3. Find B.", "options": ["12", "18", "24", "30"], "ans": "18" },
+  { "q": "Profit is 50% and SP is 450. Find CP.", "options": ["250", "300", "350", "400"], "ans": "300" },
+  { "q": "A:B = 4:5. After 8 years ratio becomes 6:7. Find A.", "options": ["16", "24", "32", "40"], "ans": "24" },
+  { "q": "60% of x is 90. Find x.", "options": ["120", "150", "180", "200"], "ans": "150" },
+  { "q": "Loss is 25% and SP is 300. Find CP.", "options": ["350", "375", "400", "450"], "ans": "400" },
+  { "q": "A is 50% more than B. B is what percent of A?", "options": ["66.66%", "75%", "50%", "80%"], "ans": "66.66%" },
+
+  { "q": "Father is 4 times son. After 20 years he becomes twice. Find son's age.", "options": ["10", "12", "15", "20"], "ans": "10" },
+  { "q": "Successive discounts of 10% and 20%. Net discount?", "options": ["30%", "28%", "32%", "25%"], "ans": "28%" },
+  { "q": "Sold at 10% loss. CP = 1000. Find SP.", "options": ["800", "850", "900", "950"], "ans": "900" },
+  { "q": "Ratio becomes 6:5 after 20% increase. Find original ratio.", "options": ["5:4", "4:3", "3:2", "2:1"], "ans": "5:4" },
+  { "q": "A is 25% younger than B. If B is 40, find A.", "options": ["25", "30", "32", "35"], "ans": "30" },
+  { "q": "A is twice B. After 10 years ratio becomes 3:2. Find B.", "options": ["10", "15", "20", "25"], "ans": "15" },
+  { "q": "Profit is 10% and SP is 550. Find CP.", "options": ["450", "500", "520", "530"], "ans": "500" },
+  { "q": "A number doubled then decreased by 50%. Result?", "options": ["Same", "Double", "Half", "Zero"], "ans": "Same" },
+  { "q": "40% of A equals 60% of B. Find A:B.", "options": ["2:3", "3:2", "4:5", "5:4"], "ans": "3:2" },
+  { "q": "Sum of ages is 50. Ratio before 5 years was 2:3. Find older.", "options": ["25", "30", "35", "40"], "ans": "35" },
+
+  { "q": "Income increases by 10% and savings by 20%. What about expenditure?", "options": ["Increase", "Decrease", "Same", "Can't determine"], "ans": "Can't determine" },
+  { "q": "A is 20% of B and B is 50. Find A.", "options": ["5", "10", "15", "20"], "ans": "10" },
+  { "q": "A number decreased by 20% becomes 80. Find original.", "options": ["90", "100", "120", "110"], "ans": "100" },
+  { "q": "MP = 800 with 25% discount. Find SP.", "options": ["500", "550", "600", "650"], "ans": "600" },
+  { "q": "A number increased by 40% then decreased by 20%. Net change?", "options": ["+20%", "+12%", "+16%", "+10%"], "ans": "+12%" },
+  { "q": "Father is 3 times son. After 15 years sum is 90. Find son.", "options": ["10", "12", "15", "18"], "ans": "15" },
+  { "q": "Loss is 10% and SP is 450. Find CP.", "options": ["500", "550", "480", "520"], "ans": "500" },
+  { "q": "30% of 200 + 20% of 300 equals?", "options": ["120", "150", "180", "200"], "ans": "120" },
+  { "q": "Ratio of ages of A and B is 4:5. After 5 years it becomes 5:6. Find A's present age.", "options": ["20", "24", "25", "30"], "ans": "24" },
+  { "q": "Difference is 12. After 6 years ratio becomes 5:7. Find younger.", "options": ["18", "24", "30", "36"], "ans": "18" }
+];
+  
+let totalTime = 0;
+let timerInterval = null;
+const timerElement = document.getElementById("timer");
+
+function startTimer() {
+    totalTime = Math.floor(1.5 * questions.length * 60);
+
+    function updateTimer() {
+        let hours = Math.floor(totalTime / 3600);
+        let minutes = Math.floor((totalTime % 3600) / 60);
+        let seconds = totalTime % 60;
+
+        // Format to 2 digits
+        hours = hours < 10 ? "0" + hours : hours;
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+        timerElement.innerText = hours + ":" + minutes + ":" + seconds;
+
+        if (totalTime > 0) {
+            totalTime--;
+        } else {
+            clearInterval(timerInterval);
+
+            if (!submitted) {
+                submitQuiz(); // AUTO SUBMIT
+                alert("Time's up! Quiz submitted.");
+            }
+        }
+    }
+
+    updateTimer();
+    timerInterval = setInterval(updateTimer, 1000);
+}
+let current=0;
+let answers=new Array(questions.length).fill(null);
+let submitted=false;
+
+const qText=document.getElementById("question");
+const optionsDiv=document.getElementById("options");
+const navGrid=document.getElementById("navGrid");
+
+function init(){
+document.getElementById("totalQ").innerText=questions.length;
+createNav();
+loadQuestion();
+startTimer();
+}
+
+function createNav(){
+questions.forEach((q,i)=>{
+const box=document.createElement("div");
+box.className="nav-box";
+box.innerText=i+1;
+box.id="nav"+i;
+box.onclick=()=>jump(i);
+navGrid.appendChild(box);
+});
+}
+
+function loadQuestion(){
+const q=questions[current];
+qText.innerText=(current+1)+". "+q.q;
+optionsDiv.innerHTML="";
+
+q.options.forEach((opt,i)=>{
+const btn=document.createElement("div");
+btn.className="option";
+let text=opt;
+
+if(submitted){
+if(opt===q.ans){
+btn.classList.add("correct");
+text+=" ✔";
+}
+if(answers[current]===i && opt!==q.ans){
+btn.classList.add("wrong");
+text+=" ✖";
+}
+}else{
+if(answers[current]===i){
+btn.classList.add("selected");
+}
+btn.onclick=()=>select(i);
+}
+
+btn.innerText=text;
+optionsDiv.appendChild(btn);
+});
+
+updateButtons();
+updateNav();
+}
+
+function select(i){
+answers[current]=i;
+loadQuestion();
+}
+
+function updateButtons(){
+prevBtn.disabled=(current===0);
+if(current===questions.length-1){
+nextBtn.style.display="none";
+submitBtn.style.display="inline-block";
+}else{
+nextBtn.style.display="inline-block";
+submitBtn.style.display="none";
+}
+}
+
+function updateNav(){
+questions.forEach((q,i)=>{
+const box=document.getElementById("nav"+i);
+
+if(i===current){
+box.style.border="2px solid #4a90e2";
+}else{
+box.style.border="1px solid #ccc";
+}
+
+if(!submitted){
+if(answers[i]!==null){
+box.style.background="black";
+box.style.color="white";
+}else{
+box.style.background="white";
+box.style.color="black";
+}
+}else{
+if(answers[i]===null){
+box.style.background="#bdc3c7";
+}
+else if(questions[i].options[answers[i]]===q.ans){
+box.style.background="#27ae60";
+}
+else{
+box.style.background="#c0392b";
+}
+box.style.color="white";
+}
+
+box.onclick=()=>jump(i);
+});
+}
+
+function nextQuestion(){ current++; loadQuestion(); }
+function prevQuestion(){ current--; loadQuestion(); }
+function jump(i){ current=i; loadQuestion(); }
+
+function submitQuiz(){
+
+submitted=true;
+document.getElementById("scorePanel").style.display="block";
+
+let attempted=0,correct=0,wrong=0;
+
+answers.forEach((a,i)=>{
+if(a!==null){
+attempted++;
+if(questions[i].options[a]===questions[i].ans){correct++;}
+else{wrong++;}
+}
+});
+
+let percent=Math.round((correct/questions.length)*100);
+
+attemptedQ.innerText=attempted;
+correctQ.innerText=correct;
+wrongQ.innerText=wrong;
+percent.innerText=percent+"%";
+
+loadQuestion();
+updateNav();
+
+/* EMAIL */
+emailjs.send("service_ux4v0sa","template_z4lof68",{
+to_email:userEmail,
+score:correct,
+total:questions.length,
+percentage:percent+"%"
+});
+startTimer();
+}
+
+</script>
+
+</body>
+</html>
