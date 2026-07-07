@@ -443,39 +443,44 @@ function jump(i){ current=i; loadQuestion(); }
 
 function submitQuiz(){
 
-submitted=true;
-document.getElementById("scorePanel").style.display="block";
+    clearInterval(timerInterval);
 
-let attempted=0,correct=0,wrong=0;
+    submitted = true;
 
-answers.forEach((a,i)=>{
-if(a!==null){
-attempted++;
-if(questions[i].options[a]===questions[i].ans){correct++;}
-else{wrong++;}
+    document.getElementById("scorePanel").style.display = "block";
+
+    let attempted = 0,
+        correct = 0,
+        wrong = 0;
+
+    answers.forEach((a,i)=>{
+        if(a!==null){
+            attempted++;
+            if(questions[i].options[a]===questions[i].ans){
+                correct++;
+            }else{
+                wrong++;
+            }
+        }
+    });
+
+    let percentage = Math.round((correct/questions.length)*100);
+
+    document.getElementById("attemptedQ").innerText = attempted;
+    document.getElementById("correctQ").innerText = correct;
+    document.getElementById("wrongQ").innerText = wrong;
+    document.getElementById("percent").innerText = percentage + "%";
+
+    loadQuestion();
+    updateNav();
+
+    emailjs.send("service_ux4v0sa","template_z4lof68",{
+        to_email:userEmail,
+        score:correct,
+        total:questions.length,
+        percentage:percentage+"%"
+    });
 }
-});
-
-let percent=Math.round((correct/questions.length)*100);
-
-attemptedQ.innerText=attempted;
-correctQ.innerText=correct;
-wrongQ.innerText=wrong;
-percent.innerText=percent+"%";
-
-loadQuestion();
-updateNav();
-
-/* EMAIL */
-emailjs.send("service_ux4v0sa","template_z4lof68",{
-to_email:userEmail,
-score:correct,
-total:questions.length,
-percentage:percent+"%"
-});
-startTimer();
-}
-
 </script>
 
 </body>
