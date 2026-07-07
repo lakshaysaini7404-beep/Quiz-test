@@ -187,110 +187,213 @@ document.querySelector(".wrapper").style.display="flex";
 init();
 }
  const questions = [
-  { "q": "Profit is 40% and CP is 250. Find SP.", "options": ["300", "325", "350", "360"], "ans": "350" },
-  { "q": "A number increased by 10% then 20%. Net increase?", "options": ["30%", "32%", "28%", "35%"], "ans": "32%" },
-  { "q": "A:B = 3:4 and B:C = 5:6. If A = 15, find C.", "options": ["20", "24", "30", "36"], "ans": "30" },
-  { "q": "Loss is 20% and CP is 400. Find SP.", "options": ["300", "320", "350", "360"], "ans": "320" },
-  { "q": "Difference of ages is 8 and ratio is 3:5. Find younger.", "options": ["10", "12", "16", "20"], "ans": "10" },
-  { "q": "Price decreases by 10%. How much should consumption increase to keep expenditure same?", "options": ["10%", "11.11%", "9%", "12%"], "ans": "11.11%" },
-  { "q": "CP = 800 with 20% loss. Find SP.", "options": ["600", "640", "700", "720"], "ans": "640" },
-  { "q": "A is 25% more than B. B is what percent less than A?", "options": ["20%", "25%", "30%", "15%"], "ans": "20%" },
-  { "q": "Ratio of father and son is 7:2. After 10 years it becomes 9:4. Find father's age.", "options": ["35", "42", "49", "56"], "ans": "49" },
-  { "q": "MP = 1000, discount 20%, profit 25%. Find CP.", "options": ["600", "640", "700", "750"], "ans": "640" },
-  { "q": "A's age after 10 years is twice his age 10 years ago. Find present age.", "options": ["10", "15", "20", "25"], "ans": "20" },
-  { "q": "Profit is 25% and SP is 250. Find CP.", "options": ["150", "180", "200", "220"], "ans": "200" },
-  { "q": "A number becomes 150 after 25% increase. Find original.", "options": ["100", "110", "120", "130"], "ans": "120" },
-  { "q": "Father is 5 times son. After 10 years he becomes 3 times. Find son.", "options": ["5", "10", "15", "20"], "ans": "10" },
-  { "q": "CP = 500 and SP = 600. Find profit percent.", "options": ["10%", "15%", "20%", "25%"], "ans": "20%" },
-  { "q": "A is 3 years older than B and B is twice C. Sum is 27. Find C.", "options": ["3", "4", "5", "6"], "ans": "4" },
-  { "q": "A number increased by 50% then decreased by 50%. Result?", "options": ["Same", "-25%", "+25%", "-50%"], "ans": "-25%" },
-  { "q": "MP = 500, discount 10%, profit 20%. Find CP.", "options": ["300", "350", "375", "400"], "ans": "375" },
-  { "q": "Sum of ages of A and B is 40. After 5 years ratio becomes 3:2. Find A.", "options": ["24", "26", "28", "30"], "ans": "28" },
-  { "q": "25% of a number is 50. Find number.", "options": ["150", "200", "250", "300"], "ans": "200" },
-
-  { "q": "Profit is 33.33% and CP is 300. Find SP.", "options": ["350", "375", "400", "450"], "ans": "400" },
-  { "q": "Sum of three persons is 72 and ratio is 2:3:4. Find youngest.", "options": ["12", "16", "18", "20"], "ans": "16" },
-  { "q": "Marked price is 1000 with 20% discount. Find SP.", "options": ["700", "750", "800", "850"], "ans": "800" },
-  { "q": "Population increases by 20% then decreases by 25%. Net change?", "options": ["0%", "-5%", "+5%", "-10%"], "ans": "0%" },
-  { "q": "A is 6 years older than B. After 6 years ratio is 4:3. Find B.", "options": ["12", "18", "24", "30"], "ans": "18" },
-  { "q": "Profit is 50% and SP is 450. Find CP.", "options": ["250", "300", "350", "400"], "ans": "300" },
-  { "q": "A:B = 4:5. After 8 years ratio becomes 6:7. Find A.", "options": ["16", "24", "32", "40"], "ans": "24" },
-  { "q": "60% of x is 90. Find x.", "options": ["120", "150", "180", "200"], "ans": "150" },
-  { "q": "Loss is 25% and SP is 300. Find CP.", "options": ["350", "375", "400", "450"], "ans": "400" },
-  { "q": "A is 50% more than B. B is what percent of A?", "options": ["66.66%", "75%", "50%", "80%"], "ans": "66.66%" },
-
-  { "q": "Father is 4 times son. After 20 years he becomes twice. Find son's age.", "options": ["10", "12", "15", "20"], "ans": "10" },
-  { "q": "Successive discounts of 10% and 20%. Net discount?", "options": ["30%", "28%", "32%", "25%"], "ans": "28%" },
-  { "q": "Sold at 10% loss. CP = 1000. Find SP.", "options": ["800", "850", "900", "950"], "ans": "900" },
-  { "q": "Ratio becomes 6:5 after 20% increase. Find original ratio.", "options": ["5:4", "4:3", "3:2", "2:1"], "ans": "5:4" },
-  { "q": "A is 25% younger than B. If B is 40, find A.", "options": ["25", "30", "32", "35"], "ans": "30" },
-  { "q": "A is twice B. After 10 years ratio becomes 3:2. Find B.", "options": ["10", "15", "20", "25"], "ans": "15" },
-  { "q": "Profit is 10% and SP is 550. Find CP.", "options": ["450", "500", "520", "530"], "ans": "500" },
-  { "q": "A number doubled then decreased by 50%. Result?", "options": ["Same", "Double", "Half", "Zero"], "ans": "Same" },
-  { "q": "40% of A equals 60% of B. Find A:B.", "options": ["2:3", "3:2", "4:5", "5:4"], "ans": "3:2" },
-  { "q": "Sum of ages is 50. Ratio before 5 years was 2:3. Find older.", "options": ["25", "30", "35", "40"], "ans": "35" },
-
-  { "q": "Income increases by 10% and savings by 20%. What about expenditure?", "options": ["Increase", "Decrease", "Same", "Can't determine"], "ans": "Can't determine" },
-  { "q": "A is 20% of B and B is 50. Find A.", "options": ["5", "10", "15", "20"], "ans": "10" },
-  { "q": "A number decreased by 20% becomes 80. Find original.", "options": ["90", "100", "120", "110"], "ans": "100" },
-  { "q": "MP = 800 with 25% discount. Find SP.", "options": ["500", "550", "600", "650"], "ans": "600" },
-  { "q": "A number increased by 40% then decreased by 20%. Net change?", "options": ["+20%", "+12%", "+16%", "+10%"], "ans": "+12%" },
-  { "q": "Father is 3 times son. After 15 years sum is 90. Find son.", "options": ["10", "12", "15", "18"], "ans": "15" },
-  { "q": "Loss is 10% and SP is 450. Find CP.", "options": ["500", "550", "480", "520"], "ans": "500" },
-  { "q": "30% of 200 + 20% of 300 equals?", "options": ["120", "150", "180", "200"], "ans": "120" },
-  { "q": "Ratio of ages of A and B is 4:5. After 5 years it becomes 5:6. Find A's present age.", "options": ["20", "24", "25", "30"], "ans": "24" },
-  { "q": "Difference is 12. After 6 years ratio becomes 5:7. Find younger.", "options": ["18", "24", "30", "36"], "ans": "18" },
- {
-    "q": "A shopkeeper marks goods 50% above CP and gives a discount of 20%. Find profit %. ",
-    "options": ["20%", "25%", "30%", "15%"],
-    "ans": "20%"
+  {
+    "q": "A shopkeeper marks goods 60% above CP and gives successive discounts of 20% and 10%. If SP = 1152, find CP.",
+    "options": ["1000", "900", "800", "1200"],
+    "ans": "1000"
   },
   {
-    "q": "A’s age is 4 times B. After 10 years, A will be twice B. Find present age of B.",
-    "options": ["10", "15", "20", "12"],
-    "ans": "10"
+    "q": "A’s age is 3 times B. 10 years ago, ratio was 5:2. Find present ages.",
+    "options": ["A=45, B=15", "A=36, B=12", "A=30, B=10", "A=42, B=14"],
+    "ans": "A=45, B=15"
   },
   {
-    "q": "Price increases by 20% and consumption decreases by 10%. Find change in expenditure.",
-    "options": ["8% increase", "10% increase", "5% increase", "2% decrease"],
-    "ans": "8% increase"
+    "q": "Price increases by 25% and consumption decreases by 20%. Find net change in expenditure.",
+    "options": ["No change", "5% increase", "5% decrease", "10% increase"],
+    "ans": "No change"
   },
   {
-    "q": "A mixture contains milk and water in ratio 4:1. 10L mixture removed and replaced with water → ratio becomes 3:2. Find total mixture.",
-    "options": ["40L", "50L", "60L", "30L"],
-    "ans": "40L"
+    "q": "Milk and water in ratio 5:3. 16L removed and replaced with water → ratio becomes 1:1. Find initial quantity.",
+    "options": ["64L", "80L", "96L", "72L"],
+    "ans": "80L"
   },
   {
-    "q": "A sells an article at 20% profit. If he had sold it for 50 more, profit would be 30%. Find CP.",
-    "options": ["500", "400", "600", "450"],
+    "q": "Rice mixed in ratio 3:2 with prices 40 and 60. Sold at 20% profit. Find SP per kg.",
+    "options": ["60", "72", "66", "68"],
+    "ans": "60"
+  },
+  {
+    "q": "A sells at 20% profit. If CP reduced by 25% and SP increased by 10%, profit becomes 50%. Find CP.",
+    "options": ["400", "500", "600", "450"],
     "ans": "500"
   },
   {
-    "q": "Income increases by 25% and expenditure increases by 20%. What happens to savings?",
-    "options": ["Increase", "Decrease", "Same", "Cannot determine"],
-    "ans": "Increase"
+    "q": "Sum of ages of A and B is 50. 10 years ago ratio was 3:2. Find A.",
+    "options": ["30", "28", "32", "26"],
+    "ans": "30"
   },
   {
-    "q": "A is 6 years older than B. 6 years ago, A was twice B. Find present age of B.",
-    "options": ["6", "12", "18", "10"],
-    "ans": "6"
+    "q": "A mixture of 60L contains 30% alcohol. 20L removed and replaced with pure alcohol twice. Find final %. ",
+    "options": ["65%", "62%", "63%", "64%"],
+    "ans": "63%"
   },
   {
-    "q": "Two successive discounts of 30% and 20% are equivalent to single discount of?",
-    "options": ["44%", "50%", "40%", "42%"],
-    "ans": "44%"
+    "q": "Marked price = 2500. Discounts 10%, 20%, 10%. Final SP = 1620. Find CP if profit = 8%.",
+    "options": ["1500", "1400", "1350", "1300"],
+    "ans": "1500"
   },
   {
-    "q": "Milk is 75% in mixture. 10L removed and replaced with water → becomes 60%. Find total mixture.",
-    "options": ["40L", "50L", "60L", "30L"],
-    "ans": "40L"
+    "q": "Father is 4 times son. After 15 years, ratio becomes 2:1. Find father's age.",
+    "options": ["60", "50", "45", "55"],
+    "ans": "60"
+  },
+
+  {
+    "q": "Trader gives 20% discount and gains 25%. CP = 800. Find MP.",
+    "options": ["1250", "1200", "1300", "1400"],
+    "ans": "1250"
   },
   {
-    "q": "A trader mixes 10kg rice at 20/kg with 20kg rice at 40/kg. Find average price.",
-    "options": ["33.33/kg", "30/kg", "35/kg", "32/kg"],
-    "ans": "33.33/kg"
+    "q": "Mixture has 40% milk. 10L removed and replaced twice → milk becomes 25.6%. Find total.",
+    "options": ["50L", "40L", "60L", "80L"],
+    "ans": "50L"
+  },
+  {
+    "q": "Income = 1000, saving = 200. Income ↑20%, expenditure ↑15%. Find new saving.",
+    "options": ["350", "300", "320", "280"],
+    "ans": "350"
+  },
+  {
+    "q": "A is twice B. 5 years ago ratio was 3:1. Find present ages.",
+    "options": ["A=40, B=20", "A=30, B=15", "A=20, B=10", "A=50, B=25"],
+    "ans": "A=40, B=20"
+  },
+  {
+    "q": "CP increases 25% but SP same. Initial profit = 20%. New profit %?",
+    "options": ["-4%", "0%", "5%", "10%"],
+    "ans": "-4%"
+  },
+  {
+    "q": "Buys 20 articles for 15 and sells 15 for 20. Find profit %. ",
+    "options": ["77.77%", "66.66%", "80%", "75%"],
+    "ans": "77.77%"
+  },
+  {
+    "q": "100L mixture ratio 7:3. 20L removed and replaced with water. Find new ratio.",
+    "options": ["14:6", "21:19", "5:3", "6:4"],
+    "ans": "14:6"
+  },
+  {
+    "q": "Population: +10%, +20%, then -10%. Net change?",
+    "options": ["18.8% increase", "20%", "15%", "17%"],
+    "ans": "18.8% increase"
+  },
+  {
+    "q": "Bought at 20% discount, sold at MP. Find profit %. ",
+    "options": ["25%", "20%", "30%", "15%"],
+    "ans": "25%"
+  },
+  {
+    "q": "Ratio of ages 5:3. After 8 years → 7:5. Find A.",
+    "options": ["25", "35", "30", "40"],
+    "ans": "40"
   }
 ];
+     // [
+//   { "q": "Profit is 40% and CP is 250. Find SP.", "options": ["300", "325", "350", "360"], "ans": "350" },
+//   { "q": "A number increased by 10% then 20%. Net increase?", "options": ["30%", "32%", "28%", "35%"], "ans": "32%" },
+//   { "q": "A:B = 3:4 and B:C = 5:6. If A = 15, find C.", "options": ["20", "24", "30", "36"], "ans": "30" },
+//   { "q": "Loss is 20% and CP is 400. Find SP.", "options": ["300", "320", "350", "360"], "ans": "320" },
+//   { "q": "Difference of ages is 8 and ratio is 3:5. Find younger.", "options": ["10", "12", "16", "20"], "ans": "10" },
+//   { "q": "Price decreases by 10%. How much should consumption increase to keep expenditure same?", "options": ["10%", "11.11%", "9%", "12%"], "ans": "11.11%" },
+//   { "q": "CP = 800 with 20% loss. Find SP.", "options": ["600", "640", "700", "720"], "ans": "640" },
+//   { "q": "A is 25% more than B. B is what percent less than A?", "options": ["20%", "25%", "30%", "15%"], "ans": "20%" },
+//   { "q": "Ratio of father and son is 7:2. After 10 years it becomes 9:4. Find father's age.", "options": ["35", "42", "49", "56"], "ans": "49" },
+//   { "q": "MP = 1000, discount 20%, profit 25%. Find CP.", "options": ["600", "640", "700", "750"], "ans": "640" },
+//   { "q": "A's age after 10 years is twice his age 10 years ago. Find present age.", "options": ["10", "15", "20", "25"], "ans": "20" },
+//   { "q": "Profit is 25% and SP is 250. Find CP.", "options": ["150", "180", "200", "220"], "ans": "200" },
+//   { "q": "A number becomes 150 after 25% increase. Find original.", "options": ["100", "110", "120", "130"], "ans": "120" },
+//   { "q": "Father is 5 times son. After 10 years he becomes 3 times. Find son.", "options": ["5", "10", "15", "20"], "ans": "10" },
+//   { "q": "CP = 500 and SP = 600. Find profit percent.", "options": ["10%", "15%", "20%", "25%"], "ans": "20%" },
+//   { "q": "A is 3 years older than B and B is twice C. Sum is 27. Find C.", "options": ["3", "4", "5", "6"], "ans": "4" },
+//   { "q": "A number increased by 50% then decreased by 50%. Result?", "options": ["Same", "-25%", "+25%", "-50%"], "ans": "-25%" },
+//   { "q": "MP = 500, discount 10%, profit 20%. Find CP.", "options": ["300", "350", "375", "400"], "ans": "375" },
+//   { "q": "Sum of ages of A and B is 40. After 5 years ratio becomes 3:2. Find A.", "options": ["24", "26", "28", "30"], "ans": "28" },
+//   { "q": "25% of a number is 50. Find number.", "options": ["150", "200", "250", "300"], "ans": "200" },
+
+//   { "q": "Profit is 33.33% and CP is 300. Find SP.", "options": ["350", "375", "400", "450"], "ans": "400" },
+//   { "q": "Sum of three persons is 72 and ratio is 2:3:4. Find youngest.", "options": ["12", "16", "18", "20"], "ans": "16" },
+//   { "q": "Marked price is 1000 with 20% discount. Find SP.", "options": ["700", "750", "800", "850"], "ans": "800" },
+//   { "q": "Population increases by 20% then decreases by 25%. Net change?", "options": ["0%", "-5%", "+5%", "-10%"], "ans": "0%" },
+//   { "q": "A is 6 years older than B. After 6 years ratio is 4:3. Find B.", "options": ["12", "18", "24", "30"], "ans": "18" },
+//   { "q": "Profit is 50% and SP is 450. Find CP.", "options": ["250", "300", "350", "400"], "ans": "300" },
+//   { "q": "A:B = 4:5. After 8 years ratio becomes 6:7. Find A.", "options": ["16", "24", "32", "40"], "ans": "24" },
+//   { "q": "60% of x is 90. Find x.", "options": ["120", "150", "180", "200"], "ans": "150" },
+//   { "q": "Loss is 25% and SP is 300. Find CP.", "options": ["350", "375", "400", "450"], "ans": "400" },
+//   { "q": "A is 50% more than B. B is what percent of A?", "options": ["66.66%", "75%", "50%", "80%"], "ans": "66.66%" },
+
+//   { "q": "Father is 4 times son. After 20 years he becomes twice. Find son's age.", "options": ["10", "12", "15", "20"], "ans": "10" },
+//   { "q": "Successive discounts of 10% and 20%. Net discount?", "options": ["30%", "28%", "32%", "25%"], "ans": "28%" },
+//   { "q": "Sold at 10% loss. CP = 1000. Find SP.", "options": ["800", "850", "900", "950"], "ans": "900" },
+//   { "q": "Ratio becomes 6:5 after 20% increase. Find original ratio.", "options": ["5:4", "4:3", "3:2", "2:1"], "ans": "5:4" },
+//   { "q": "A is 25% younger than B. If B is 40, find A.", "options": ["25", "30", "32", "35"], "ans": "30" },
+//   { "q": "A is twice B. After 10 years ratio becomes 3:2. Find B.", "options": ["10", "15", "20", "25"], "ans": "15" },
+//   { "q": "Profit is 10% and SP is 550. Find CP.", "options": ["450", "500", "520", "530"], "ans": "500" },
+//   { "q": "A number doubled then decreased by 50%. Result?", "options": ["Same", "Double", "Half", "Zero"], "ans": "Same" },
+//   { "q": "40% of A equals 60% of B. Find A:B.", "options": ["2:3", "3:2", "4:5", "5:4"], "ans": "3:2" },
+//   { "q": "Sum of ages is 50. Ratio before 5 years was 2:3. Find older.", "options": ["25", "30", "35", "40"], "ans": "35" },
+
+//   { "q": "Income increases by 10% and savings by 20%. What about expenditure?", "options": ["Increase", "Decrease", "Same", "Can't determine"], "ans": "Can't determine" },
+//   { "q": "A is 20% of B and B is 50. Find A.", "options": ["5", "10", "15", "20"], "ans": "10" },
+//   { "q": "A number decreased by 20% becomes 80. Find original.", "options": ["90", "100", "120", "110"], "ans": "100" },
+//   { "q": "MP = 800 with 25% discount. Find SP.", "options": ["500", "550", "600", "650"], "ans": "600" },
+//   { "q": "A number increased by 40% then decreased by 20%. Net change?", "options": ["+20%", "+12%", "+16%", "+10%"], "ans": "+12%" },
+//   { "q": "Father is 3 times son. After 15 years sum is 90. Find son.", "options": ["10", "12", "15", "18"], "ans": "15" },
+//   { "q": "Loss is 10% and SP is 450. Find CP.", "options": ["500", "550", "480", "520"], "ans": "500" },
+//   { "q": "30% of 200 + 20% of 300 equals?", "options": ["120", "150", "180", "200"], "ans": "120" },
+//   { "q": "Ratio of ages of A and B is 4:5. After 5 years it becomes 5:6. Find A's present age.", "options": ["20", "24", "25", "30"], "ans": "24" },
+//   { "q": "Difference is 12. After 6 years ratio becomes 5:7. Find younger.", "options": ["18", "24", "30", "36"], "ans": "18" },
+//  {
+//     "q": "A shopkeeper marks goods 50% above CP and gives a discount of 20%. Find profit %. ",
+//     "options": ["20%", "25%", "30%", "15%"],
+//     "ans": "20%"
+//   },
+//   {
+//     "q": "A’s age is 4 times B. After 10 years, A will be twice B. Find present age of B.",
+//     "options": ["10", "15", "20", "12"],
+//     "ans": "10"
+//   },
+//   {
+//     "q": "Price increases by 20% and consumption decreases by 10%. Find change in expenditure.",
+//     "options": ["8% increase", "10% increase", "5% increase", "2% decrease"],
+//     "ans": "8% increase"
+//   },
+//   {
+//     "q": "A mixture contains milk and water in ratio 4:1. 10L mixture removed and replaced with water → ratio becomes 3:2. Find total mixture.",
+//     "options": ["40L", "50L", "60L", "30L"],
+//     "ans": "40L"
+//   },
+//   {
+//     "q": "A sells an article at 20% profit. If he had sold it for 50 more, profit would be 30%. Find CP.",
+//     "options": ["500", "400", "600", "450"],
+//     "ans": "500"
+//   },
+//   {
+//     "q": "Income increases by 25% and expenditure increases by 20%. What happens to savings?",
+//     "options": ["Increase", "Decrease", "Same", "Cannot determine"],
+//     "ans": "Increase"
+//   },
+//   {
+//     "q": "A is 6 years older than B. 6 years ago, A was twice B. Find present age of B.",
+//     "options": ["6", "12", "18", "10"],
+//     "ans": "6"
+//   },
+//   {
+//     "q": "Two successive discounts of 30% and 20% are equivalent to single discount of?",
+//     "options": ["44%", "50%", "40%", "42%"],
+//     "ans": "44%"
+//   },
+//   {
+//     "q": "Milk is 75% in mixture. 10L removed and replaced with water → becomes 60%. Find total mixture.",
+//     "options": ["40L", "50L", "60L", "30L"],
+//     "ans": "40L"
+//   },
+//   {
+//     "q": "A trader mixes 10kg rice at 20/kg with 20kg rice at 40/kg. Find average price.",
+//     "options": ["33.33/kg", "30/kg", "35/kg", "32/kg"],
+//     "ans": "33.33/kg"
+//   }
+// ];
   
 let totalTime = 0;
 let timerInterval = null;
