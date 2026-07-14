@@ -186,7 +186,159 @@ document.querySelector(".wrapper").style.display="flex";
 
 init();
 }
- const questions = [
+ const questions =  [
+{
+  q: "A train 240 m long crosses a bridge in 24 seconds and a platform in 18 seconds. If another train, 360 m long, travels at a speed 20% higher than the first train, then the time taken by the second train to cross a platform equal to the bridge is:",
+  options: ["20 s", "21 s", "22 s", "24 s"],
+  ans: "22 s"
+},
+{
+  q: "A boat travels 36 km downstream and 24 km upstream in 5 hours. In another trip it travels 48 km downstream and 16 km upstream in 4 hours. The speed of the current is:",
+  options: ["1 km/h", "2 km/h", "3 km/h", "4 km/h"],
+  ans: "2 km/h"
+},
+{
+  q: "A car covers the first 40% of a journey at 60 km/h, the next 30% at 80 km/h and the remaining distance at 120 km/h. If the total distance is 300 km, the average speed for the entire journey is:",
+  options: ["78.75 km/h", "79.50 km/h", "80.00 km/h", "81.25 km/h"],
+  ans: "79.50 km/h"
+},
+{
+  q: "Two trains of lengths 180 m and 220 m moving in opposite directions cross each other in 10 seconds. If the faster train is moving at 72 km/h, the speed of the slower train is:",
+  options: ["54 km/h", "60 km/h", "66 km/h", "72 km/h"],
+  ans: "72 km/h"
+},
+{
+  q: "A man rows 12 km upstream and 18 km downstream in 4 hours 30 minutes. If he rows 30 km downstream and 15 km upstream in 5 hours, then his speed in still water is:",
+  options: ["8 km/h", "9 km/h", "10 km/h", "11 km/h"],
+  ans: "10 km/h"
+},
+{
+  q: "A train running at 90 km/h crosses a signal post in 12 seconds. How long will it take to cross a tunnel 650 m long?",
+  options: ["34 s", "36 s", "38 s", "40 s"],
+  ans: "38 s"
+},
+{
+  q: "A cyclist rides from A to B at 20 km/h and returns from B to A at 30 km/h. If he stops for 15 minutes at B and the total time for the round trip is 5 hours 15 minutes, the distance between A and B is:",
+  options: ["54 km", "57 km", "60 km", "63 km"],
+  ans: "60 km"
+},
+{
+  q: "A boat covers a certain distance downstream in 3 hours. The same distance upstream takes 5 hours. If the speed of the current is 3 km/h, the distance is:",
+  options: ["45 km", "48 km", "54 km", "60 km"],
+  ans: "45 km"
+},
+{
+  q: "Two trains start simultaneously from stations A and B towards each other. They meet after 4 hours. If the train from A is 20% faster than the train from B and the distance between A and B is 792 km, then the speed of the train from A is:",
+  options: ["102 km/h", "108 km/h", "114 km/h", "120 km/h"],
+  ans: "108 km/h"
+},
+{
+  q: "A person walks the first 12 km at 4 km/h, the next 18 km at 6 km/h and the last 20 km at 5 km/h. His average speed for the whole journey is:",
+  options: ["4.92 km/h", "5.00 km/h", "5.08 km/h", "5.20 km/h"],
+  ans: "5.00 km/h"
+},
+    {
+  q: "A train 300 m long crosses a platform in 20 seconds and another platform in 32 seconds. If the difference in platform lengths is 240 m, then the speed of the train is:",
+  options: ["45 km/h", "54 km/h", "60 km/h", "72 km/h"],
+  ans: "54 km/h"
+},
+{
+  q: "A boat travels 40 km downstream and 24 km upstream in 4 hours 48 minutes. If the current speed increases by 2 km/h, the same trip takes 4 hours 16 minutes. The original speed of the current is:",
+  options: ["2 km/h", "3 km/h", "4 km/h", "5 km/h"],
+  ans: "3 km/h"
+},
+{
+  q: "A car covers half of a distance at 50 km/h and the remaining half at 75 km/h. If the total distance is 300 km, the total time taken is:",
+  options: ["4 h 30 min", "4 h 48 min", "5 h", "5 h 12 min"],
+  ans: "5 h"
+},
+{
+  q: "Two trains of equal length moving in the same direction at 72 km/h and 54 km/h cross a platform of length 240 m in 30 seconds and 40 seconds respectively. The length of each train is:",
+  options: ["300 m", "330 m", "360 m", "420 m"],
+  ans: "360 m"
+},
+{
+  q: "A motorboat can travel 84 km downstream in the same time in which it travels 60 km upstream. If the speed of the stream is 3 km/h, the speed of the boat in still water is:",
+  options: ["15 km/h", "18 km/h", "21 km/h", "24 km/h"],
+  ans: "18 km/h"
+},
+{
+  q: "A train 210 m long crosses a man walking at 6 km/h in the opposite direction in 9 seconds. The same train crosses a platform 390 m long in 24 seconds. The speed of the train is:",
+  options: ["78 km/h", "84 km/h", "90 km/h", "96 km/h"],
+  ans: "84 km/h"
+},
+{
+  q: "A boat travels 56 km downstream and returns upstream over the same distance. The total time taken is 16 hours. If the speed of the current is 2 km/h, the speed of the boat in still water is:",
+  options: ["6 km/h", "8 km/h", "10 km/h", "12 km/h"],
+  ans: "8 km/h"
+},
+{
+  q: "A person covers one-third of a journey at 40 km/h, one-fourth at 60 km/h and the remaining distance at 80 km/h. If the total distance is 480 km, the average speed is:",
+  options: ["58 km/h", "60 km/h", "62 km/h", "64 km/h"],
+  ans: "60 km/h"
+},
+{
+  q: "Two trains of lengths 180 m and 240 m are moving in opposite directions at speeds of 54 km/h and 72 km/h. The time taken to cross each other completely is:",
+  options: ["10 s", "11 s", "12 s", "14 s"],
+  ans: "12 s"
+},
+{
+  q: "A boat travels 18 km upstream in the same time that it travels 30 km downstream. If the speed of the stream is 2 km/h, then the speed of the boat in still water is:",
+  options: ["6 km/h", "7 km/h", "8 km/h", "10 km/h"],
+  ans: "8 km/h"
+    },
+    {
+  q: "A train crosses a signal post in 15 seconds and a bridge 450 m long in 33 seconds. If the speed of the train is 72 km/h, the length of the train is:",
+  options: ["240 m", "300 m", "360 m", "420 m"],
+  ans: "300 m"
+},
+{
+  q: "A car covers the first 150 km at 50 km/h and the next 150 km at 75 km/h. The average speed for the entire journey is:",
+  options: ["58 km/h", "60 km/h", "62.5 km/h", "64 km/h"],
+  ans: "60 km/h"
+},
+{
+  q: "Two trains start simultaneously from stations 720 km apart and move towards each other. One travels at 80 km/h while the other travels at 100 km/h. They meet after:",
+  options: ["3 h 30 min", "4 h", "4 h 30 min", "5 h"],
+  ans: "4 h"
+},
+{
+  q: "A boat covers 24 km downstream in 2 hours and the same distance upstream in 3 hours. The speed of the current is:",
+  options: ["1 km/h", "2 km/h", "3 km/h", "4 km/h"],
+  ans: "2 km/h"
+},
+{
+  q: "A train 320 m long moving at 90 km/h overtakes another train 180 m long moving at 54 km/h. The time taken to completely overtake is:",
+  options: ["45 s", "50 s", "55 s", "60 s"],
+  ans: "50 s"
+},
+{
+  q: "A man walks 15 km at 5 km/h and another 25 km at 10 km/h. His average speed is:",
+  options: ["7 km/h", "7.5 km/h", "8 km/h", "8.5 km/h"],
+  ans: "8 km/h"
+},
+{
+  q: "A boat goes 48 km downstream in 3 hours and returns upstream in 6 hours. The speed of the boat in still water is:",
+  options: ["10 km/h", "11 km/h", "12 km/h", "14 km/h"],
+  ans: "12 km/h"
+},
+{
+  q: "Two trains of equal lengths moving in opposite directions at 60 km/h and 84 km/h cross each other in 15 seconds. The length of each train is:",
+  options: ["120 m", "150 m", "180 m", "210 m"],
+  ans: "150 m"
+},
+{
+  q: "A car covers 360 km. It travels the first half at 60 km/h and the second half at 90 km/h. The average speed is:",
+  options: ["70 km/h", "72 km/h", "75 km/h", "78 km/h"],
+  ans: "72 km/h"
+},
+{
+  q: "A boat can travel 72 km downstream in the same time that it travels 48 km upstream. If the speed of the stream is 3 km/h, the speed of the boat in still water is:",
+  options: ["12 km/h", "15 km/h", "18 km/h", "21 km/h"],
+  ans: "15 km/h"
+}
+]
+   /*  [
   {
     "q": "A shopkeeper marks goods 60% above CP and gives successive discounts of 20% and 10%. If SP = 1152, find CP.",
     "options": ["1000", "900", "800", "1200"],
@@ -267,7 +419,9 @@ init();
     "q": "Buys 20 articles for 15 and sells 15 for 20. Find profit %. ",
     "options": ["77.77%", "66.66%", "80%", "75%"],
     "ans": "77.77%"
-  },
+
+     // [
+          },
   {
     "q": "100L mixture ratio 7:3. 20L removed and replaced with water. Find new ratio.",
     "options": ["14:6", "21:19", "5:3", "6:4"],
@@ -288,8 +442,7 @@ init();
     "options": ["25", "35", "30", "40"],
     "ans": "40"
   }
-];
-     // [
+];*/
 //   { "q": "Profit is 40% and CP is 250. Find SP.", "options": ["300", "325", "350", "360"], "ans": "350" },
 //   { "q": "A number increased by 10% then 20%. Net increase?", "options": ["30%", "32%", "28%", "35%"], "ans": "32%" },
 //   { "q": "A:B = 3:4 and B:C = 5:6. If A = 15, find C.", "options": ["20", "24", "30", "36"], "ans": "30" },
