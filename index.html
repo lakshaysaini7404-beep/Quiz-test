@@ -188,337 +188,494 @@ init();
 }
     const questions = [
   {
-    q: "A, B and C invest in a business in the ratio 3:4:5. After 3 months, A doubles his investment; after 6 months, B withdraws half his investment; after 8 months, C withdraws 40% of his investment. If the annual profit is ₹55,200, what is B's share?",
-    options: ["₹14,400", "₹15,600", "₹16,800", "₹18,000"],
-    ans: "₹16,800"
-  },
-  {
-    q: "Find the least number which when divided by 16, 20, 24 and 30 leaves remainders 9, 13, 17 and 23 respectively.",
-    options: ["233", "249", "289", "313"],
-    ans: "233"
-  },
-  {
-    q: "A number is increased by 30% and then reduced by x%. If the final value is 9% greater than the original value, find x.",
-    options: ["15%", "16.15%", "17%", "18%"],
-    ans: "16.15%"
-  },
-  {
-    q: "A work is completed by 16 men in 25 days working 8 hours daily. After 5 days, the work is increased by 20%. If 4 men leave and the remaining men work 10 hours daily, how many total days are required to complete the work?",
-    options: ["25 days", "27 days", "29 days", "31 days"],
-    ans: "29 days"
-  },
-  {
-    q: "The HCF of two numbers is 14 and their LCM is 840. If one number is 70, find the other number.",
-    options: ["140", "154", "168", "180"],
-    ans: "168"
-  },
-  {
-    q: "A person's expenditure is 80% of his income. His income increases by 25% and expenditure increases by 20%. If his savings increase by ₹6,000, find his original income.",
-    options: ["₹40,000", "₹45,000", "₹50,000", "₹60,000"],
-    ans: "₹40,000"
-  },
-  {
-    q: "A factory has 24 workers who can complete an order in 18 days working 7 hours daily. After 6 days, 25% of the remaining work is cancelled. If only 18 workers remain and they work 8 hours daily, how many additional days are needed?",
-    options: ["8 days", "9 days", "10 days", "12 days"],
-    ans: "9 days"
-  },
-  {
-    q: "Three numbers are in the ratio 2:3:5 and their HCF is 14. What is their LCM?",
-    options: ["210", "420", "630", "840"],
-    ans: "420"
-  },
-  {
-    q: "A trader sells two articles at the same selling price. On one he gains 20% and on the other he loses 20%. If the difference between their cost prices is ₹600, what is the total cost price of both articles?",
-    options: ["₹7,200", "₹7,500", "₹7,800", "₹8,000"],
-    ans: "₹7,500"
-  }
-        ,
-  {
-    q: "A contractor planned to complete a project in 36 days using 48 workers working 7 hours per day. After 12 days, only 25% of the work was completed. He then increased the daily working hours to 8 and added 12 workers, but after another 8 days, 10% of the remaining work was found to be defective and had to be redone. How many more days are required to finish the project?",
-    options: ["14 days", "16 days", "18 days", "20 days"],
-    ans: "18 days"
-  },
-  {
-    q: "The HCF of two positive integers is 18 and their LCM is 7560. If their difference is 342, what is the sum of the two numbers?",
-    options: ["666", "702", "738", "774"],
-    ans: "738"
-  },
-  {
-    q: "A company's revenue increases by 40%, while its cost of production increases by 25%. Initially, the profit was 20% of the cost. If the original cost was ₹8,00,000, by what percentage does the profit increase?",
-    options: ["85%", "90%", "100%", "110%"],
-    ans: "100%"
-  },
-  {
-    q: "A, B and C start a business with capitals in the ratio 5:6:8. After 4 months, A increases his capital by 40%, B withdraws 25% of his capital, and C withdraws 20%. After another 4 months, A withdraws 25% of his then capital while C doubles his remaining capital. If the total annual profit is ₹1,08,000, what is B's share?",
-    options: ["₹30,000", "₹32,000", "₹34,000", "₹36,000"],
-    ans: "₹32,000"
-  },
-  {
-    q: "Find the smallest positive integer N such that when N is divided by 18, 24, 30 and 42, the remainders are respectively 7, 13, 19 and 31. If N is also divisible by 11, find N.",
-    options: ["1519", "1739", "1959", "2179"],
-    ans: "1739"
-  },
-  {
-    q: "The population of a city increases by 20% in the first year, decreases by 15% in the second year, and increases by 25% in the third year. The population after three years is 25% greater than the original population. If the third-year increase was 30,000 people, what was the original population?",
-    options: ["1,20,000", "1,25,000", "1,30,000", "1,50,000"],
-    ans: "1,25,000"
-  },
-  {
-    q: "18 men can complete a work in 24 days working 8 hours per day. After 8 days, 6 men leave. The remaining men increase their efficiency by 20% and work 9 hours per day. After 5 more days, 25% of the remaining work is assigned to another team of 8 men working at 75% of the original efficiency for 6 hours per day. How many additional days are required for the two teams together to finish the remaining work?",
-    options: ["5 days", "6 days", "7 days", "8 days"],
-    ans: "6 days"
-  },
-  {
-    q: "Two numbers are in the ratio 7:11. Their HCF is 24 and their LCM is 1848. If 6 is added to each number, their HCF becomes 30. What is the difference between the original numbers?",
-    options: ["72", "84", "96", "108"],
-    ans: "96"
-  },
-  {
-    q: "A trader purchases an article at a 20% discount on its marked price. He spends 10% of the purchase price on transportation and then sells the article at a 25% profit on his total cost. If the marked price is increased by 20% while the discount is changed to 25%, what percentage change in the final selling price is required to maintain the same profit amount?",
-    options: ["8%", "10%", "12.5%", "15%"],
-    ans: "10%"
-  },
-  {
-    q: "A and B enter into a partnership. A invests ₹80,000 for 9 months. B invests ₹1,20,000 initially, withdraws 25% after 4 months, and invests an additional ₹30,000 after another 3 months. If the total profit is ₹67,500, what is A's share?",
-    options: ["₹27,000", "₹30,000", "₹31,500", "₹33,750"],
-    ans: "₹30,000"
-  },
-  {
-    q: "Find the least number which leaves remainder 5 when divided by 12, remainder 11 when divided by 16, remainder 17 when divided by 22, and remainder 23 when divided by 28.",
-    options: ["347", "443", "539", "635"],
-    ans: "443"
-  },
-  {
-    q: "A person's income consists of salary and commission. Salary is 60% of his income. His salary increases by 25%, while commission decreases by 10%. His total income therefore increases by ₹4,500. What was his original income?",
-    options: ["₹36,000", "₹40,000", "₹45,000", "₹50,000"],
-    ans: "₹40,000"
-  },
-  {
-    q: "A machine can manufacture 1,200 units in 10 hours using 5 operators. A second machine is 25% more efficient per hour but requires 8 operators. If both machines operate together for 6 hours, and after 2 hours the efficiency of the first machine falls by 20%, how many total units are produced?",
-    options: ["1,420", "1,480", "1,520", "1,560"],
-    ans: "1,480"
-  },
-  {
-    q: "The HCF of three numbers is 16 and their LCM is 17,280. Two of the numbers are 144 and 192. If the third number is less than 500 and divisible by 16, how many possible values can the third number have?",
-    options: ["2", "3", "4", "5"],
-    ans: "3"
-  },
-  {
     q: "In an examination, 30% of the candidates failed in Mathematics, 25% failed in Physics, and 12% failed in both. If 1,848 candidates passed in both subjects, what was the total number of candidates?",
     options: ["2,400", "2,800", "3,000", "3,200"],
     ans: "2,800"
   },
   {
-    q: "A, B and C invest in a business in the ratio 4:5:6. A keeps his investment for the entire year. B withdraws 20% after 5 months. C increases his investment by 50% after 4 months and withdraws 25% of the increased amount after another 4 months. If B receives ₹18,000 as profit, what is the total profit?",
-    options: ["₹54,000", "₹60,000", "₹66,000", "₹72,000"],
-    ans: "₹60,000"
+    q: "The population of a town increases by 20% in the first year and decreases by 10% in the second year. In the third year, it increases by 25%. If the population at the end of the third year is 59,400, what was the population initially?",
+    options: ["40,000", "42,000", "44,000", "45,000"],
+    ans: "44,000"
   },
   {
-    q: "Find the greatest number that divides 4387, 5731 and 7087 leaving remainders 7, 11 and 19 respectively.",
-    options: ["24", "36", "48", "60"],
-    ans: "48"
+    q: "A person's salary is first increased by 25% and then reduced by 20%. After this change, his salary is ₹48,000. If an additional 10% bonus is calculated on his final salary, what amount does he receive including the bonus?",
+    options: ["₹50,400", "₹51,840", "₹52,800", "₹54,000"],
+    ans: "₹52,800"
   },
   {
-    q: "A commodity's price is increased by 30%. A consumer reduces consumption so that his expenditure increases by only 4%. Later, the price decreases by 20% from the increased price, while his consumption rises by 25% from the reduced level. Compared with the original expenditure, what is the final percentage change in expenditure?",
-    options: ["0%", "2.5% increase", "4% increase", "5% decrease"],
-    ans: "2.5% increase"
+    q: "In a company, 40% of the employees are women. If 25% of the women and 20% of the men work remotely, and the total number of employees working remotely is 216, what is the total number of employees?",
+    options: ["900", "1,000", "1,200", "1,500"],
+    ans: "1,000"
   },
   {
-    q: "12 skilled workers can complete a project in 25 days working 8 hours per day. 8 unskilled workers have only 60% of the efficiency of a skilled worker. If 6 skilled workers and 12 unskilled workers work together for 10 hours daily, how many days are required to complete the project?",
-    options: ["15 days", "16 days", "18 days", "20 days"],
-    ans: "18 days"
-  },
-  {
-    q: "Two numbers have HCF 21 and LCM 2310. If their sum is 231, find the smaller number.",
-    options: ["63", "77", "84", "105"],
-    ans: "77"
-  },
-  {
-    q: "A trader buys 40 articles at ₹750 each. He sells 60% of them at a profit of 20% and the remaining at a loss of 10%. He pays a fixed transportation cost of ₹6,000. What percentage profit or loss does he make overall?",
-    options: ["2% profit", "4% profit", "5% loss", "6% profit"],
-    ans: "4% profit"
-  },
-  {
-    q: "A work is to be completed by 30 men in 24 days. After 6 days, 20% of the work remains unfinished due to rework. The workers then increase their efficiency by 25%, but 5 workers leave. How many total days are required to complete the project?",
-    options: ["24 days", "25 days", "26 days", "28 days"],
-    ans: "26 days"
-  },
-  {
-    q: "Find the smallest number which is divisible by 24, 36, 45 and 60 and is a perfect cube.",
-    options: ["27,000", "54,000", "216,000", "270,000"],
-    ans: "216,000"
-  },
-  {
-    q: "A company's number of employees increases by 25%, but average salary decreases by 12%. If the total salary bill originally was ₹24,00,000 per month, what is the percentage change in the salary bill?",
-    options: ["8% increase", "10% increase", "10% decrease", "12% increase"],
-    ans: "10% increase"
-  },
-  {
-    q: "A, B and C invest ₹60,000, ₹80,000 and ₹1,00,000 respectively. After 3 months, A doubles his capital. After 6 months, B withdraws ₹20,000 and C withdraws 20% of his capital. At the end of the year, B receives ₹8,000 less profit than C. What is the total profit?",
-    options: ["₹72,000", "₹80,000", "₹88,000", "₹96,000"],
-    ans: "₹88,000"
-  },
-  {
-    q: "The HCF of two numbers is 12. Their product is 1,036,800 and their difference is 1,008. Find the LCM.",
-    options: ["8,640", "9,600", "10,080", "11,520"],
-    ans: "8,640"
-  },
-  {
-    q: "A number is first increased by 15%, then decreased by 20%, then increased by 25%, and finally decreased by 10%. The final result is 8,100. What was the original number?",
-    options: ["7,500", "8,000", "8,250", "9,000"],
-    ans: "8,000"
-  },
-  {
-    q: "A contractor uses 40 workers for 18 days, working 7 hours daily. After 5 days, 10 workers leave. The contractor increases the working hours by 2 hours per day and recruits workers whose efficiency is 80% of the original workers. If 5 such workers are recruited, how many additional days are needed?",
-    options: ["10 days", "11 days", "12 days", "13 days"],
-    ans: "12 days"
-  },
-  {
-    q: "Three numbers are in the ratio 3:5:7. Their HCF is 18. If their LCM is increased by 25%, what will be the new LCM?",
-    options: ["945", "1,008", "1,134", "1,260"],
-    ans: "1,260"
-  },
-  {
-    q: "The marked price of an article is 60% above its cost price. A shopkeeper gives two successive discounts of 15% and 20%. He then charges 5% GST on the discounted price. If the customer pays ₹8,568, what was the cost price?",
-    options: ["₹7,000", "₹7,200", "₹7,500", "₹8,000"],
-    ans: "₹7,500"
-  },
-  {
-    q: "A, B and C can complete a work individually in 24, 36 and 48 days respectively. They work together for 6 days, after which A leaves. B and C work for another 8 days, after which B's efficiency decreases by 25%. How many more days will C alone require to finish the remaining work?",
-    options: ["3 days", "4 days", "5 days", "6 days"],
-    ans: "4 days"
-  },
-  {
-    q: "Find the smallest positive integer which when divided by 15, 18, 24 and 32 leaves remainders 4, 7, 13 and 21 respectively, and is divisible by 7.",
-    options: ["517", "697", "877", "1057"],
-    ans: "697"
-  },
-  {
-    q: "A population is increased by 10%, then 20%, and then decreased by 25%. The resulting population is 1,98,000. If 10,000 people had migrated into the city immediately before the final decrease, what was the population before the first increase?",
-    options: ["1,80,000", "1,90,000", "2,00,000", "2,10,000"],
-    ans: "2,00,000"
-  },
-  {
-    q: "20 men can complete 40% of a project in 12 days working 8 hours per day. For the remaining project, 16 men work 10 hours daily for 8 days, after which 25% of the remaining work is completed by another team. How many man-hours of work still remain?",
-    options: ["4,800", "5,120", "5,760", "6,400"],
-    ans: "5,760"
-  },
-  {
-    q: "The HCF of two numbers is 16 and their LCM is 3,360. If one number is 224, what is the other number?",
-    options: ["192", "240", "256", "280"],
-    ans: "240"
-  },
-  {
-    q: "A person spends 70% of his income. His income increases by 20%, while his expenditure increases by 15%. If his savings increase by ₹7,000, what was his original income?",
-    options: ["₹50,000", "₹60,000", "₹70,000", "₹80,000"],
-    ans: "₹70,000"
-  },
-  {
-    q: "A, B and C invest capitals in the ratio 3:4:5. A invests for 12 months, B for 9 months, and C for 6 months. A then transfers 20% of his capital to C for the final 3 months. If C's profit is ₹18,000, what is the total profit?",
-    options: ["₹54,000", "₹60,000", "₹66,000", "₹72,000"],
-    ans: "₹60,000"
-  },
-  {
-    q: "Find the greatest number which divides 1001, 2003 and 4007 leaving the same remainder in all three cases.",
-    options: ["2", "4", "6", "8"],
-    ans: "2"
-  },
-  {
-    q: "An article is sold at a 25% profit. If both the cost price and selling price are increased by ₹400, the profit percentage becomes 20%. Find the original cost price.",
-    options: ["₹1,600", "₹1,800", "₹2,000", "₹2,400"],
-    ans: "₹2,000"
-  },
-  {
-    q: "A team of 15 workers can complete a project in 32 days. After 8 days, 5 workers leave. The remaining workers work 25% longer hours and improve their efficiency by 10%. How many total days will the project take?",
-    options: ["27 days", "28 days", "29 days", "30 days"],
-    ans: "29 days"
-  },
-  {
-    q: "The LCM of two numbers is 4,620 and their HCF is 14. If one number is 210, find the other number.",
-    options: ["264", "286", "308", "330"],
-    ans: "308"
-  },
-  {
-    q: "A trader marks an article 80% above cost price. He gives a discount of 25%, followed by another discount of 10%. If the article is sold for ₹4,860, what is the cost price?",
-    options: ["₹3,600", "₹4,000", "₹4,200", "₹4,500"],
-    ans: "₹4,000"
-  },
-  {
-    q: "A project requires 9,600 man-hours. 40 workers work for 6 hours daily for 20 days. During the first 8 days, their efficiency is 20% below normal; during the remaining days, efficiency is 25% above normal. How many man-hours of work remain after 20 days?",
-    options: ["1,200", "1,280", "1,360", "1,440"],
-    ans: "1,280"
-  },
-  {
-    q: "Find the least number which when divided by 20, 28, 36 and 45 leaves remainders 13, 21, 29 and 38 respectively, and is exactly divisible by 17.",
-    options: ["1,393", "1,573", "1,753", "1,933"],
-    ans: "1,573"
-  },
-  {
-    q: "A salary is increased by 20%, then decreased by 10%, then increased by 25%. The employee's final salary is ₹79,200. If 10% of the final salary is deducted as tax, what percentage of the original salary does the post-tax salary represent?",
-    options: ["99%", "108%", "110%", "112.5%"],
-    ans: "108%"
-  },
-  {
-    q: "A, B and C start a business with investments of ₹90,000, ₹1,20,000 and ₹1,50,000. After 4 months, A withdraws one-third of his capital. After 6 months, B doubles his capital. After 8 months, C withdraws 40% of his capital. If the final profit is ₹1,02,000, what is A's share?",
-    options: ["₹18,000", "₹20,000", "₹22,000", "₹24,000"],
-    ans: "₹20,000"
-  },
-  {
-    q: "The HCF of three numbers is 24. Their ratio is 5:7:11 and their LCM is 9,240. If each number is increased by 24, what is the HCF of the resulting numbers?",
-    options: ["24", "36", "48", "60"],
-    ans: "48"
-  },
-  {
-    q: "A product's price is increased by 25%. The seller then offers a discount of 12%. If the original selling price was ₹5,000, what is the percentage change in the new selling price?",
-    options: ["10% increase", "12% increase", "15% increase", "18% increase"],
-    ans: "10% increase"
-  },
-  {
-    q: "A work can be completed by 24 men in 30 days working 8 hours daily. After 10 days, 25% of the completed work is rejected and must be redone. The remaining workers increase their efficiency by 20%, but 6 workers leave. If they work 10 hours daily, how many more days are required?",
-    options: ["15 days", "16 days", "18 days", "20 days"],
-    ans: "18 days"
-  },
-  {
-    q: "Two numbers have HCF 18 and LCM 1,620. If their sum is 414, find the difference between them.",
-    options: ["126", "144", "162", "180"],
-    ans: "162"
-  },
-  {
-    q: "In a company, 40% of employees are in department A, 35% in B, and the rest in C. The number of employees in A increases by 25%, B decreases by 20%, and C increases by 50%. If the total workforce increases by 11%, what percentage of the original workforce was in department C?",
-    options: ["20%", "25%", "30%", "35%"],
-    ans: "30%"
-  },
-  {
-    q: "A contractor planned to employ 60 workers for 30 days. After 10 days, he realizes that 35% of the work is complete. He dismisses 10 workers and increases the efficiency of each remaining worker by 25%. How many days from the start will the project take?",
-    options: ["27 days", "28 days", "29 days", "30 days"],
-    ans: "29 days"
-  },
-  {
-    q: "Find the smallest number which is divisible by 18, 24, 40 and 45 and is also a perfect square and a multiple of 11.",
-    options: ["19,800", "39,600", "79,200", "158,400"],
-    ans: "39,600"
-  },
-  {
-    q: "A person's expenditure is 75% of income. His income increases by 16%, expenditure increases by 12%, and he additionally saves ₹2,400 from a reduction in unnecessary expenses. If his final savings are ₹20,400, what was his original income?",
-    options: ["₹48,000", "₹50,000", "₹52,000", "₹54,000"],
+    q: "The price of a machine is increased by 15%, then discounted by 10%, and finally increased by 20% due to additional installation charges. If the final amount paid is ₹62,100, what was the original price of the machine?",
+    options: ["₹45,000", "₹48,000", "₹50,000", "₹52,000"],
     ans: "₹50,000"
   },
+
   {
-    q: "A, B and C invest ₹50,000, ₹75,000 and ₹1,00,000 respectively. A invests for 12 months, B for 8 months and C for 6 months. After 6 months, B transfers 20% of his capital to C. If the total profit is ₹72,000, what is C's share?",
-    options: ["₹27,000", "₹30,000", "₹32,000", "₹36,000"],
-    ans: "₹30,000"
+    q: "In a certain coding system, each letter of a word is replaced by the letter that is 2 positions ahead of it in the alphabet, and then the entire resulting word is reversed. If the code for MARKET is 'VGTCMO', what would be the code for SYSTEM using the same rule?",
+    options: ["OGVUWU", "OGVUWQ", "OGVUWU", "OGVUXU"],
+    ans: "OGVUWU"
   },
   {
-    q: "The HCF of two numbers is 25 and their LCM is 7,500. If their difference is 250, find the sum of the numbers.",
-    options: ["750", "800", "850", "900"],
-    ans: "850"
+    q: "In a certain language, 'PAPER' is coded as 'QBQFS', 'TABLE' is coded as 'UBCMF', and 'CHAIR' is coded as 'DIBJS'. If every letter is transformed according to the same rule, how will 'PLANT' be coded?",
+    options: ["QMB OU", "QMBOU", "QMBNT", "QKZMS"],
+    ans: "QMBOU"
   },
   {
-    q: "A commodity is sold after two successive discounts of 20% and 15%. The shopkeeper still makes a profit of 2%. If the marked price is ₹12,750, what was the cost price?",
-    options: ["₹8,000", "₹8,250", "₹8,500", "₹8,750"],
-    ans: "₹8,500"
+    q: "If in a certain coding system, COMPUTER is written as RFUVQNPC, where the first half and second half of the word follow different transformations, and MACHINE is written as FOJIDBN, then how will NETWORK be written using the same coding pattern?",
+    options: ["LSPXUFO", "LSPXUFW", "MTPYVFO", "KROWTEN"],
+    ans: "LSPXUFO"
+  },
+  {
+    q: "In a certain code, 'ROAD' is written as 'URDG', 'TRAIN' is written as 'WUDLQ', and 'PLANE' is written as 'SODQH'. If the same pattern is followed, how will 'BRIDGE' be coded?",
+    options: ["EULGJH", "EULFJH", "DSKFIH", "EVMGKI"],
+    ans: "EULGJH"
+  },
+  {
+    q: "In a coding language, the word 'CANDLE' is represented as 3-1-14-4-12-5, while 'BRIGHT' is represented as 2-18-9-7-8-20. A second operation is then applied in which every number is increased by its position number. What will be the final representation of 'CANDLE'?",
+    options: ["4-3-17-9-17-11", "4-3-17-8-17-11", "3-2-16-8-17-10", "4-2-16-8-17-10"],
+    ans: "4-3-17-8-17-11"
+  },
+
+  {
+    q: "A shopkeeper marks an article 40% above its cost price and gives two successive discounts of 10% and 15%. If the selling price is ₹10,710, what is the cost price of the article?",
+    options: ["₹9,000", "₹10,000", "₹10,500", "₹11,000"],
+    ans: "₹10,000"
+  },
+  {
+    q: "A trader purchases an article at 20% below its marked price. He then sells it at a 15% discount on the marked price. If he earns a profit of ₹1,200, what is the marked price of the article?",
+    options: ["₹20,000", "₹24,000", "₹25,000", "₹30,000"],
+    ans: "₹24,000"
+  },
+  {
+    q: "A dealer buys two machines for a total of ₹1,20,000. He sells the first machine at a profit of 25% and the second at a loss of 10%. If his total profit is ₹9,000, what was the cost price of the first machine?",
+    options: ["₹40,000", "₹50,000", "₹60,000", "₹70,000"],
+    ans: "₹60,000"
+  },
+  {
+    q: "A shopkeeper sells an article at a 20% profit. Had he purchased the article for 10% less and sold it for ₹60 less, his profit would have been 25%. What was the original cost price of the article?",
+    options: ["₹1,000", "₹1,200", "₹1,500", "₹2,000"],
+    ans: "₹1,200"
+  },
+  {
+    q: "A dishonest dealer claims to sell sugar at cost price but uses a weight that is 20% less than the actual kilogram. He then gives an additional 5% discount on the displayed price. What is his effective profit percentage?",
+    options: ["14.74%", "16%", "18.75%", "20%"],
+    ans: "14.74%"
+  },
+
+  {
+    q: "A boat travels 36 km downstream in 3 hours and the same distance upstream in 4.5 hours. If the boat travels 48 km downstream and then 24 km upstream, how much total time will it take?",
+    options: ["6 hours", "6.5 hours", "7 hours", "7.5 hours"],
+    ans: "7 hours"
+  },
+  {
+    q: "A boat takes 5 hours to travel 60 km downstream and 10 hours to travel the same distance upstream. If the speed of the stream increases by 2 km/h, how much time will the boat take to travel 60 km upstream?",
+    options: ["12 hours", "15 hours", "20 hours", "30 hours"],
+    ans: "30 hours"
+  },
+  {
+    q: "A man rows a boat 24 km downstream in 2 hours and returns to the starting point in 3 hours. If he rests for 30 minutes at the destination before returning, how much total time does the complete journey take?",
+    options: ["5 hours", "5.5 hours", "6 hours", "6.5 hours"],
+    ans: "5.5 hours"
+  },
+  {
+    q: "The speed of a boat in still water is 15 km/h and the speed of the stream is 3 km/h. The boat travels downstream for 2 hours and then upstream for 3 hours. How far is it from its starting point?",
+    options: ["18 km", "24 km", "30 km", "36 km"],
+    ans: "30 km"
+  },
+  {
+    q: "A boat takes 8 hours to cover a certain distance downstream and 12 hours to cover the same distance upstream. If the speed of the boat in still water is 10 km/h, what is the distance covered?",
+    options: ["72 km", "80 km", "96 km", "120 km"],
+    ans: "96 km"
+  },
+
+  {
+    q: "A person starts from point A and walks 12 km towards the north. He then turns right and walks 16 km, turns right again and walks 7 km, and finally turns left and walks 8 km. What is the shortest distance between his final position and point A?",
+    options: ["15 km", "17 km", "19 km", "21 km"],
+    ans: "17 km"
+  },
+  {
+    q: "Rahul walks 10 km towards the east, turns left and walks 6 km, then turns left and walks 10 km. He then turns right and walks 8 km. In which direction and at what distance is he from his starting point?",
+    options: ["North, 14 km", "South, 14 km", "North, 12 km", "East, 14 km"],
+    ans: "North, 14 km"
+  },
+  {
+    q: "A person walks 15 km towards the south, then 8 km towards the west, followed by 9 km towards the north and finally 8 km towards the east. How far and in which direction is he from the starting point?",
+    options: ["6 km South", "6 km North", "8 km South", "9 km North"],
+    ans: "6 km South"
+  },
+  {
+    q: "A man is facing north. He turns 135° clockwise, then 90° anticlockwise, and finally 180° clockwise. In which direction is he facing now?",
+    options: ["North-East", "South-East", "South-West", "North-West"],
+    ans: "South-West"
+  },
+  {
+    q: "A person travels 20 km north from point A, then 15 km east, then 8 km south, and finally 9 km west. How far is he from point A, and in which direction?",
+    options: ["12 km North-East", "13 km North-East", "15 km North-East", "17 km North-West"],
+    ans: "13 km North-East"
+  },
+
+  {
+    q: "A train 240 m long crosses a pole in 12 seconds. It crosses another train of length 360 m traveling in the opposite direction in 15 seconds. What is the speed of the second train?",
+    options: ["36 km/h", "48 km/h", "60 km/h", "72 km/h"],
+    ans: "48 km/h"
+  },
+  {
+    q: "A train 180 m long is running at 54 km/h. It crosses a platform in 24 seconds. Another train running in the opposite direction at 72 km/h crosses the same platform in 18 seconds. What is the length of the second train?",
+    options: ["180 m", "200 m", "210 m", "240 m"],
+    ans: "180 m"
+  },
+  {
+    q: "Two trains of lengths 250 m and 350 m are running in the same direction at speeds of 72 km/h and 54 km/h respectively. How much time will the faster train take to completely overtake the slower train?",
+    options: ["100 seconds", "110 seconds", "120 seconds", "150 seconds"],
+    ans: "120 seconds"
+  },
+  {
+    q: "A train crosses a man standing on a platform in 10 seconds and crosses a 300 m long platform in 25 seconds. What is the length and speed of the train?",
+    options: ["200 m, 72 km/h", "180 m, 64.8 km/h", "150 m, 54 km/h", "250 m, 90 km/h"],
+    ans: "200 m, 72 km/h"
+  },
+  {
+    q: "Two trains are moving towards each other from stations 600 km apart. The first train travels at 80 km/h and the second at 70 km/h. After 2 hours, the first train stops for 30 minutes while the second continues moving. How much time from the start will they take to meet?",
+    options: ["4 hours", "4 hours 15 minutes", "4 hours 30 minutes", "5 hours"],
+    ans: "4 hours 15 minutes"
   }
 ];
+//     const questions = [
+//   {
+//     q: "A, B and C invest in a business in the ratio 3:4:5. After 3 months, A doubles his investment; after 6 months, B withdraws half his investment; after 8 months, C withdraws 40% of his investment. If the annual profit is ₹55,200, what is B's share?",
+//     options: ["₹14,400", "₹15,600", "₹16,800", "₹18,000"],
+//     ans: "₹16,800"
+//   },
+//   {
+//     q: "Find the least number which when divided by 16, 20, 24 and 30 leaves remainders 9, 13, 17 and 23 respectively.",
+//     options: ["233", "249", "289", "313"],
+//     ans: "233"
+//   },
+//   {
+//     q: "A number is increased by 30% and then reduced by x%. If the final value is 9% greater than the original value, find x.",
+//     options: ["15%", "16.15%", "17%", "18%"],
+//     ans: "16.15%"
+//   },
+//   {
+//     q: "A work is completed by 16 men in 25 days working 8 hours daily. After 5 days, the work is increased by 20%. If 4 men leave and the remaining men work 10 hours daily, how many total days are required to complete the work?",
+//     options: ["25 days", "27 days", "29 days", "31 days"],
+//     ans: "29 days"
+//   },
+//   {
+//     q: "The HCF of two numbers is 14 and their LCM is 840. If one number is 70, find the other number.",
+//     options: ["140", "154", "168", "180"],
+//     ans: "168"
+//   },
+//   {
+//     q: "A person's expenditure is 80% of his income. His income increases by 25% and expenditure increases by 20%. If his savings increase by ₹6,000, find his original income.",
+//     options: ["₹40,000", "₹45,000", "₹50,000", "₹60,000"],
+//     ans: "₹40,000"
+//   },
+//   {
+//     q: "A factory has 24 workers who can complete an order in 18 days working 7 hours daily. After 6 days, 25% of the remaining work is cancelled. If only 18 workers remain and they work 8 hours daily, how many additional days are needed?",
+//     options: ["8 days", "9 days", "10 days", "12 days"],
+//     ans: "9 days"
+//   },
+//   {
+//     q: "Three numbers are in the ratio 2:3:5 and their HCF is 14. What is their LCM?",
+//     options: ["210", "420", "630", "840"],
+//     ans: "420"
+//   },
+//   {
+//     q: "A trader sells two articles at the same selling price. On one he gains 20% and on the other he loses 20%. If the difference between their cost prices is ₹600, what is the total cost price of both articles?",
+//     options: ["₹7,200", "₹7,500", "₹7,800", "₹8,000"],
+//     ans: "₹7,500"
+//   }
+//         ,
+//   {
+//     q: "A contractor planned to complete a project in 36 days using 48 workers working 7 hours per day. After 12 days, only 25% of the work was completed. He then increased the daily working hours to 8 and added 12 workers, but after another 8 days, 10% of the remaining work was found to be defective and had to be redone. How many more days are required to finish the project?",
+//     options: ["14 days", "16 days", "18 days", "20 days"],
+//     ans: "18 days"
+//   },
+//   {
+//     q: "The HCF of two positive integers is 18 and their LCM is 7560. If their difference is 342, what is the sum of the two numbers?",
+//     options: ["666", "702", "738", "774"],
+//     ans: "738"
+//   },
+//   {
+//     q: "A company's revenue increases by 40%, while its cost of production increases by 25%. Initially, the profit was 20% of the cost. If the original cost was ₹8,00,000, by what percentage does the profit increase?",
+//     options: ["85%", "90%", "100%", "110%"],
+//     ans: "100%"
+//   },
+//   {
+//     q: "A, B and C start a business with capitals in the ratio 5:6:8. After 4 months, A increases his capital by 40%, B withdraws 25% of his capital, and C withdraws 20%. After another 4 months, A withdraws 25% of his then capital while C doubles his remaining capital. If the total annual profit is ₹1,08,000, what is B's share?",
+//     options: ["₹30,000", "₹32,000", "₹34,000", "₹36,000"],
+//     ans: "₹32,000"
+//   },
+//   {
+//     q: "Find the smallest positive integer N such that when N is divided by 18, 24, 30 and 42, the remainders are respectively 7, 13, 19 and 31. If N is also divisible by 11, find N.",
+//     options: ["1519", "1739", "1959", "2179"],
+//     ans: "1739"
+//   },
+//   {
+//     q: "The population of a city increases by 20% in the first year, decreases by 15% in the second year, and increases by 25% in the third year. The population after three years is 25% greater than the original population. If the third-year increase was 30,000 people, what was the original population?",
+//     options: ["1,20,000", "1,25,000", "1,30,000", "1,50,000"],
+//     ans: "1,25,000"
+//   },
+//   {
+//     q: "18 men can complete a work in 24 days working 8 hours per day. After 8 days, 6 men leave. The remaining men increase their efficiency by 20% and work 9 hours per day. After 5 more days, 25% of the remaining work is assigned to another team of 8 men working at 75% of the original efficiency for 6 hours per day. How many additional days are required for the two teams together to finish the remaining work?",
+//     options: ["5 days", "6 days", "7 days", "8 days"],
+//     ans: "6 days"
+//   },
+//   {
+//     q: "Two numbers are in the ratio 7:11. Their HCF is 24 and their LCM is 1848. If 6 is added to each number, their HCF becomes 30. What is the difference between the original numbers?",
+//     options: ["72", "84", "96", "108"],
+//     ans: "96"
+//   },
+//   {
+//     q: "A trader purchases an article at a 20% discount on its marked price. He spends 10% of the purchase price on transportation and then sells the article at a 25% profit on his total cost. If the marked price is increased by 20% while the discount is changed to 25%, what percentage change in the final selling price is required to maintain the same profit amount?",
+//     options: ["8%", "10%", "12.5%", "15%"],
+//     ans: "10%"
+//   },
+//   {
+//     q: "A and B enter into a partnership. A invests ₹80,000 for 9 months. B invests ₹1,20,000 initially, withdraws 25% after 4 months, and invests an additional ₹30,000 after another 3 months. If the total profit is ₹67,500, what is A's share?",
+//     options: ["₹27,000", "₹30,000", "₹31,500", "₹33,750"],
+//     ans: "₹30,000"
+//   },
+//   {
+//     q: "Find the least number which leaves remainder 5 when divided by 12, remainder 11 when divided by 16, remainder 17 when divided by 22, and remainder 23 when divided by 28.",
+//     options: ["347", "443", "539", "635"],
+//     ans: "443"
+//   },
+//   {
+//     q: "A person's income consists of salary and commission. Salary is 60% of his income. His salary increases by 25%, while commission decreases by 10%. His total income therefore increases by ₹4,500. What was his original income?",
+//     options: ["₹36,000", "₹40,000", "₹45,000", "₹50,000"],
+//     ans: "₹40,000"
+//   },
+//   {
+//     q: "A machine can manufacture 1,200 units in 10 hours using 5 operators. A second machine is 25% more efficient per hour but requires 8 operators. If both machines operate together for 6 hours, and after 2 hours the efficiency of the first machine falls by 20%, how many total units are produced?",
+//     options: ["1,420", "1,480", "1,520", "1,560"],
+//     ans: "1,480"
+//   },
+//   {
+//     q: "The HCF of three numbers is 16 and their LCM is 17,280. Two of the numbers are 144 and 192. If the third number is less than 500 and divisible by 16, how many possible values can the third number have?",
+//     options: ["2", "3", "4", "5"],
+//     ans: "3"
+//   },
+//   {
+//     q: "In an examination, 30% of the candidates failed in Mathematics, 25% failed in Physics, and 12% failed in both. If 1,848 candidates passed in both subjects, what was the total number of candidates?",
+//     options: ["2,400", "2,800", "3,000", "3,200"],
+//     ans: "2,800"
+//   },
+//   {
+//     q: "A, B and C invest in a business in the ratio 4:5:6. A keeps his investment for the entire year. B withdraws 20% after 5 months. C increases his investment by 50% after 4 months and withdraws 25% of the increased amount after another 4 months. If B receives ₹18,000 as profit, what is the total profit?",
+//     options: ["₹54,000", "₹60,000", "₹66,000", "₹72,000"],
+//     ans: "₹60,000"
+//   },
+//   {
+//     q: "Find the greatest number that divides 4387, 5731 and 7087 leaving remainders 7, 11 and 19 respectively.",
+//     options: ["24", "36", "48", "60"],
+//     ans: "48"
+//   },
+//   {
+//     q: "A commodity's price is increased by 30%. A consumer reduces consumption so that his expenditure increases by only 4%. Later, the price decreases by 20% from the increased price, while his consumption rises by 25% from the reduced level. Compared with the original expenditure, what is the final percentage change in expenditure?",
+//     options: ["0%", "2.5% increase", "4% increase", "5% decrease"],
+//     ans: "2.5% increase"
+//   },
+//   {
+//     q: "12 skilled workers can complete a project in 25 days working 8 hours per day. 8 unskilled workers have only 60% of the efficiency of a skilled worker. If 6 skilled workers and 12 unskilled workers work together for 10 hours daily, how many days are required to complete the project?",
+//     options: ["15 days", "16 days", "18 days", "20 days"],
+//     ans: "18 days"
+//   },
+//   {
+//     q: "Two numbers have HCF 21 and LCM 2310. If their sum is 231, find the smaller number.",
+//     options: ["63", "77", "84", "105"],
+//     ans: "77"
+//   },
+//   {
+//     q: "A trader buys 40 articles at ₹750 each. He sells 60% of them at a profit of 20% and the remaining at a loss of 10%. He pays a fixed transportation cost of ₹6,000. What percentage profit or loss does he make overall?",
+//     options: ["2% profit", "4% profit", "5% loss", "6% profit"],
+//     ans: "4% profit"
+//   },
+//   {
+//     q: "A work is to be completed by 30 men in 24 days. After 6 days, 20% of the work remains unfinished due to rework. The workers then increase their efficiency by 25%, but 5 workers leave. How many total days are required to complete the project?",
+//     options: ["24 days", "25 days", "26 days", "28 days"],
+//     ans: "26 days"
+//   },
+//   {
+//     q: "Find the smallest number which is divisible by 24, 36, 45 and 60 and is a perfect cube.",
+//     options: ["27,000", "54,000", "216,000", "270,000"],
+//     ans: "216,000"
+//   },
+//   {
+//     q: "A company's number of employees increases by 25%, but average salary decreases by 12%. If the total salary bill originally was ₹24,00,000 per month, what is the percentage change in the salary bill?",
+//     options: ["8% increase", "10% increase", "10% decrease", "12% increase"],
+//     ans: "10% increase"
+//   },
+//   {
+//     q: "A, B and C invest ₹60,000, ₹80,000 and ₹1,00,000 respectively. After 3 months, A doubles his capital. After 6 months, B withdraws ₹20,000 and C withdraws 20% of his capital. At the end of the year, B receives ₹8,000 less profit than C. What is the total profit?",
+//     options: ["₹72,000", "₹80,000", "₹88,000", "₹96,000"],
+//     ans: "₹88,000"
+//   },
+//   {
+//     q: "The HCF of two numbers is 12. Their product is 1,036,800 and their difference is 1,008. Find the LCM.",
+//     options: ["8,640", "9,600", "10,080", "11,520"],
+//     ans: "8,640"
+//   },
+//   {
+//     q: "A number is first increased by 15%, then decreased by 20%, then increased by 25%, and finally decreased by 10%. The final result is 8,100. What was the original number?",
+//     options: ["7,500", "8,000", "8,250", "9,000"],
+//     ans: "8,000"
+//   },
+//   {
+//     q: "A contractor uses 40 workers for 18 days, working 7 hours daily. After 5 days, 10 workers leave. The contractor increases the working hours by 2 hours per day and recruits workers whose efficiency is 80% of the original workers. If 5 such workers are recruited, how many additional days are needed?",
+//     options: ["10 days", "11 days", "12 days", "13 days"],
+//     ans: "12 days"
+//   },
+//   {
+//     q: "Three numbers are in the ratio 3:5:7. Their HCF is 18. If their LCM is increased by 25%, what will be the new LCM?",
+//     options: ["945", "1,008", "1,134", "1,260"],
+//     ans: "1,260"
+//   },
+//   {
+//     q: "The marked price of an article is 60% above its cost price. A shopkeeper gives two successive discounts of 15% and 20%. He then charges 5% GST on the discounted price. If the customer pays ₹8,568, what was the cost price?",
+//     options: ["₹7,000", "₹7,200", "₹7,500", "₹8,000"],
+//     ans: "₹7,500"
+//   },
+//   {
+//     q: "A, B and C can complete a work individually in 24, 36 and 48 days respectively. They work together for 6 days, after which A leaves. B and C work for another 8 days, after which B's efficiency decreases by 25%. How many more days will C alone require to finish the remaining work?",
+//     options: ["3 days", "4 days", "5 days", "6 days"],
+//     ans: "4 days"
+//   },
+//   {
+//     q: "Find the smallest positive integer which when divided by 15, 18, 24 and 32 leaves remainders 4, 7, 13 and 21 respectively, and is divisible by 7.",
+//     options: ["517", "697", "877", "1057"],
+//     ans: "697"
+//   },
+//   {
+//     q: "A population is increased by 10%, then 20%, and then decreased by 25%. The resulting population is 1,98,000. If 10,000 people had migrated into the city immediately before the final decrease, what was the population before the first increase?",
+//     options: ["1,80,000", "1,90,000", "2,00,000", "2,10,000"],
+//     ans: "2,00,000"
+//   },
+//   {
+//     q: "20 men can complete 40% of a project in 12 days working 8 hours per day. For the remaining project, 16 men work 10 hours daily for 8 days, after which 25% of the remaining work is completed by another team. How many man-hours of work still remain?",
+//     options: ["4,800", "5,120", "5,760", "6,400"],
+//     ans: "5,760"
+//   },
+//   {
+//     q: "The HCF of two numbers is 16 and their LCM is 3,360. If one number is 224, what is the other number?",
+//     options: ["192", "240", "256", "280"],
+//     ans: "240"
+//   },
+//   {
+//     q: "A person spends 70% of his income. His income increases by 20%, while his expenditure increases by 15%. If his savings increase by ₹7,000, what was his original income?",
+//     options: ["₹50,000", "₹60,000", "₹70,000", "₹80,000"],
+//     ans: "₹70,000"
+//   },
+//   {
+//     q: "A, B and C invest capitals in the ratio 3:4:5. A invests for 12 months, B for 9 months, and C for 6 months. A then transfers 20% of his capital to C for the final 3 months. If C's profit is ₹18,000, what is the total profit?",
+//     options: ["₹54,000", "₹60,000", "₹66,000", "₹72,000"],
+//     ans: "₹60,000"
+//   },
+//   {
+//     q: "Find the greatest number which divides 1001, 2003 and 4007 leaving the same remainder in all three cases.",
+//     options: ["2", "4", "6", "8"],
+//     ans: "2"
+//   },
+//   {
+//     q: "An article is sold at a 25% profit. If both the cost price and selling price are increased by ₹400, the profit percentage becomes 20%. Find the original cost price.",
+//     options: ["₹1,600", "₹1,800", "₹2,000", "₹2,400"],
+//     ans: "₹2,000"
+//   },
+//   {
+//     q: "A team of 15 workers can complete a project in 32 days. After 8 days, 5 workers leave. The remaining workers work 25% longer hours and improve their efficiency by 10%. How many total days will the project take?",
+//     options: ["27 days", "28 days", "29 days", "30 days"],
+//     ans: "29 days"
+//   },
+//   {
+//     q: "The LCM of two numbers is 4,620 and their HCF is 14. If one number is 210, find the other number.",
+//     options: ["264", "286", "308", "330"],
+//     ans: "308"
+//   },
+//   {
+//     q: "A trader marks an article 80% above cost price. He gives a discount of 25%, followed by another discount of 10%. If the article is sold for ₹4,860, what is the cost price?",
+//     options: ["₹3,600", "₹4,000", "₹4,200", "₹4,500"],
+//     ans: "₹4,000"
+//   },
+//   {
+//     q: "A project requires 9,600 man-hours. 40 workers work for 6 hours daily for 20 days. During the first 8 days, their efficiency is 20% below normal; during the remaining days, efficiency is 25% above normal. How many man-hours of work remain after 20 days?",
+//     options: ["1,200", "1,280", "1,360", "1,440"],
+//     ans: "1,280"
+//   },
+//   {
+//     q: "Find the least number which when divided by 20, 28, 36 and 45 leaves remainders 13, 21, 29 and 38 respectively, and is exactly divisible by 17.",
+//     options: ["1,393", "1,573", "1,753", "1,933"],
+//     ans: "1,573"
+//   },
+//   {
+//     q: "A salary is increased by 20%, then decreased by 10%, then increased by 25%. The employee's final salary is ₹79,200. If 10% of the final salary is deducted as tax, what percentage of the original salary does the post-tax salary represent?",
+//     options: ["99%", "108%", "110%", "112.5%"],
+//     ans: "108%"
+//   },
+//   {
+//     q: "A, B and C start a business with investments of ₹90,000, ₹1,20,000 and ₹1,50,000. After 4 months, A withdraws one-third of his capital. After 6 months, B doubles his capital. After 8 months, C withdraws 40% of his capital. If the final profit is ₹1,02,000, what is A's share?",
+//     options: ["₹18,000", "₹20,000", "₹22,000", "₹24,000"],
+//     ans: "₹20,000"
+//   },
+//   {
+//     q: "The HCF of three numbers is 24. Their ratio is 5:7:11 and their LCM is 9,240. If each number is increased by 24, what is the HCF of the resulting numbers?",
+//     options: ["24", "36", "48", "60"],
+//     ans: "48"
+//   },
+//   {
+//     q: "A product's price is increased by 25%. The seller then offers a discount of 12%. If the original selling price was ₹5,000, what is the percentage change in the new selling price?",
+//     options: ["10% increase", "12% increase", "15% increase", "18% increase"],
+//     ans: "10% increase"
+//   },
+//   {
+//     q: "A work can be completed by 24 men in 30 days working 8 hours daily. After 10 days, 25% of the completed work is rejected and must be redone. The remaining workers increase their efficiency by 20%, but 6 workers leave. If they work 10 hours daily, how many more days are required?",
+//     options: ["15 days", "16 days", "18 days", "20 days"],
+//     ans: "18 days"
+//   },
+//   {
+//     q: "Two numbers have HCF 18 and LCM 1,620. If their sum is 414, find the difference between them.",
+//     options: ["126", "144", "162", "180"],
+//     ans: "162"
+//   },
+//   {
+//     q: "In a company, 40% of employees are in department A, 35% in B, and the rest in C. The number of employees in A increases by 25%, B decreases by 20%, and C increases by 50%. If the total workforce increases by 11%, what percentage of the original workforce was in department C?",
+//     options: ["20%", "25%", "30%", "35%"],
+//     ans: "30%"
+//   },
+//   {
+//     q: "A contractor planned to employ 60 workers for 30 days. After 10 days, he realizes that 35% of the work is complete. He dismisses 10 workers and increases the efficiency of each remaining worker by 25%. How many days from the start will the project take?",
+//     options: ["27 days", "28 days", "29 days", "30 days"],
+//     ans: "29 days"
+//   },
+//   {
+//     q: "Find the smallest number which is divisible by 18, 24, 40 and 45 and is also a perfect square and a multiple of 11.",
+//     options: ["19,800", "39,600", "79,200", "158,400"],
+//     ans: "39,600"
+//   },
+//   {
+//     q: "A person's expenditure is 75% of income. His income increases by 16%, expenditure increases by 12%, and he additionally saves ₹2,400 from a reduction in unnecessary expenses. If his final savings are ₹20,400, what was his original income?",
+//     options: ["₹48,000", "₹50,000", "₹52,000", "₹54,000"],
+//     ans: "₹50,000"
+//   },
+//   {
+//     q: "A, B and C invest ₹50,000, ₹75,000 and ₹1,00,000 respectively. A invests for 12 months, B for 8 months and C for 6 months. After 6 months, B transfers 20% of his capital to C. If the total profit is ₹72,000, what is C's share?",
+//     options: ["₹27,000", "₹30,000", "₹32,000", "₹36,000"],
+//     ans: "₹30,000"
+//   },
+//   {
+//     q: "The HCF of two numbers is 25 and their LCM is 7,500. If their difference is 250, find the sum of the numbers.",
+//     options: ["750", "800", "850", "900"],
+//     ans: "850"
+//   },
+//   {
+//     q: "A commodity is sold after two successive discounts of 20% and 15%. The shopkeeper still makes a profit of 2%. If the marked price is ₹12,750, what was the cost price?",
+//     options: ["₹8,000", "₹8,250", "₹8,500", "₹8,750"],
+//     ans: "₹8,500"
+//   }
+// ];
 //  const questions =  [
 // {
 //   q: "A train 240 m long crosses a bridge in 24 seconds and a platform in 18 seconds. If another train, 360 m long, travels at a speed 20% higher than the first train, then the time taken by the second train to cross a platform equal to the bridge is:",
