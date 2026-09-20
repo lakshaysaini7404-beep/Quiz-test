@@ -188,161 +188,378 @@ init();
 }
     const questions = [
   {
-    q: "In an examination, 30% of the candidates failed in Mathematics, 25% failed in Physics, and 12% failed in both. If 1,848 candidates passed in both subjects, what was the total number of candidates?",
-    options: ["2,400", "2,800", "3,000", "3,200"],
-    ans: "2,800"
+    q: "A company's workforce increases by 20% in the first year, decreases by 10% in the second year, and increases by 25% in the third year. If the workforce at the beginning was 8,000, what is the workforce after three years?",
+    options: ["9,600", "10,200", "10,800", "11,000"],
+    ans: "10,800"
   },
   {
-    q: "The population of a town increases by 20% in the first year and decreases by 10% in the second year. In the third year, it increases by 25%. If the population at the end of the third year is 59,400, what was the population initially?",
-    options: ["40,000", "42,000", "44,000", "45,000"],
-    ans: "44,000"
+    q: "In an election, candidate A receives 56% of the valid votes while candidate B receives 44%. A wins by 2,160 votes. If 10% of the total votes polled were declared invalid, how many total votes were polled?",
+    options: ["18,000", "19,200", "20,000", "21,600"],
+    ans: "20,000"
   },
   {
-    q: "A person's salary is first increased by 25% and then reduced by 20%. After this change, his salary is ₹48,000. If an additional 10% bonus is calculated on his final salary, what amount does he receive including the bonus?",
-    options: ["₹50,400", "₹51,840", "₹52,800", "₹54,000"],
-    ans: "₹52,800"
+    q: "A's salary is 25% higher than B's salary. A's salary is then reduced by 10%, while B's salary is reduced by 20%. By what percentage is A's new salary higher than B's new salary?",
+    options: ["37.5%", "40%", "40.625%", "42.5%"],
+    ans: "40.625%"
   },
   {
-    q: "In a company, 40% of the employees are women. If 25% of the women and 20% of the men work remotely, and the total number of employees working remotely is 216, what is the total number of employees?",
-    options: ["900", "1,000", "1,200", "1,500"],
-    ans: "1,000"
+    q: "In a class, boys constitute 40% of the students and girls constitute 60%. If 15 boys leave the class and 15 girls join it, the percentage of boys becomes 25%. What was the original number of students?",
+    options: ["80", "90", "100", "120"],
+    ans: "100"
   },
   {
-    q: "The price of a machine is increased by 15%, then discounted by 10%, and finally increased by 20% due to additional installation charges. If the final amount paid is ₹62,100, what was the original price of the machine?",
-    options: ["₹45,000", "₹48,000", "₹50,000", "₹52,000"],
-    ans: "₹50,000"
-  },
-
-  {
-    q: "In a certain coding system, each letter of a word is replaced by the letter that is 2 positions ahead of it in the alphabet, and then the entire resulting word is reversed. If the code for MARKET is 'VGTCMO', what would be the code for SYSTEM using the same rule?",
-    options: ["OGVUWU", "OGVUWQ", "OGVUWU", "OGVUXU"],
-    ans: "OGVUWU"
+    q: "In a certain code, every consonant is replaced by the next consonant in the English alphabet, skipping vowels, while every vowel is replaced by the previous vowel cyclically (A→U, E→A, I→E, O→I, U→O). How will the word 'LOGIC' be coded?",
+    options: ["MIHED", "MIGED", "NIHED", "MIHFD"],
+    ans: "MIHED"
   },
   {
-    q: "In a certain language, 'PAPER' is coded as 'QBQFS', 'TABLE' is coded as 'UBCMF', and 'CHAIR' is coded as 'DIBJS'. If every letter is transformed according to the same rule, how will 'PLANT' be coded?",
-    options: ["QMB OU", "QMBOU", "QMBNT", "QKZMS"],
-    ans: "QMBOU"
+    q: "In a coding system, letters in odd positions are shifted 2 places forward and letters in even positions are shifted 1 place backward. Using this rule, how will the word 'MOBILE' be coded?",
+    options: ["ONDHND", "ONEHND", "ONCHND", "PNDHND"],
+    ans: "ONDHND"
   },
   {
-    q: "If in a certain coding system, COMPUTER is written as RFUVQNPC, where the first half and second half of the word follow different transformations, and MACHINE is written as FOJIDBN, then how will NETWORK be written using the same coding pattern?",
-    options: ["LSPXUFO", "LSPXUFW", "MTPYVFO", "KROWTEN"],
-    ans: "LSPXUFO"
+    q: "A shopkeeper marks an article 30% above its cost price and then offers a discount of 10% on the marked price. If the cost price is ₹2,400, what is his profit percentage?",
+    options: ["15%", "16%", "17%", "18%"],
+    ans: "17%"
   },
   {
-    q: "In a certain code, 'ROAD' is written as 'URDG', 'TRAIN' is written as 'WUDLQ', and 'PLANE' is written as 'SODQH'. If the same pattern is followed, how will 'BRIDGE' be coded?",
-    options: ["EULGJH", "EULFJH", "DSKFIH", "EVMGKI"],
-    ans: "EULGJH"
+    q: "A trader sells two articles for ₹3,600 each. On the first article he gains 20%, while on the second he loses 20%. Considering both transactions together, what is the overall result?",
+    options: ["2% loss", "4% loss", "4% gain", "5% loss"],
+    ans: "4% loss"
   },
   {
-    q: "In a coding language, the word 'CANDLE' is represented as 3-1-14-4-12-5, while 'BRIGHT' is represented as 2-18-9-7-8-20. A second operation is then applied in which every number is increased by its position number. What will be the final representation of 'CANDLE'?",
-    options: ["4-3-17-9-17-11", "4-3-17-8-17-11", "3-2-16-8-17-10", "4-2-16-8-17-10"],
-    ans: "4-3-17-8-17-11"
-  },
-
-  {
-    q: "A shopkeeper marks an article 40% above its cost price and gives two successive discounts of 10% and 15%. If the selling price is ₹10,710, what is the cost price of the article?",
-    options: ["₹9,000", "₹10,000", "₹10,500", "₹11,000"],
-    ans: "₹10,000"
+    q: "A dishonest shopkeeper marks an article at ₹800 per kilogram and gives a 10% discount. However, instead of giving 1 kg, he gives only 900 g. If his cost price is ₹600 per kilogram, what is his effective profit percentage?",
+    options: ["30%", "33⅓%", "35%", "37½%"],
+    ans: "33⅓%"
   },
   {
-    q: "A trader purchases an article at 20% below its marked price. He then sells it at a 15% discount on the marked price. If he earns a profit of ₹1,200, what is the marked price of the article?",
-    options: ["₹20,000", "₹24,000", "₹25,000", "₹30,000"],
-    ans: "₹24,000"
+    q: "An article is sold after two successive discounts of 20% and 10%. What single discount is equivalent to these two successive discounts?",
+    options: ["26%", "28%", "30%", "32%"],
+    ans: "28%"
   },
   {
-    q: "A dealer buys two machines for a total of ₹1,20,000. He sells the first machine at a profit of 25% and the second at a loss of 10%. If his total profit is ₹9,000, what was the cost price of the first machine?",
-    options: ["₹40,000", "₹50,000", "₹60,000", "₹70,000"],
-    ans: "₹60,000"
+    q: "A is the brother of B. C is the mother of both A and B. D is the father of C. E is the daughter of B. How is D related to E?",
+    options: ["Grandfather", "Great-grandfather", "Great-uncle", "Granduncle"],
+    ans: "Great-grandfather"
   },
   {
-    q: "A shopkeeper sells an article at a 20% profit. Had he purchased the article for 10% less and sold it for ₹60 less, his profit would have been 25%. What was the original cost price of the article?",
-    options: ["₹1,000", "₹1,200", "₹1,500", "₹2,000"],
-    ans: "₹1,200"
+    q: "P's mother's only brother is Q. Q has a daughter R. If P and R have no other family connection, how is R related to P?",
+    options: ["Sister", "Cousin", "Niece", "Aunt"],
+    ans: "Cousin"
   },
   {
-    q: "A dishonest dealer claims to sell sugar at cost price but uses a weight that is 20% less than the actual kilogram. He then gives an additional 5% discount on the displayed price. What is his effective profit percentage?",
-    options: ["14.74%", "16%", "18.75%", "20%"],
-    ans: "14.74%"
-  },
-
-  {
-    q: "A boat travels 36 km downstream in 3 hours and the same distance upstream in 4.5 hours. If the boat travels 48 km downstream and then 24 km upstream, how much total time will it take?",
-    options: ["6 hours", "6.5 hours", "7 hours", "7.5 hours"],
-    ans: "7 hours"
+    q: "Five years ago, A was four times as old as B. Their present ages add up to 50 years. What is the difference between their present ages?",
+    options: ["20 years", "22 years", "24 years", "26 years"],
+    ans: "24 years"
   },
   {
-    q: "A boat takes 5 hours to travel 60 km downstream and 10 hours to travel the same distance upstream. If the speed of the stream increases by 2 km/h, how much time will the boat take to travel 60 km upstream?",
-    options: ["12 hours", "15 hours", "20 hours", "30 hours"],
-    ans: "30 hours"
+    q: "Twelve years from now, a father will be twice as old as his son. Six years ago, the father was five times as old as his son. What is the sum of their present ages?",
+    options: ["42 years", "45 years", "48 years", "50 years"],
+    ans: "48 years"
   },
   {
-    q: "A man rows a boat 24 km downstream in 2 hours and returns to the starting point in 3 hours. If he rests for 30 minutes at the destination before returning, how much total time does the complete journey take?",
-    options: ["5 hours", "5.5 hours", "6 hours", "6.5 hours"],
-    ans: "5.5 hours"
+    q: "A person walks 8 km north, then 6 km east, then 8 km south, and finally 10 km west. In which direction and at what minimum distance is he from his starting point?",
+    options: ["4 km west", "4 km east", "6 km west", "6 km east"],
+    ans: "4 km west"
   },
   {
-    q: "The speed of a boat in still water is 15 km/h and the speed of the stream is 3 km/h. The boat travels downstream for 2 hours and then upstream for 3 hours. How far is it from its starting point?",
-    options: ["18 km", "24 km", "30 km", "36 km"],
-    ans: "30 km"
+    q: "A person starts facing north. He walks 5 m, turns right and walks 12 m, turns right and walks 5 m, and then turns left and walks 4 m. Where is he located with respect to his starting point?",
+    options: ["12 m east", "16 m east", "16 m west", "21 m east"],
+    ans: "16 m east"
   },
   {
-    q: "A boat takes 8 hours to cover a certain distance downstream and 12 hours to cover the same distance upstream. If the speed of the boat in still water is 10 km/h, what is the distance covered?",
-    options: ["72 km", "80 km", "96 km", "120 km"],
-    ans: "96 km"
-  },
-
-  {
-    q: "A person starts from point A and walks 12 km towards the north. He then turns right and walks 16 km, turns right again and walks 7 km, and finally turns left and walks 8 km. What is the shortest distance between his final position and point A?",
-    options: ["15 km", "17 km", "19 km", "21 km"],
-    ans: "17 km"
+    q: "A train 180 m long crosses a stationary pole in 12 seconds. What is the speed of the train?",
+    options: ["45 km/h", "48 km/h", "54 km/h", "60 km/h"],
+    ans: "54 km/h"
   },
   {
-    q: "Rahul walks 10 km towards the east, turns left and walks 6 km, then turns left and walks 10 km. He then turns right and walks 8 km. In which direction and at what distance is he from his starting point?",
-    options: ["North, 14 km", "South, 14 km", "North, 12 km", "East, 14 km"],
-    ans: "North, 14 km"
+    q: "A train 250 m long crosses a platform 350 m long in 30 seconds. What is the speed of the train?",
+    options: ["60 km/h", "66 km/h", "72 km/h", "75 km/h"],
+    ans: "72 km/h"
   },
   {
-    q: "A person walks 15 km towards the south, then 8 km towards the west, followed by 9 km towards the north and finally 8 km towards the east. How far and in which direction is he from the starting point?",
-    options: ["6 km South", "6 km North", "8 km South", "9 km North"],
-    ans: "6 km South"
+    q: "Two trains of lengths 180 m and 220 m are moving in opposite directions at 54 km/h and 72 km/h respectively. How long will they take to completely cross each other?",
+    options: ["10 seconds", "80/7 seconds", "12 seconds", "14 seconds"],
+    ans: "80/7 seconds"
   },
   {
-    q: "A man is facing north. He turns 135° clockwise, then 90° anticlockwise, and finally 180° clockwise. In which direction is he facing now?",
-    options: ["North-East", "South-East", "South-West", "North-West"],
-    ans: "South-West"
+    q: "A train 240 m long moving at 54 km/h overtakes another train 160 m long moving in the same direction at 36 km/h. How much time does the faster train take to completely overtake the slower train?",
+    options: ["60 seconds", "72 seconds", "80 seconds", "90 seconds"],
+    ans: "80 seconds"
   },
   {
-    q: "A person travels 20 km north from point A, then 15 km east, then 8 km south, and finally 9 km west. How far is he from point A, and in which direction?",
-    options: ["12 km North-East", "13 km North-East", "15 km North-East", "17 km North-West"],
-    ans: "13 km North-East"
-  },
-
-  {
-    q: "A train 240 m long crosses a pole in 12 seconds. It crosses another train of length 360 m traveling in the opposite direction in 15 seconds. What is the speed of the second train?",
-    options: ["36 km/h", "48 km/h", "60 km/h", "72 km/h"],
-    ans: "48 km/h"
+    q: "The ratio A:B is 3:5 and B:C is 10:7. If the total of A, B and C is 4,600, what is the value of B?",
+    options: ["1,600", "1,800", "2,000", "2,200"],
+    ans: "2,000"
   },
   {
-    q: "A train 180 m long is running at 54 km/h. It crosses a platform in 24 seconds. Another train running in the opposite direction at 72 km/h crosses the same platform in 18 seconds. What is the length of the second train?",
-    options: ["180 m", "200 m", "210 m", "240 m"],
-    ans: "180 m"
+    q: "The incomes of A and B are in the ratio 5:7, while their expenditures are in the ratio 3:5. If each saves ₹1,800 per month, what is their combined monthly income?",
+    options: ["₹9,000", "₹10,800", "₹11,200", "₹12,600"],
+    ans: "₹10,800"
   },
   {
-    q: "Two trains of lengths 250 m and 350 m are running in the same direction at speeds of 72 km/h and 54 km/h respectively. How much time will the faster train take to completely overtake the slower train?",
-    options: ["100 seconds", "110 seconds", "120 seconds", "150 seconds"],
-    ans: "120 seconds"
+    q: "A vessel contains milk and water in the ratio 7:3. From 100 litres of this mixture, 20 litres are removed and replaced with 20 litres of water. What will be the new ratio of milk to water?",
+    options: ["7:10", "7:11", "7:12", "7:13"],
+    ans: "7:13"
   },
   {
-    q: "A train crosses a man standing on a platform in 10 seconds and crosses a 300 m long platform in 25 seconds. What is the length and speed of the train?",
-    options: ["200 m, 72 km/h", "180 m, 64.8 km/h", "150 m, 54 km/h", "250 m, 90 km/h"],
-    ans: "200 m, 72 km/h"
+    q: "A can complete a piece of work in 12 days and B can complete the same work in 18 days. If they work together from the beginning, how many days will they take to complete the work?",
+    options: ["6 days", "7 days", "36/5 days", "8 days"],
+    ans: "36/5 days"
   },
   {
-    q: "Two trains are moving towards each other from stations 600 km apart. The first train travels at 80 km/h and the second at 70 km/h. After 2 hours, the first train stops for 30 minutes while the second continues moving. How much time from the start will they take to meet?",
-    options: ["4 hours", "4 hours 15 minutes", "4 hours 30 minutes", "5 hours"],
-    ans: "4 hours 15 minutes"
+    q: "A and B together can complete a work in 10 days, B and C together in 15 days, and C and A together in 12 days. If all three work together, how many days will they take to complete the work?",
+    options: ["6 days", "7 days", "8 days", "9 days"],
+    ans: "8 days"
+  },
+  {
+    q: "A can complete a work in 20 days and B can complete it in 30 days. They work together for 6 days, after which A leaves. How many additional days will B require to finish the remaining work?",
+    options: ["12 days", "15 days", "18 days", "20 days"],
+    ans: "15 days"
+  },
+  {
+    q: "Pipe A can fill a tank in 12 hours, pipe B can fill it in 18 hours, and pipe C can empty it in 36 hours. If all three pipes are opened simultaneously, how long will it take to fill the tank?",
+    options: ["8 hours", "9 hours", "10 hours", "12 hours"],
+    ans: "9 hours"
+  },
+  {
+    q: "Pipe A can fill a tank in 15 hours and pipe B can fill it in 20 hours. A is opened alone for 5 hours, after which B is also opened. How much total time is required to fill the tank?",
+    options: ["10 hours", "75/7 hours", "11 hours", "12 hours"],
+    ans: "75/7 hours"
+  },
+  {
+    q: "If 1 January 2025 was a Wednesday, what day of the week was 1 March 2025?",
+    options: ["Thursday", "Friday", "Saturday", "Sunday"],
+    ans: "Saturday"
+  },
+  {
+    q: "15 August 1947 was a Friday. Taking leap years into account, what day of the week was 15 August 2027?",
+    options: ["Friday", "Saturday", "Sunday", "Monday"],
+    ans: "Sunday"
+  },
+  {
+    q: "A sum of ₹8,000 is invested at a simple interest rate of 7.5% per annum for 2 years. What amount will be received at the end of the period?",
+    options: ["₹9,000", "₹9,100", "₹9,200", "₹9,400"],
+    ans: "₹9,200"
+  },
+  {
+    q: "The sum of the simple interests earned on a certain principal at 6% per annum for 4 years and at 8% per annum for 3 years is ₹3,000. What is the principal?",
+    options: ["₹5,000", "₹6,000", "₹6,250", "₹7,500"],
+    ans: "₹6,250"
+  },
+  {
+    q: "A boat travels downstream at 18 km/h and upstream at 10 km/h. If it travels for 2 hours downstream and 3 hours upstream, what total distance does it cover?",
+    options: ["60 km", "64 km", "66 km", "68 km"],
+    ans: "66 km"
+  },
+  {
+    q: "Choose the grammatically correct sentence based on the rules of subject-verb agreement.",
+    options: [
+      "Neither the manager nor the employees was willing to accept the proposal.",
+      "Neither the manager nor the employees were willing to accept the proposal.",
+      "Neither the manager nor the employees is willing to accept the proposal.",
+      "Neither the manager nor the employees has willing to accept the proposal."
+    ],
+    ans: "Neither the manager nor the employees were willing to accept the proposal."
+  },
+  {
+    q: "Choose the sentence in which the verb form is used correctly.",
+    options: [
+      "The reports, along with the supporting documents, is submitted yesterday.",
+      "The reports, along with the supporting documents, were submitted yesterday.",
+      "The reports, along with the supporting documents, was submitted yesterday.",
+      "The reports, along with the supporting documents, has submitted yesterday."
+    ],
+    ans: "The reports, along with the supporting documents, were submitted yesterday."
+  },
+  {
+    q: "Complete the sentence using the appropriate verb form: 'Had the company ___ the warning issued by the auditors, the financial loss could have been avoided.'",
+    options: ["heed", "heeded", "heeding", "has heeded"],
+    ans: "heeded"
+  },
+  {
+    q: "Choose the sentence with the correct use of the verb.",
+    options: [
+      "The committee have decided to postpone the meeting.",
+      "The committee has decided to postpone the meeting.",
+      "The committee are decides to postpone the meeting.",
+      "The committee having decide to postpone the meeting."
+    ],
+    ans: "The committee has decided to postpone the meeting."
+  },
+  {
+    q: "The project deadline is tomorrow, and all required documents have already been prepared. Which modal best completes the sentence? 'The team ___ submit the final report before 5 PM tomorrow.'",
+    options: ["might", "could", "must", "would"],
+    ans: "must"
+  },
+  {
+    q: "Choose the modal that correctly expresses a past obligation that was not fulfilled: 'You ___ have informed the manager about the issue before making the change.'",
+    options: ["may", "can", "should", "should have"],
+    ans: "should have"
+  },
+  {
+    q: "Choose the most appropriate modal for the following rule: 'No employee ___ enter the laboratory without proper authorization.'",
+    options: ["can", "may", "may not", "could"],
+    ans: "may not"
   }
 ];
+//     const questions = [
+//   {
+//     q: "In an examination, 30% of the candidates failed in Mathematics, 25% failed in Physics, and 12% failed in both. If 1,848 candidates passed in both subjects, what was the total number of candidates?",
+//     options: ["2,400", "2,800", "3,000", "3,200"],
+//     ans: "2,800"
+//   },
+//   {
+//     q: "The population of a town increases by 20% in the first year and decreases by 10% in the second year. In the third year, it increases by 25%. If the population at the end of the third year is 59,400, what was the population initially?",
+//     options: ["40,000", "42,000", "44,000", "45,000"],
+//     ans: "44,000"
+//   },
+//   {
+//     q: "A person's salary is first increased by 25% and then reduced by 20%. After this change, his salary is ₹48,000. If an additional 10% bonus is calculated on his final salary, what amount does he receive including the bonus?",
+//     options: ["₹50,400", "₹51,840", "₹52,800", "₹54,000"],
+//     ans: "₹52,800"
+//   },
+//   {
+//     q: "In a company, 40% of the employees are women. If 25% of the women and 20% of the men work remotely, and the total number of employees working remotely is 216, what is the total number of employees?",
+//     options: ["900", "1,000", "1,200", "1,500"],
+//     ans: "1,000"
+//   },
+//   {
+//     q: "The price of a machine is increased by 15%, then discounted by 10%, and finally increased by 20% due to additional installation charges. If the final amount paid is ₹62,100, what was the original price of the machine?",
+//     options: ["₹45,000", "₹48,000", "₹50,000", "₹52,000"],
+//     ans: "₹50,000"
+//   },
+
+//   {
+//     q: "In a certain coding system, each letter of a word is replaced by the letter that is 2 positions ahead of it in the alphabet, and then the entire resulting word is reversed. If the code for MARKET is 'VGTCMO', what would be the code for SYSTEM using the same rule?",
+//     options: ["OGVUWU", "OGVUWQ", "OGVUWU", "OGVUXU"],
+//     ans: "OGVUWU"
+//   },
+//   {
+//     q: "In a certain language, 'PAPER' is coded as 'QBQFS', 'TABLE' is coded as 'UBCMF', and 'CHAIR' is coded as 'DIBJS'. If every letter is transformed according to the same rule, how will 'PLANT' be coded?",
+//     options: ["QMB OU", "QMBOU", "QMBNT", "QKZMS"],
+//     ans: "QMBOU"
+//   },
+//   {
+//     q: "If in a certain coding system, COMPUTER is written as RFUVQNPC, where the first half and second half of the word follow different transformations, and MACHINE is written as FOJIDBN, then how will NETWORK be written using the same coding pattern?",
+//     options: ["LSPXUFO", "LSPXUFW", "MTPYVFO", "KROWTEN"],
+//     ans: "LSPXUFO"
+//   },
+//   {
+//     q: "In a certain code, 'ROAD' is written as 'URDG', 'TRAIN' is written as 'WUDLQ', and 'PLANE' is written as 'SODQH'. If the same pattern is followed, how will 'BRIDGE' be coded?",
+//     options: ["EULGJH", "EULFJH", "DSKFIH", "EVMGKI"],
+//     ans: "EULGJH"
+//   },
+//   {
+//     q: "In a coding language, the word 'CANDLE' is represented as 3-1-14-4-12-5, while 'BRIGHT' is represented as 2-18-9-7-8-20. A second operation is then applied in which every number is increased by its position number. What will be the final representation of 'CANDLE'?",
+//     options: ["4-3-17-9-17-11", "4-3-17-8-17-11", "3-2-16-8-17-10", "4-2-16-8-17-10"],
+//     ans: "4-3-17-8-17-11"
+//   },
+
+//   {
+//     q: "A shopkeeper marks an article 40% above its cost price and gives two successive discounts of 10% and 15%. If the selling price is ₹10,710, what is the cost price of the article?",
+//     options: ["₹9,000", "₹10,000", "₹10,500", "₹11,000"],
+//     ans: "₹10,000"
+//   },
+//   {
+//     q: "A trader purchases an article at 20% below its marked price. He then sells it at a 15% discount on the marked price. If he earns a profit of ₹1,200, what is the marked price of the article?",
+//     options: ["₹20,000", "₹24,000", "₹25,000", "₹30,000"],
+//     ans: "₹24,000"
+//   },
+//   {
+//     q: "A dealer buys two machines for a total of ₹1,20,000. He sells the first machine at a profit of 25% and the second at a loss of 10%. If his total profit is ₹9,000, what was the cost price of the first machine?",
+//     options: ["₹40,000", "₹50,000", "₹60,000", "₹70,000"],
+//     ans: "₹60,000"
+//   },
+//   {
+//     q: "A shopkeeper sells an article at a 20% profit. Had he purchased the article for 10% less and sold it for ₹60 less, his profit would have been 25%. What was the original cost price of the article?",
+//     options: ["₹1,000", "₹1,200", "₹1,500", "₹2,000"],
+//     ans: "₹1,200"
+//   },
+//   {
+//     q: "A dishonest dealer claims to sell sugar at cost price but uses a weight that is 20% less than the actual kilogram. He then gives an additional 5% discount on the displayed price. What is his effective profit percentage?",
+//     options: ["14.74%", "16%", "18.75%", "20%"],
+//     ans: "14.74%"
+//   },
+
+//   {
+//     q: "A boat travels 36 km downstream in 3 hours and the same distance upstream in 4.5 hours. If the boat travels 48 km downstream and then 24 km upstream, how much total time will it take?",
+//     options: ["6 hours", "6.5 hours", "7 hours", "7.5 hours"],
+//     ans: "7 hours"
+//   },
+//   {
+//     q: "A boat takes 5 hours to travel 60 km downstream and 10 hours to travel the same distance upstream. If the speed of the stream increases by 2 km/h, how much time will the boat take to travel 60 km upstream?",
+//     options: ["12 hours", "15 hours", "20 hours", "30 hours"],
+//     ans: "30 hours"
+//   },
+//   {
+//     q: "A man rows a boat 24 km downstream in 2 hours and returns to the starting point in 3 hours. If he rests for 30 minutes at the destination before returning, how much total time does the complete journey take?",
+//     options: ["5 hours", "5.5 hours", "6 hours", "6.5 hours"],
+//     ans: "5.5 hours"
+//   },
+//   {
+//     q: "The speed of a boat in still water is 15 km/h and the speed of the stream is 3 km/h. The boat travels downstream for 2 hours and then upstream for 3 hours. How far is it from its starting point?",
+//     options: ["18 km", "24 km", "30 km", "36 km"],
+//     ans: "30 km"
+//   },
+//   {
+//     q: "A boat takes 8 hours to cover a certain distance downstream and 12 hours to cover the same distance upstream. If the speed of the boat in still water is 10 km/h, what is the distance covered?",
+//     options: ["72 km", "80 km", "96 km", "120 km"],
+//     ans: "96 km"
+//   },
+
+//   {
+//     q: "A person starts from point A and walks 12 km towards the north. He then turns right and walks 16 km, turns right again and walks 7 km, and finally turns left and walks 8 km. What is the shortest distance between his final position and point A?",
+//     options: ["15 km", "17 km", "19 km", "21 km"],
+//     ans: "17 km"
+//   },
+//   {
+//     q: "Rahul walks 10 km towards the east, turns left and walks 6 km, then turns left and walks 10 km. He then turns right and walks 8 km. In which direction and at what distance is he from his starting point?",
+//     options: ["North, 14 km", "South, 14 km", "North, 12 km", "East, 14 km"],
+//     ans: "North, 14 km"
+//   },
+//   {
+//     q: "A person walks 15 km towards the south, then 8 km towards the west, followed by 9 km towards the north and finally 8 km towards the east. How far and in which direction is he from the starting point?",
+//     options: ["6 km South", "6 km North", "8 km South", "9 km North"],
+//     ans: "6 km South"
+//   },
+//   {
+//     q: "A man is facing north. He turns 135° clockwise, then 90° anticlockwise, and finally 180° clockwise. In which direction is he facing now?",
+//     options: ["North-East", "South-East", "South-West", "North-West"],
+//     ans: "South-West"
+//   },
+//   {
+//     q: "A person travels 20 km north from point A, then 15 km east, then 8 km south, and finally 9 km west. How far is he from point A, and in which direction?",
+//     options: ["12 km North-East", "13 km North-East", "15 km North-East", "17 km North-West"],
+//     ans: "13 km North-East"
+//   },
+
+//   {
+//     q: "A train 240 m long crosses a pole in 12 seconds. It crosses another train of length 360 m traveling in the opposite direction in 15 seconds. What is the speed of the second train?",
+//     options: ["36 km/h", "48 km/h", "60 km/h", "72 km/h"],
+//     ans: "48 km/h"
+//   },
+//   {
+//     q: "A train 180 m long is running at 54 km/h. It crosses a platform in 24 seconds. Another train running in the opposite direction at 72 km/h crosses the same platform in 18 seconds. What is the length of the second train?",
+//     options: ["180 m", "200 m", "210 m", "240 m"],
+//     ans: "180 m"
+//   },
+//   {
+//     q: "Two trains of lengths 250 m and 350 m are running in the same direction at speeds of 72 km/h and 54 km/h respectively. How much time will the faster train take to completely overtake the slower train?",
+//     options: ["100 seconds", "110 seconds", "120 seconds", "150 seconds"],
+//     ans: "120 seconds"
+//   },
+//   {
+//     q: "A train crosses a man standing on a platform in 10 seconds and crosses a 300 m long platform in 25 seconds. What is the length and speed of the train?",
+//     options: ["200 m, 72 km/h", "180 m, 64.8 km/h", "150 m, 54 km/h", "250 m, 90 km/h"],
+//     ans: "200 m, 72 km/h"
+//   },
+//   {
+//     q: "Two trains are moving towards each other from stations 600 km apart. The first train travels at 80 km/h and the second at 70 km/h. After 2 hours, the first train stops for 30 minutes while the second continues moving. How much time from the start will they take to meet?",
+//     options: ["4 hours", "4 hours 15 minutes", "4 hours 30 minutes", "5 hours"],
+//     ans: "4 hours 15 minutes"
+//   }
+// ];
 //     const questions = [
 //   {
 //     q: "A, B and C invest in a business in the ratio 3:4:5. After 3 months, A doubles his investment; after 6 months, B withdraws half his investment; after 8 months, C withdraws 40% of his investment. If the annual profit is ₹55,200, what is B's share?",
