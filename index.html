@@ -187,251 +187,252 @@ document.querySelector(".wrapper").style.display="flex";
 init();
 }
  const questions =  [
-    // ==========================================
-    // PROFIT & LOSS - 10 QUESTIONS
-    // ==========================================
+
+    // =========================================================
+    // PROFIT & LOSS — 10 HARD QUESTIONS
+    // =========================================================
 
     {
-        q: "A shopkeeper marks an article at ₹4000 and gives successive discounts of 15% and 10%. If the cost price is ₹2500, what is his profit percentage?",
-        options: ["20.4%", "22.4%", "24.4%", "26.4%"],
-        ans: 1
-    },
-
-    {
-        q: "An article is sold at a loss of 12%. If it were sold for ₹270 more, there would be a gain of 6%. What is the cost price of the article?",
-        options: ["₹1350", "₹1500", "₹1650", "₹1800"],
-        ans: 1
-    },
-
-    {
-        q: "A trader sells two articles at the same cost price. On one he gains 25% and on the other he loses 15%. What is his overall profit or loss percentage?",
-        options: ["4% profit", "5% profit", "5% loss", "4% loss"],
-        ans: 1
-    },
-
-    {
-        q: "Two articles are sold for the same selling price. One is sold at a gain of 30% and the other at a loss of 30%. What is the overall result?",
-        options: ["9% loss", "9% profit", "6% loss", "No profit, no loss"],
-        ans: 0
-    },
-
-    {
-        q: "A shopkeeper buys 20 articles for ₹5000. He sells 12 of them at a profit of 20% and the remaining 8 at a loss of 10%. What is his overall profit percentage?",
+        q: "A trader marks an article 20% above its cost price and then gives a discount of 10% on the marked price. What is his profit percentage?",
         options: ["6%", "8%", "10%", "12%"],
         ans: 1
     },
 
     {
-        q: "An article is sold after allowing a discount of 25% on its marked price, yet the seller makes a profit of 20%. By what percentage is the marked price above the cost price?",
-        options: ["50%", "55%", "60%", "65%"],
+        q: "A shopkeeper purchases an article for ₹2400. He marks it 50% above the cost price and gives successive discounts of 20% and 10%. He also charges ₹72 separately for packaging. If the packaging charge is treated as additional revenue, what is his effective profit percentage?",
+        options: ["9%", "10%", "11%", "12%"],
         ans: 2
     },
 
     {
-        q: "An article is marked at ₹5000. After allowing a discount of 10%, the seller still makes a profit of 25%. What is the cost price?",
-        options: ["₹3400", "₹3500", "₹3600", "₹3750"],
-        ans: 2
-    },
-
-    {
-        q: "An article is sold at an 8% profit. If it had been sold for ₹192 less, there would have been a loss of 4%. What is the cost price?",
-        options: ["₹1400", "₹1500", "₹1600", "₹1800"],
-        ans: 2
-    },
-
-    {
-        q: "A trader marks an article 50% above its cost price and gives successive discounts of 20% and 10%. What is his final profit percentage?",
-        options: ["6%", "8%", "10%", "12%"],
+        q: "A trader sells 40% of his stock at a profit of 25%, 18% of the total stock at a profit of 10%, and the remaining stock at a loss of 20%. If every article has the same cost price, what is his overall profit percentage?",
+        options: ["2.4%", "3.4%", "4.2%", "5.4%"],
         ans: 1
     },
 
     {
-        q: "A shopkeeper marks an article 20% above its cost price and gives a 10% discount. He also gives only 900 grams instead of 1 kg. What is his effective profit percentage?",
-        options: ["10%", "15%", "20%", "25%"],
+        q: "An article is sold at a profit of 20%. Had it been purchased for 10% less and sold for ₹120 less, the profit would have been 25%. What was the original cost price?",
+        options: ["₹1400", "₹1600", "₹1800", "₹2000"],
+        ans: 1
+    },
+
+    {
+        q: "A dishonest dealer purchases an article for ₹900 and sells the quantity using a 900 g weight instead of 1 kg for ₹1000. Assuming the ₹900 is the cost of 1 kg, what is his actual profit percentage on the quantity supplied?",
+        options: ["20%", "22.22%", "23.46%", "25%"],
         ans: 2
     },
 
-
-    // ==========================================
-    // BOATS & STREAMS - 10 QUESTIONS
-    // ==========================================
+    {
+        q: "A trader marks an article 80% above its cost price. He gives a discount of x% and still earns a profit of 20%. What is x?",
+        options: ["30%", "33 1/3%", "35%", "37.5%"],
+        ans: 1
+    },
 
     {
-        q: "A boat travels downstream at 24 km/h and upstream at 16 km/h. What are the speeds of the boat in still water and the stream respectively?",
+        q: "Two articles are purchased for a total of ₹7200. The first is sold at a profit of 25% and the second at a loss of 20%. If the total selling price is ₹7560, what is the cost price of the first article?",
+        options: ["₹3600", "₹3800", "₹4000", "₹4200"],
+        ans: 2
+    },
+
+    {
+        q: "A shopkeeper marks an article 40% above its cost price and gives a discount of 10%. If his profit is ₹520, what is the cost price of the article?",
+        options: ["₹1800", "₹2000", "₹2200", "₹2500"],
+        ans: 1
+    },
+
+    {
+        q: "A trader sells an article at a profit of 15%. If both the original cost price and selling price are increased by ₹300, the profit percentage becomes 12%. What was the original cost price?",
+        options: ["₹900", "₹1000", "₹1100", "₹1200"],
+        ans: 3
+    },
+
+    {
+        q: "A shopkeeper buys 80 articles at ₹150 each. He sells 60 articles at a profit of 20% and the remaining 20 articles at a loss of 10%. He also pays ₹600 as transportation charges. What is his overall profit percentage?",
+        options: ["5%", "7.14%", "10%", "12.5%"],
+        ans: 1
+    },
+
+
+    // =========================================================
+    // BOATS & STREAMS — 10 HARD QUESTIONS
+    // =========================================================
+
+    {
+        q: "A boat takes 4 hours to travel 48 km downstream and 6 hours to travel the same distance upstream. How far will it travel downstream in the time required to travel 72 km upstream?",
+        options: ["96 km", "102 km", "108 km", "112 km"],
+        ans: 2
+    },
+
+    {
+        q: "A boat covers 36 km downstream in 2 hours and 24 km upstream in 2 hours. What is the speed of the boat in still water, and how much time will it take to cover 90 km in still water?",
         options: [
-            "18 km/h, 6 km/h",
-            "20 km/h, 4 km/h",
-            "22 km/h, 2 km/h",
-            "21 km/h, 3 km/h"
+            "12 km/h, 7.5 hours",
+            "15 km/h, 6 hours",
+            "18 km/h, 5 hours",
+            "20 km/h, 4.5 hours"
         ],
         ans: 1
     },
 
     {
-        q: "A boat travels 30 km downstream in 2 hours and the same distance upstream in 3 hours. What is the speed of the boat in still water?",
-        options: ["10 km/h", "11.5 km/h", "12.5 km/h", "15 km/h"],
+        q: "A boat can travel 30 km downstream in the same time in which it travels 18 km upstream. If the speed of the stream is 3 km/h, what is the speed of the boat in still water?",
+        options: ["9 km/h", "10 km/h", "12 km/h", "15 km/h"],
         ans: 2
     },
 
     {
-        q: "A boat covers 72 km downstream in 3 hours and the same distance upstream in 6 hours. What is the speed of the stream?",
-        options: ["4 km/h", "5 km/h", "6 km/h", "8 km/h"],
-        ans: 2
-    },
-
-    {
-        q: "The speed of a boat in still water is 15 km/h and the speed of the stream is 9 km/h. How much time difference will it take to cover 24 km downstream and 24 km upstream?",
-        options: ["2 hours", "2.5 hours", "3 hours", "4 hours"],
-        ans: 2
-    },
-
-    {
-        q: "A boat moves at 15 km/h in still water and the stream flows at 3 km/h. How much total time is required to travel 72 km downstream and return 72 km upstream?",
-        options: ["8 hours", "9 hours", "10 hours", "11 hours"],
-        ans: 2
-    },
-
-    {
-        q: "A boat travels 90 km downstream at 18 km/h and 60 km upstream at 12 km/h. What is the total time taken?",
-        options: ["8 hours", "9 hours", "10 hours", "11 hours"],
-        ans: 2
-    },
-
-    {
-        q: "A boat travels 60 km downstream and 60 km upstream. Its speed in still water is 20 km/h and the stream speed is 8 km/h. What is the total time taken?",
-        options: ["6 hours", "7 hours", "50/7 hours", "8 hours"],
-        ans: 2
-    },
-
-    {
-        q: "A boat travels 72 km downstream and 72 km upstream. The speed in still water is 13 km/h and the stream speed is 5 km/h. What is the difference between the two journey times?",
-        options: ["4 hours", "5 hours", "6 hours", "7 hours"],
+        q: "A boat travels 48 km downstream and 40 km upstream in a total of 9 hours. If the speed of the stream is 2 km/h, what is the speed of the boat in still water?",
+        options: ["8 km/h", "10 km/h", "12 km/h", "14 km/h"],
         ans: 1
     },
 
     {
-        q: "The ratio of the speed of a boat downstream to its speed upstream is 5:3. If the speed of the stream is 4 km/h, what is the speed of the boat in still water?",
-        options: ["12 km/h", "14 km/h", "16 km/h", "18 km/h"],
+        q: "A boat travels 24 km downstream and returns 24 km upstream. Its speed in still water is 10 km/h and the stream speed is 2 km/h. What is the total time taken for the round trip?",
+        options: ["4 hours", "4.5 hours", "5 hours", "5.5 hours"],
         ans: 2
     },
 
     {
-        q: "A boat covers 24 km downstream in 1.5 hours and 16 km upstream in 2 hours. What is the speed of the stream?",
-        options: ["3 km/h", "4 km/h", "5 km/h", "6 km/h"],
+        q: "A boat travels a certain distance downstream in 3 hours and the same distance upstream in 5 hours. If the speed of the stream is 4 km/h, what is the distance travelled?",
+        options: ["48 km", "54 km", "60 km", "72 km"],
+        ans: 2
+    },
+
+    {
+        q: "A boat takes 2 hours more to cover 45 km upstream than to cover the same distance downstream. If the speed of the boat in still water is 12 km/h, what is the speed of the stream?",
+        options: ["2 km/h", "3 km/h", "4 km/h", "5 km/h"],
+        ans: 1
+    },
+
+    {
+        q: "A boat covers 40 km downstream in 2.5 hours and 30 km upstream in 2.5 hours. How much time will it take to travel 84 km in still water?",
+        options: ["5 hours", "6 hours", "7 hours", "8 hours"],
+        ans: 1
+    },
+
+    {
+        q: "The speed of a boat in still water is 18 km/h and the speed of the stream is 6 km/h. If the boat travels an equal distance downstream and upstream in a total of 5 hours, what is that distance?",
+        options: ["36 km", "40 km", "45 km", "48 km"],
+        ans: 1
+    },
+
+    {
+        q: "The ratio of the downstream speed of a boat to its upstream speed is 7:5. If the speed of the stream is 3 km/h, how much time will the boat take to travel 72 km downstream and 45 km upstream?",
+        options: ["6 hours", "45/7 hours", "47/7 hours", "7 hours"],
         ans: 1
     },
 
 
-    // ==========================================
-    // BLOOD RELATIONS - 10 QUESTIONS
-    // ==========================================
+    // =========================================================
+    // BLOOD RELATIONS — 10 VERY HARD QUESTIONS
+    // =========================================================
 
     {
-        q: "A is the brother of B. B is the mother of C. How is A related to C?",
+        q: "Pointing to a photograph, Rahul said, \"The man in the photograph is the son of my mother's only brother.\" How is the man related to Rahul?",
         options: [
-            "Paternal uncle",
             "Maternal uncle",
-            "Maternal grandfather",
-            "Cousin"
-        ],
-        ans: 1
-    },
-
-    {
-        q: "P is the father of Q. Q is the sister of R. R is the mother of S. How is P related to S?",
-        options: [
-            "Paternal grandfather",
-            "Maternal grandfather",
-            "Father",
-            "Maternal uncle"
-        ],
-        ans: 1
-    },
-
-    {
-        q: "M is the wife of N. N is the brother of O. How is M related to O?",
-        options: [
-            "Sister",
-            "Sister-in-law",
-            "Mother-in-law",
-            "Cousin"
-        ],
-        ans: 1
-    },
-
-    {
-        q: "X is the son of Y. Y is the sister of Z. Z is the father of W. How is X related to W?",
-        options: [
+            "Maternal cousin",
             "Brother",
-            "Uncle",
-            "Cousin",
             "Nephew"
         ],
-        ans: 2
-    },
-
-    {
-        q: "R is the wife of S. S is the brother of T. T is the father of U. How is R related to U?",
-        options: [
-            "Mother",
-            "Aunt",
-            "Sister",
-            "Sister-in-law"
-        ],
         ans: 1
     },
 
     {
-        q: "A is the father of B. B is the mother of C. How is A related to C?",
+        q: "Pointing to a photograph, Priya said, \"The woman in the photograph is the only daughter of my father's only sister.\" How is the woman related to Priya?",
         options: [
-            "Paternal grandfather",
-            "Maternal grandfather",
-            "Father",
+            "Sister",
+            "Paternal aunt",
+            "Paternal cousin",
+            "Niece"
+        ],
+        ans: 2
+    },
+
+    {
+        q: "Pointing to a photograph, Aman said, \"The man in the photograph is the husband of the only daughter of my mother's only sister.\" How is the man related to Aman?",
+        options: [
+            "Brother-in-law",
+            "Maternal uncle",
+            "Cousin",
+            "Cousin's husband"
+        ],
+        ans: 3
+    },
+
+    {
+        q: "Pointing to a photograph, Neha said, \"The boy in the photograph is the son of the only daughter of my mother's only brother.\" How is the boy related to Neha?",
+        options: [
+            "Brother",
+            "Nephew",
+            "Cousin",
+            "Cousin's son"
+        ],
+        ans: 3
+    },
+
+    {
+        q: "A is the brother of B. B is the mother of C. C is the sister of D. D is the father of E. How is A related to E?",
+        options: [
+            "Grandfather",
+            "Great-uncle",
+            "Maternal uncle",
             "Uncle"
         ],
         ans: 1
     },
 
     {
-        q: "D is the sister of E. E is the husband of F. How is D related to F?",
+        q: "P is the daughter of Q. Q is the brother of R. R is the mother of S. S is the mother of U. How is P related to U?",
+        options: [
+            "Aunt",
+            "Cousin",
+            "Cousin's aunt",
+            "Mother"
+        ],
+        ans: 1
+    },
+
+    {
+        q: "M is the mother of N. N is the brother of O. O is the mother of P. P is the father of Q. How is M related to Q?",
+        options: [
+            "Grandmother",
+            "Great-grandmother",
+            "Great-aunt",
+            "Mother"
+        ],
+        ans: 1
+    },
+
+    {
+        q: "A and B are siblings. A is the father of C. B is the mother of D. C has a daughter E, while D has a son F. How is E related to F?",
         options: [
             "Sister",
-            "Sister-in-law",
             "Cousin",
-            "Mother-in-law"
-        ],
-        ans: 1
-    },
-
-    {
-        q: "K is the mother of L. L is the brother of M. M is the wife of N. How is K related to N?",
-        options: [
-            "Mother",
-            "Mother-in-law",
-            "Sister-in-law",
+            "Second cousin",
             "Aunt"
         ],
-        ans: 1
+        ans: 2
     },
 
     {
-        q: "P is the son of Q. Q is the brother of R. R is the daughter of S. How is P related to S?",
+        q: "Pointing to a photograph, Karan said, \"The woman in the photograph is the wife of the only son of my father's only daughter.\" Karan is male, has no sisters, and has one daughter. How is the woman related to Karan?",
         options: [
-            "Son",
-            "Grandson",
-            "Nephew",
-            "Cousin"
+            "Daughter-in-law",
+            "Granddaughter",
+            "Grandson's wife",
+            "Sister-in-law"
         ],
-        ans: 1
+        ans: 2
     },
 
     {
-        q: "A is the father of B and C. B is the mother of D, while C is the father of E. How is D related to E?",
+        q: "Ravi's mother's only brother has a daughter named S. S has a son named T. T has a sister named U. Ravi's mother's only brother is the father of S. How is U related to Ravi?",
         options: [
-            "Brother",
             "Cousin",
-            "Uncle",
-            "Nephew"
+            "Cousin's daughter",
+            "Niece",
+            "Second cousin"
         ],
         ans: 1
     }
