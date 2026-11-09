@@ -185,257 +185,292 @@ document.getElementById("startScreen").style.display="none";
 document.querySelector(".wrapper").style.display="flex";
 
 init();
-}
- const questions =  [
-
-    // =========================================================
-    // PROFIT & LOSS — 10 HARD QUESTIONS
-    // =========================================================
-
-    {
-        q: "A trader marks an article 20% above its cost price and then gives a discount of 10% on the marked price. What is his profit percentage?",
-        options: ["6%", "8%", "10%", "12%"],
-        ans: 1
-    },
-
-    {
-        q: "A shopkeeper purchases an article for ₹2400. He marks it 50% above the cost price and gives successive discounts of 20% and 10%. He also charges ₹72 separately for packaging. If the packaging charge is treated as additional revenue, what is his effective profit percentage?",
-        options: ["9%", "10%", "11%", "12%"],
-        ans: 2
-    },
-
-    {
-        q: "A trader sells 40% of his stock at a profit of 25%, 18% of the total stock at a profit of 10%, and the remaining stock at a loss of 20%. If every article has the same cost price, what is his overall profit percentage?",
-        options: ["2.4%", "3.4%", "4.2%", "5.4%"],
-        ans: 1
-    },
-
-    {
-        q: "An article is sold at a profit of 20%. Had it been purchased for 10% less and sold for ₹120 less, the profit would have been 25%. What was the original cost price?",
-        options: ["₹1400", "₹1600", "₹1800", "₹2000"],
-        ans: 1
-    },
-
-    {
-        q: "A dishonest dealer purchases an article for ₹900 and sells the quantity using a 900 g weight instead of 1 kg for ₹1000. Assuming the ₹900 is the cost of 1 kg, what is his actual profit percentage on the quantity supplied?",
-        options: ["20%", "22.22%", "23.46%", "25%"],
-        ans: 2
-    },
-
-    {
-        q: "A trader marks an article 80% above its cost price. He gives a discount of x% and still earns a profit of 20%. What is x?",
-        options: ["30%", "33 1/3%", "35%", "37.5%"],
-        ans: 1
-    },
-
-    {
-        q: "Two articles are purchased for a total of ₹7200. The first is sold at a profit of 25% and the second at a loss of 20%. If the total selling price is ₹7560, what is the cost price of the first article?",
-        options: ["₹3600", "₹3800", "₹4000", "₹4200"],
-        ans: 2
-    },
-
-    {
-        q: "A shopkeeper marks an article 40% above its cost price and gives a discount of 10%. If his profit is ₹520, what is the cost price of the article?",
-        options: ["₹1800", "₹2000", "₹2200", "₹2500"],
-        ans: 1
-    },
-
-    {
-        q: "A trader sells an article at a profit of 15%. If both the original cost price and selling price are increased by ₹300, the profit percentage becomes 12%. What was the original cost price?",
-        options: ["₹900", "₹1000", "₹1100", "₹1200"],
-        ans: 3
-    },
-
-    {
-        q: "A shopkeeper buys 80 articles at ₹150 each. He sells 60 articles at a profit of 20% and the remaining 20 articles at a loss of 10%. He also pays ₹600 as transportation charges. What is his overall profit percentage?",
-        options: ["5%", "7.14%", "10%", "12.5%"],
-        ans: 1
-    },
-
-
-    // =========================================================
-    // BOATS & STREAMS — 10 HARD QUESTIONS
-    // =========================================================
-
-    {
-        q: "A boat takes 4 hours to travel 48 km downstream and 6 hours to travel the same distance upstream. How far will it travel downstream in the time required to travel 72 km upstream?",
-        options: ["96 km", "102 km", "108 km", "112 km"],
-        ans: 2
-    },
-
-    {
-        q: "A boat covers 36 km downstream in 2 hours and 24 km upstream in 2 hours. What is the speed of the boat in still water, and how much time will it take to cover 90 km in still water?",
-        options: [
-            "12 km/h, 7.5 hours",
-            "15 km/h, 6 hours",
-            "18 km/h, 5 hours",
-            "20 km/h, 4.5 hours"
-        ],
-        ans: 1
-    },
-
-    {
-        q: "A boat can travel 30 km downstream in the same time in which it travels 18 km upstream. If the speed of the stream is 3 km/h, what is the speed of the boat in still water?",
-        options: ["9 km/h", "10 km/h", "12 km/h", "15 km/h"],
-        ans: 2
-    },
-
-    {
-        q: "A boat travels 48 km downstream and 40 km upstream in a total of 9 hours. If the speed of the stream is 2 km/h, what is the speed of the boat in still water?",
-        options: ["8 km/h", "10 km/h", "12 km/h", "14 km/h"],
-        ans: 1
-    },
-
-    {
-        q: "A boat travels 24 km downstream and returns 24 km upstream. Its speed in still water is 10 km/h and the stream speed is 2 km/h. What is the total time taken for the round trip?",
-        options: ["4 hours", "4.5 hours", "5 hours", "5.5 hours"],
-        ans: 2
-    },
-
-    {
-        q: "A boat travels a certain distance downstream in 3 hours and the same distance upstream in 5 hours. If the speed of the stream is 4 km/h, what is the distance travelled?",
-        options: ["48 km", "54 km", "60 km", "72 km"],
-        ans: 2
-    },
-
-    {
-        q: "A boat takes 2 hours more to cover 45 km upstream than to cover the same distance downstream. If the speed of the boat in still water is 12 km/h, what is the speed of the stream?",
-        options: ["2 km/h", "3 km/h", "4 km/h", "5 km/h"],
-        ans: 1
-    },
-
-    {
-        q: "A boat covers 40 km downstream in 2.5 hours and 30 km upstream in 2.5 hours. How much time will it take to travel 84 km in still water?",
-        options: ["5 hours", "6 hours", "7 hours", "8 hours"],
-        ans: 1
-    },
-
-    {
-        q: "The speed of a boat in still water is 18 km/h and the speed of the stream is 6 km/h. If the boat travels an equal distance downstream and upstream in a total of 5 hours, what is that distance?",
-        options: ["36 km", "40 km", "45 km", "48 km"],
-        ans: 1
-    },
-
-    {
-        q: "The ratio of the downstream speed of a boat to its upstream speed is 7:5. If the speed of the stream is 3 km/h, how much time will the boat take to travel 72 km downstream and 45 km upstream?",
-        options: ["6 hours", "45/7 hours", "47/7 hours", "7 hours"],
-        ans: 1
-    },
-
-
-    // =========================================================
-    // BLOOD RELATIONS — 10 VERY HARD QUESTIONS
-    // =========================================================
-
-    {
-        q: "Pointing to a photograph, Rahul said, \"The man in the photograph is the son of my mother's only brother.\" How is the man related to Rahul?",
-        options: [
-            "Maternal uncle",
-            "Maternal cousin",
-            "Brother",
-            "Nephew"
-        ],
-        ans: 1
-    },
-
-    {
-        q: "Pointing to a photograph, Priya said, \"The woman in the photograph is the only daughter of my father's only sister.\" How is the woman related to Priya?",
-        options: [
-            "Sister",
-            "Paternal aunt",
-            "Paternal cousin",
-            "Niece"
-        ],
-        ans: 2
-    },
-
-    {
-        q: "Pointing to a photograph, Aman said, \"The man in the photograph is the husband of the only daughter of my mother's only sister.\" How is the man related to Aman?",
-        options: [
-            "Brother-in-law",
-            "Maternal uncle",
-            "Cousin",
-            "Cousin's husband"
-        ],
-        ans: 3
-    },
-
-    {
-        q: "Pointing to a photograph, Neha said, \"The boy in the photograph is the son of the only daughter of my mother's only brother.\" How is the boy related to Neha?",
-        options: [
-            "Brother",
-            "Nephew",
-            "Cousin",
-            "Cousin's son"
-        ],
-        ans: 3
-    },
-
-    {
-        q: "A is the brother of B. B is the mother of C. C is the sister of D. D is the father of E. How is A related to E?",
-        options: [
-            "Grandfather",
-            "Great-uncle",
-            "Maternal uncle",
-            "Uncle"
-        ],
-        ans: 1
-    },
-
-    {
-        q: "P is the daughter of Q. Q is the brother of R. R is the mother of S. S is the mother of U. How is P related to U?",
-        options: [
-            "Aunt",
-            "Cousin",
-            "Cousin's aunt",
-            "Mother"
-        ],
-        ans: 1
-    },
-
-    {
-        q: "M is the mother of N. N is the brother of O. O is the mother of P. P is the father of Q. How is M related to Q?",
-        options: [
-            "Grandmother",
-            "Great-grandmother",
-            "Great-aunt",
-            "Mother"
-        ],
-        ans: 1
-    },
-
-    {
-        q: "A and B are siblings. A is the father of C. B is the mother of D. C has a daughter E, while D has a son F. How is E related to F?",
-        options: [
-            "Sister",
-            "Cousin",
-            "Second cousin",
-            "Aunt"
-        ],
-        ans: 2
-    },
-
-    {
-        q: "Pointing to a photograph, Karan said, \"The woman in the photograph is the wife of the only son of my father's only daughter.\" Karan is male, has no sisters, and has one daughter. How is the woman related to Karan?",
-        options: [
-            "Daughter-in-law",
-            "Granddaughter",
-            "Grandson's wife",
-            "Sister-in-law"
-        ],
-        ans: 2
-    },
-
-    {
-        q: "Ravi's mother's only brother has a daughter named S. S has a son named T. T has a sister named U. Ravi's mother's only brother is the father of S. How is U related to Ravi?",
-        options: [
-            "Cousin",
-            "Cousin's daughter",
-            "Niece",
-            "Second cousin"
-        ],
-        ans: 1
-    }
+const questions = [
+  {
+    q: "The population of a town increases by 20% in the first year, decreases by 15% in the second year, and increases by 25% in the third year. If the final population is 25,500, what was the original population?",
+    options: ["20,000", "21,000", "22,000", "24,000"],
+    ans: 0
+  },
+  {
+    q: "A number is increased by 10% and then decreased by 20%. If the final result is 48 less than the original number, find the original number.",
+    options: ["300", "350", "400", "450"],
+    ans: 2
+  },
+  {
+    q: "The price of a commodity increases by 25%. By what percentage must consumption be reduced to keep expenditure unchanged?",
+    options: ["15%", "20%", "25%", "30%"],
+    ans: 1
+  },
+  {
+    q: "In an election, a candidate receives 56% of the valid votes and wins by 1,056 votes. If 12% of the total votes are invalid, how many votes were cast in total?",
+    options: ["10,000", "11,000", "12,000", "9,000"],
+    ans: 0
+  },
+  {
+    q: "A person's income increases by 20%, while expenditure increases by 15%. Initially, the person saves 25% of their income. If the original income is ₹80,000, by what percentage do their savings increase?",
+    options: ["25%", "35%", "40%", "45%"],
+    ans: 1
+  },
+  {
+    q: "A shopkeeper marks an article 60% above its cost price and gives successive discounts of 20% and 10%. What is his profit percentage?",
+    options: ["12%", "15%", "15.2%", "28%"],
+    ans: 2
+  },
+  {
+    q: "A trader sells two articles for ₹9,600 each. He makes a profit of 20% on one and a loss of 20% on the other. What is his overall result?",
+    options: ["4% profit", "4% loss", "No profit, no loss", "2% loss"],
+    ans: 1
+  },
+  {
+    q: "A dishonest shopkeeper sells goods at the cost price per kilogram but uses a weight of 800 g instead of 1 kg. What is his profit percentage?",
+    options: ["20%", "22.5%", "25%", "30%"],
+    ans: 2
+  },
+  {
+    q: "A trader sells an article at a profit of 25%. If both the original cost price and selling price were reduced by ₹60, the resulting profit would be 50%. Find the original cost price.",
+    options: ["₹100", "₹120", "₹150", "₹200"],
+    ans: 1
+  },
+  {
+    q: "A shopkeeper marks an article 40% above its cost price and gives a 10% discount. He earns a profit of ₹260. If he instead gives a 20% discount, what will his profit be?",
+    options: ["₹120", "₹140", "₹160", "₹180"],
+    ans: 0
+  },
+  {
+    q: "A person travels 40% of a journey at 40 km/h, 30% at 60 km/h, and the remaining 30% at 80 km/h. If the total journey takes 8.5 hours, find the total distance.",
+    options: ["1360/3 km", "450 km", "460 km", "480 km"],
+    ans: 0
+  },
+  {
+    q: "A vehicle covers 40% of a journey at 60 km/h, 30% at 40 km/h, and the remaining 30% at 80 km/h. What is its average speed for the entire journey?",
+    options: ["2400/43 km/h", "55 km/h", "56 km/h", "60 km/h"],
+    ans: 0
+  },
+  {
+    q: "A person travels a fixed distance at a certain speed. If the speed is increased by 5 km/h, the journey takes 1 hour less. If the speed is decreased by 5 km/h, the journey takes 1 hour 40 minutes longer. Find the original speed.",
+    options: ["15 km/h", "18 km/h", "20 km/h", "25 km/h"],
+    ans: 2
+  },
+  {
+    q: "Two people start simultaneously from places 420 km apart and travel towards each other. Their speeds are in the ratio 3:4. After they meet, the slower person takes 4 hours to reach the destination. How long does the faster person take to reach the other destination after meeting?",
+    options: ["2 hours", "9/4 hours", "3 hours", "4 hours"],
+    ans: 1
+  },
+  {
+    q: "A thief is 18 km ahead of a policeman. The thief runs at 12 km/h, while the policeman runs at 30 km/h. How long will the policeman take to catch the thief?",
+    options: ["45 minutes", "50 minutes", "60 minutes", "75 minutes"],
+    ans: 2
+  },
+  {
+    q: "Two trains of lengths 200 m and 300 m cross each other in 10 seconds while travelling in opposite directions. If the first train travels at 54 km/h, find the speed of the second train.",
+    options: ["72 km/h", "90 km/h", "108 km/h", "126 km/h"],
+    ans: 3
+  },
+  {
+    q: "A train passes a man walking in the opposite direction at 6 km/h in 10 seconds. The same train crosses a 250 m platform in 25 seconds. Find the exact length of the train.",
+    options: ["1600/9 m", "190 m", "195 m", "1750/9 m"],
+    ans: 3
+  },
+  {
+    q: "Two trains of equal length cross a stationary point in 12 seconds and 15 seconds, respectively. How long will they take to cross each other when travelling in opposite directions?",
+    options: ["12 seconds", "40/3 seconds", "15 seconds", "18 seconds"],
+    ans: 1
+  },
+  {
+    q: "A train travelling at 72 km/h crosses a pole in 10 seconds and a platform in 20 seconds. Find the length of the platform.",
+    options: ["200 m", "300 m", "400 m", "500 m"],
+    ans: 0
+  },
+  {
+    q: "Two trains start simultaneously from stations 360 km apart and travel towards each other at 72 km/h and 48 km/h. After meeting, how long does the slower train take to reach the station from which the faster train started?",
+    options: ["3 hours", "4 hours", "5 hours", "9/2 hours"],
+    ans: 3
+  },
+  {
+    q: "A boat travels 36 km downstream and 24 km upstream in 6 hours. It also travels 48 km downstream and 16 km upstream in 6 hours. Find its speed in still water.",
+    options: ["10 km/h", "12 km/h", "14 km/h", "16 km/h"],
+    ans: 0
+  },
+  {
+    q: "A boat takes 3 hours to travel a certain distance downstream and 5 hours to travel the same distance upstream. If the stream speed is 4 km/h, find the speed of the boat in still water.",
+    options: ["12 km/h", "14 km/h", "16 km/h", "18 km/h"],
+    ans: 2
+  },
+  {
+    q: "A boat travels downstream at 12 km/h and upstream at 8 km/h. If the total round-trip time is 8 hours, what is the one-way distance?",
+    options: ["32 km", "36 km", "38.4 km", "40 km"],
+    ans: 2
+  },
+  {
+    q: "A boat travels 30 km downstream and 18 km upstream in 5 hours. It also travels 20 km downstream and 24 km upstream in 5 hours. Find the speed of the stream.",
+    options: ["2 km/h", "2.4 km/h", "3 km/h", "4 km/h"],
+    ans: 1
+  },
+  {
+    q: "A can complete a job in 20 days and B in 30 days. They work together for 5 days. B and C then complete the remaining work in 10 days. How long would C alone take to complete the entire job?",
+    options: ["30 days", "35 days", "40 days", "45 days"],
+    ans: 2
+  },
+  {
+    q: "Twelve men can complete a job in 18 days, while 15 women can complete the same job in 24 days. How many days will 8 men and 10 women take to complete the job together?",
+    options: ["108/7 days", "15 days", "16 days", "18 days"],
+    ans: 0
+  },
+  {
+    q: "A and B together complete a job in 12 days, B and C in 15 days, and C and A in 20 days. How many days will all three take to complete the job together?",
+    options: ["8 days", "10 days", "12 days", "15 days"],
+    ans: 1
+  },
+  {
+    q: "A and B together can complete a job in 60/7 days, while B alone can complete it in 20 days. A and B work together for 4 days, after which B works alone for 5 days. C then completes the remaining work in 3 days. How long would C alone take to complete the entire job?",
+    options: ["12 days", "15 days", "180/17 days", "20 days"],
+    ans: 2
+  },
+  {
+    q: "Twenty workers can complete a job in 30 days. They work for 10 days, after which 5 workers leave. After another 5 days, 10 new workers join. How many days from the beginning will the job be completed?",
+    options: ["25 days", "27 days", "28 days", "30 days"],
+    ans: 2
+  },
+  {
+    q: "A person walks 12 m north, 9 m east, 5 m south, 12 m east, 7 m north, and finally 7 m west. What is the shortest distance and direction from the starting point?",
+    options: ["14 m, East", "14√2 m, North-East", "20 m, North-East", "7√2 m, North-East"],
+    ans: 1
+  },
+  {
+    q: "A person initially faces north. They turn 135° clockwise, then 225° anticlockwise, and finally 90° clockwise. Which direction are they facing now?",
+    options: ["North", "South", "East", "West"],
+    ans: 0
+  },
+  {
+    q: "A person walks 10 m east, 15 m north, and 10 m west. They then turn right and walk 5 m, turn right again, and walk 20 m. Find their final position relative to the starting point.",
+    options: ["20√2 m, North-East", "20 m, East", "15 m, North", "25 m, South-East"],
+    ans: 0
+  },
+  {
+    q: "At sunrise, A and B stand facing each other. A's shadow falls directly behind A. Which direction is B facing?",
+    options: ["North", "South", "East", "West"],
+    ans: 3
+  },
+  {
+    q: "Neha says, 'The man is the only son of my maternal grandfather. His daughter is my mother's niece.' How is the daughter related to Neha?",
+    options: ["Sister", "Aunt", "Cousin", "Niece"],
+    ans: 2
+  },
+  {
+    q: "A is the mother of B. C is the brother of A. D is the father of both A and C. B is the mother of E. How is D related to E?",
+    options: ["Grandfather", "Great-grandfather", "Maternal great-grandfather", "Uncle"],
+    ans: 2
+  },
+  {
+    q: "A woman's mother is the only daughter of a man's mother. How is the woman related to the man?",
+    options: ["Daughter", "Sister", "Niece", "Cousin"],
+    ans: 2
+  },
+  {
+    q: "P is the brother of Q. Q is the mother of R. T is the sister of Q. How is T related to R?",
+    options: ["Maternal aunt", "Paternal aunt", "Sister", "Grandmother"],
+    ans: 0
+  },
+  {
+    q: "The incomes of A, B, and C are in the ratio 5:7:9, and their expenditures are in the ratio 3:4:5. If their savings are ₹4,000, ₹6,000, and ₹8,000, respectively, find their total income.",
+    options: ["₹36,000", "₹40,000", "₹42,000", "₹48,000"],
+    ans: 2
+  },
+  {
+    q: "A, B, and C divide a sum of money in the ratio 2:3:5. If ₹4,000 is transferred from C to A, their new ratio becomes 4:3:3. Find the original total amount.",
+    options: ["₹18,000", "₹20,000", "₹24,000", "₹30,000"],
+    ans: 1
+  },
+  {
+    q: "If a:b = 3:4, b:c = 5:7, and c:d = 2:3, find a:d.",
+    options: ["5:14", "3:7", "5:12", "15:28"],
+    ans: 0
+  },
+  {
+    q: "By the time the auditor arrives, the finance team ______ the accounts, ______ the discrepancies, and ______ the final report.",
+    options: [
+      "completed; identifies; submits",
+      "will have completed; identified; submitted",
+      "has completed; will identify; submitted",
+      "will complete; had identified; submits"
+    ],
+    ans: 1
+  },
+  {
+    q: "Since the new policy ______, the company ______ several complaints, but it ______ all of them yet.",
+    options: [
+      "was introduced; received; did not resolve",
+      "has introduced; has received; has not resolved",
+      "was introduced; has received; has not resolved",
+      "had introduced; received; did not resolve"
+    ],
+    ans: 2
+  },
+  {
+    q: "The engineering team ______ the software for three months before it finally ______ the new version, but users ______ any major improvement yet.",
+    options: [
+      "reviewed; implements; did not notice",
+      "has reviewed; implemented; have not noticed",
+      "had reviewed; has implemented; did not notice",
+      "had been reviewing; implemented; have not noticed"
+    ],
+    ans: 3
+  },
+  {
+    q: "While the investigators ______ the records, they ______ a major discrepancy that the manager later ______.",
+    options: [
+      "examined; had detected; acknowledges",
+      "were examining; detected; acknowledged",
+      "had examined; detect; had acknowledged",
+      "have examined; were detecting; acknowledges"
+    ],
+    ans: 1
+  },
+  {
+    q: "She ______ the company in 2020, and she ______ there ever since.",
+    options: [
+      "has joined; worked",
+      "joins; has worked",
+      "joined; has worked",
+      "had joined; works"
+    ],
+    ans: 2
+  },
+  {
+    q: "If I ______ about the meeting yesterday, I would have attended it.",
+    options: ["knew", "had known", "have known", "would know"],
+    ans: 1
+  },
+  {
+    q: "If the engineers had tested the system properly, they ______ the failure.",
+    options: [
+      "would have prevented",
+      "will prevent",
+      "would prevent",
+      "had prevented"
+    ],
+    ans: 0
+  },
+  {
+    q: "No sooner ______ the presentation begun than the electricity went out.",
+    options: ["had", "has", "did", "was"],
+    ans: 0
+  },
+  {
+    q: "Employees ______ safety equipment while operating the machinery, and the equipment ______ inspected regularly.",
+    options: [
+      "must wearing; should be",
+      "should wear; must being",
+      "must wear; should be",
+      "must wore; should have"
+    ],
+    ans: 2
+  },
+  {
+    q: "The incomes of A, B, and C are in the ratio 5:7:9, and their expenditures are in the ratio 3:4:5. If A saves ₹4,000 and B saves ₹6,000, find their total income.",
+    options: ["₹36,000", "₹40,000", "₹42,000", "₹45,000"],
+    ans: 2
+  }
 ];
     //[
 //   {
