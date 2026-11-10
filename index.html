@@ -1,1891 +1,1060 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Math Quiz</title>
-
-<style>
-body{
-font-family:Segoe UI;
-background:#eef2f7;
-display:flex;
-justify-content:center;
-padding:30px;
-}
-
-#startScreen{
-width:100%;
-display:flex;
-justify-content:center;
-margin-top:100px;
-}
-
-.start-box{
-background:white;
-padding:30px;
-border-radius:10px;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
-text-align:center;
-}
-
-.wrapper{
-display:flex;
-gap:30px;
-display:none;
-}
-
-.container{
-background:white;
-width:700px;
-padding:30px;
-border-radius:10px;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
-}
-
-.score-panel{
-width:220px;
-background:white;
-padding:20px;
-border-radius:10px;
-box-shadow:0 10px 20px rgba(0,0,0,0.1);
-display:none;
-}
-
-.score-box{
-margin:10px 0;
-padding:8px;
-background:#f1f1f1;
-border-radius:5px;
-}
-
-h1{text-align:center;color:#4a90e2;}
-.question{font-size:20px;margin:20px 0;}
-
-.options{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:15px;
-}
-
-.option{
-padding:12px;
-background:#f1f1f1;
-border-radius:6px;
-cursor:pointer;
-border:2px solid transparent;
-}
-
-.option.selected{
-border:2px solid #4a90e2;
-background:#ebf5fb;
-}
-
-.option.correct{
-border:2px solid #27ae60;
-background:#eafaf1;
-}
-
-.option.wrong{
-border:2px solid #c0392b;
-background:#fdecea;
-}
-
-.controls{
-margin-top:20px;
-display:flex;
-justify-content:space-between;
-}
-
-button{
-padding:10px 20px;
-border:none;
-border-radius:5px;
-cursor:pointer;
-color:white;
-}
-
-.prev{background:#7f8c8d;}
-.next{background:#4a90e2;}
-.submit{background:#27ae60;}
-
-.nav-grid{
-display:grid;
-grid-template-columns:repeat(10,1fr);
-gap:10px;
-margin-top:30px;
-}
-
-.nav-box{
-padding:10px;
-text-align:center;
-border:1px solid #ccc;
-cursor:pointer;
-background:white;
-}
-</style>
-
-<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
-<script>
-(function(){
-emailjs.init("VS2zZjRXbOFQt68fQ");
-})();
-</script>
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#10172a">
+  <title>Math Quiz | Practice & Assessment</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #f3f6fc; --surface: #fff; --surface-2: #f7f9fd; --text: #172033;
+      --muted: #718096; --line: #e4eaf3; --primary: #536dfe; --primary-soft: #edf0ff;
+      --green: #159b69; --green-soft: #e8f8f1; --red: #d94b59; --red-soft: #fff0f1;
+      --amber: #bd7b18; --amber-soft: #fff6e6; --shadow: 0 18px 55px rgba(32,48,86,.08);
+    }
+    body.dark {
+      color-scheme: dark; --bg: #0b1020; --surface: #141c30; --surface-2: #1b2640;
+      --text: #edf2ff; --muted: #a4b0c8; --line: #293653; --primary: #8795ff;
+      --primary-soft: #242d54; --green-soft: #153d35; --red-soft: #48252f;
+      --amber-soft: #49371e; --shadow: 0 18px 55px rgba(0,0,0,.25);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0; min-height: 100vh; padding: 28px 18px 50px;
+      font-family: "DM Sans", sans-serif; color: var(--text);
+      background: radial-gradient(circle at 10% 0%, rgba(83,109,254,.10), transparent 30%), var(--bg);
+      transition: background .2s, color .2s;
+    }
+    button, input { font: inherit; }
+    button { cursor: pointer; }
+    .app { width: min(1180px, 100%); margin: 0 auto; }
+    .topbar { display:flex; justify-content:space-between; align-items:center; gap:16px; margin-bottom:26px; }
+    .brand { display:flex; align-items:center; gap:12px; font:800 19px Manrope,sans-serif; letter-spacing:-.5px; }
+    .brand-mark { width:42px; height:42px; display:grid; place-items:center; color:white; border-radius:14px; background:linear-gradient(135deg,#536dfe,#8c5bfa); box-shadow:0 8px 20px #536dfe40; }
+    .top-actions { display:flex; gap:10px; align-items:center; }
+    .icon-btn { width:42px; height:42px; border:1px solid var(--line); border-radius:13px; background:var(--surface); color:var(--text); font-size:18px; }
+    .eyebrow { color:var(--primary); text-transform:uppercase; letter-spacing:1.6px; font-size:11px; font-weight:700; }
+    h1,h2,h3 { font-family:Manrope,sans-serif; letter-spacing:-.7px; }
+    h1 { font-size:clamp(27px,4vw,39px); margin:10px 0; line-height:1.15; }
+    p { color:var(--muted); line-height:1.65; }
+    .card { background:var(--surface); border:1px solid var(--line); border-radius:22px; box-shadow:var(--shadow); }
+    .start-wrap { max-width:650px; margin:7vh auto 0; }
+    .start-card { padding:clamp(25px,5vw,48px); }
+    .start-card p { max-width:500px; }
+    .field-label { display:block; font-size:13px; font-weight:700; margin:22px 0 8px; }
+    .email-input { width:100%; padding:15px 16px; border:1px solid var(--line); border-radius:13px; background:var(--surface-2); color:var(--text); outline:none; }
+    .email-input:focus { border-color:var(--primary); box-shadow:0 0 0 4px #536dfe20; }
+    .primary-btn,.secondary-btn,.danger-btn { border:0; border-radius:12px; padding:13px 19px; font-weight:700; transition:transform .15s,filter .15s; }
+    .primary-btn { background:linear-gradient(135deg,#536dfe,#7259ed); color:white; box-shadow:0 8px 18px #536dfe35; }
+    .secondary-btn { background:var(--surface-2); border:1px solid var(--line); color:var(--text); }
+    .danger-btn { background:var(--red-soft); color:var(--red); }
+    .primary-btn:hover,.secondary-btn:hover,.danger-btn:hover { transform:translateY(-1px); filter:brightness(1.04); }
+    .start-btn { width:100%; margin-top:15px; }
+    .feature-row { display:flex; flex-wrap:wrap; gap:9px; margin-top:25px; }
+    .feature-pill { font-size:12px; color:var(--muted); background:var(--surface-2); border:1px solid var(--line); border-radius:999px; padding:8px 11px; }
+    .quiz-layout { display:grid; grid-template-columns:minmax(0,1fr) 290px; gap:22px; align-items:start; }
+    .quiz-card { padding:clamp(20px,3vw,34px); }
+    .quiz-head { display:flex; align-items:center; justify-content:space-between; gap:15px; }
+    .quiz-head h2 { margin:0; font-size:21px; }
+    .timer { display:flex; align-items:center; gap:8px; padding:9px 13px; background:var(--primary-soft); color:var(--primary); border-radius:12px; font-weight:800; font-variant-numeric:tabular-nums; }
+    .timer.warning { color:var(--red); background:var(--red-soft); }
+    .progress-meta { display:flex; justify-content:space-between; gap:10px; margin:25px 0 9px; font-size:12px; color:var(--muted); }
+    .progress-track { height:8px; border-radius:99px; background:var(--surface-2); overflow:hidden; }
+    .progress-fill { height:100%; width:0; border-radius:99px; background:linear-gradient(90deg,#536dfe,#9a68f5); transition:width .2s; }
+    .question-meta { display:flex; align-items:center; justify-content:space-between; gap:10px; margin-top:30px; }
+    .question-count { font-size:12px; font-weight:700; color:var(--primary); background:var(--primary-soft); padding:7px 10px; border-radius:8px; }
+    .mark-btn { border:1px solid var(--line); color:var(--muted); background:var(--surface); border-radius:9px; padding:8px 11px; font-size:12px; font-weight:700; }
+    .mark-btn.active { color:var(--amber); background:var(--amber-soft); border-color:transparent; }
+    .question-text { font-size:clamp(17px,2vw,21px); line-height:1.55; font-weight:600; margin:18px 0 23px; white-space:pre-wrap; }
+    .options { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+    .option { display:flex; align-items:flex-start; gap:12px; min-height:64px; padding:15px; border:1.5px solid var(--line); border-radius:14px; background:var(--surface); color:var(--text); text-align:left; line-height:1.5; transition:.15s; }
+    .option:hover:not(:disabled) { border-color:var(--primary); background:var(--primary-soft); }
+    .option.selected { border-color:var(--primary); background:var(--primary-soft); }
+    .option.correct { border-color:var(--green); background:var(--green-soft); }
+    .option.wrong { border-color:var(--red); background:var(--red-soft); }
+    .option:disabled { cursor:default; opacity:1; }
+    .option-letter { flex:0 0 27px; width:27px; height:27px; display:grid; place-items:center; border-radius:8px; background:var(--surface-2); color:var(--muted); font-size:12px; font-weight:800; }
+    .option.selected .option-letter { background:var(--primary); color:white; }
+    .option.correct .option-letter { background:var(--green); color:white; }
+    .option.wrong .option-letter { background:var(--red); color:white; }
+    .feedback { margin-top:17px; padding:14px 16px; border-radius:12px; background:var(--surface-2); font-size:13px; line-height:1.6; }
+    .feedback strong { color:var(--text); }
+    .controls { display:flex; justify-content:space-between; gap:10px; margin-top:28px; }
+    .controls-right { display:flex; gap:10px; }
+    .sidebar { padding:22px; position:sticky; top:18px; }
+    .side-title { display:flex; justify-content:space-between; align-items:center; gap:8px; }
+    .side-title h3 { margin:0; font-size:16px; }
+    .legend { display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:17px 0; font-size:11px; color:var(--muted); }
+    .legend span { display:flex; align-items:center; gap:6px; }
+    .dot { width:9px; height:9px; border-radius:3px; display:inline-block; background:var(--line); }
+    .dot.answered { background:var(--primary); } .dot.review { background:#e4a43b; } .dot.current { outline:2px solid var(--primary); outline-offset:2px; }
+    .nav-grid { display:grid; grid-template-columns:repeat(5,1fr); gap:8px; max-height:330px; overflow:auto; padding:2px; }
+    .nav-box { aspect-ratio:1; border:1px solid var(--line); border-radius:9px; background:var(--surface-2); color:var(--muted); font-size:12px; font-weight:700; }
+    .nav-box.answered { background:var(--primary-soft); border-color:var(--primary); color:var(--primary); }
+    .nav-box.review { background:var(--amber-soft); border-color:#e4a43b; color:var(--amber); }
+    .nav-box.current { outline:2px solid var(--primary); outline-offset:1px; }
+    .nav-box.correct { background:var(--green-soft); border-color:var(--green); color:var(--green); }
+    .nav-box.wrong { background:var(--red-soft); border-color:var(--red); color:var(--red); }
+    .nav-box.unanswered { background:var(--surface-2); color:var(--muted); }
+    .side-stats { display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:19px; }
+    .mini-stat { background:var(--surface-2); border-radius:11px; padding:12px; }
+    .mini-stat b { display:block; font:800 20px Manrope; }
+    .mini-stat small { color:var(--muted); font-size:11px; }
+    .submit-side { width:100%; margin-top:17px; }
+    .hidden { display:none !important; }
+    .result-wrap { max-width:900px; margin:15px auto; }
+    .result-card { padding:clamp(22px,4vw,38px); }
+    .result-hero { text-align:center; padding:15px 0 25px; }
+    .score-ring { width:145px; height:145px; margin:20px auto; display:grid; place-items:center; border-radius:50%; background:conic-gradient(var(--primary) var(--score),var(--surface-2) 0); position:relative; }
+    .score-ring:before { content:""; position:absolute; inset:11px; border-radius:50%; background:var(--surface); }
+    .score-ring div { position:relative; text-align:center; }
+    .score-ring b { display:block; font:800 32px Manrope; }
+    .score-ring small { color:var(--muted); font-size:11px; }
+    .result-stats { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
+    .result-stat { padding:16px; background:var(--surface-2); border-radius:13px; text-align:center; }
+    .result-stat b { display:block; font:800 23px Manrope; }
+    .result-stat small { color:var(--muted); font-size:11px; }
+    .email-status { padding:13px 15px; margin-top:18px; border-radius:12px; background:var(--surface-2); color:var(--muted); font-size:13px; }
+    .review-list { margin-top:28px; }
+    .review-item { padding:17px 0; border-top:1px solid var(--line); }
+    .review-item h4 { margin:0 0 10px; font-size:14px; line-height:1.5; }
+    .review-item p { margin:6px 0; font-size:13px; }
+    .review-item .good { color:var(--green); } .review-item .bad { color:var(--red); }
+    .result-actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:25px; }
+    .toast { position:fixed; left:50%; bottom:22px; transform:translateX(-50%); z-index:5; padding:12px 17px; background:#172033; color:white; border-radius:11px; box-shadow:var(--shadow); font-size:13px; }
+    @media(max-width:850px) { .quiz-layout { grid-template-columns:1fr; } .sidebar { position:static; } .nav-grid { grid-template-columns:repeat(10,1fr); max-height:220px; } }
+    @media(max-width:560px) { body { padding:16px 12px 35px; } .topbar { margin-bottom:17px; } .brand { font-size:16px; } .brand-mark { width:37px;height:37px; } .options { grid-template-columns:1fr; } .controls { flex-wrap:wrap; } .controls > button,.controls-right { flex:1; } .controls-right button { flex:1; } .nav-grid { grid-template-columns:repeat(6,1fr); } .result-stats { grid-template-columns:1fr 1fr; } .quiz-head { align-items:flex-start; } }
+  </style>
 </head>
-
 <body>
+  <main class="app">
+    <header class="topbar">
+      <div class="brand"><div class="brand-mark">∑</div><span>Quiz<span style="color:var(--primary)">Sphere</span></span></div>
+      <div class="top-actions">
+        <button class="icon-btn" id="themeBtn" type="button" aria-label="Toggle theme" title="Toggle theme">☾</button>
+      </div>
+    </header>
 
-<div id="startScreen">
-<div class="start-box">
-<h2>Enter Your Email</h2>
-<input type="email" id="userEmail" placeholder="Enter email" style="padding:10px;width:250px;">
-<br><br>
-<button onclick="startQuiz()" style="background:#4a90e2;">Start Quiz</button>
-</div>
-</div>
+    <section id="startScreen" class="start-wrap">
+      <div class="card start-card">
+        <div class="eyebrow">Practice • Track • Improve</div>
+        <h1>Ready to challenge<br>your thinking?</h1>
+        <p>Take the aptitude and English assessment. Your answers are saved while you work, and your result can be emailed when you finish.</p>
+        <label class="field-label" for="userEmail">Email address</label>
+        <input class="email-input" type="email" id="userEmail" placeholder="you@example.com" autocomplete="email" required>
+        <button class="primary-btn start-btn" id="startBtn" type="button">Start quiz <span aria-hidden="true">→</span></button>
+        <div class="feature-row">
+          <span class="feature-pill">50 questions</span><span class="feature-pill">Timed assessment</span>
+          <span class="feature-pill">Instant evaluation</span><span class="feature-pill">Answer review</span>
+        </div>
+        <p style="font-size:11px;margin:20px 0 0">Your email is used only to send your quiz result. Do not use a shared device if you do not want your session retained in the browser.</p>
+      </div>
+    </section>
 
-<div class="wrapper">
+    <section id="quizScreen" class="quiz-layout hidden" aria-live="polite">
+      <div class="card quiz-card">
+        <div class="quiz-head">
+          <div><div class="eyebrow">Assessment in progress</div><h2>Math & Aptitude Quiz</h2></div>
+          <div class="timer" id="timer" aria-live="off">◷ <span>--:--</span></div>
+        </div>
+        <div class="progress-meta"><span id="progressText">Question 1 of 50</span><span id="answeredText">0 answered</span></div>
+        <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
+        <div class="question-meta">
+          <span class="question-count" id="questionCount">QUESTION 01</span>
+          <button class="mark-btn" id="markBtn" type="button">☆ Mark for review</button>
+        </div>
+        <div class="question-text" id="questionText"></div>
+        <div class="options" id="options"></div>
+        <div id="feedback" class="feedback hidden"></div>
+        <div class="controls">
+          <button class="secondary-btn" id="prevBtn" type="button">← Previous</button>
+          <div class="controls-right">
+            <button class="secondary-btn" id="clearBtn" type="button">Clear</button>
+            <button class="primary-btn" id="nextBtn" type="button">Next →</button>
+          </div>
+        </div>
+      </div>
+      <aside class="card sidebar">
+        <div class="side-title"><h3>Question palette</h3><span id="paletteCount" style="font-size:11px;color:var(--muted)">50 total</span></div>
+        <div class="legend">
+          <span><i class="dot answered"></i> Answered</span><span><i class="dot review"></i> Review</span>
+          <span><i class="dot current"></i> Current</span><span><i class="dot"></i> Unanswered</span>
+        </div>
+        <div class="nav-grid" id="navGrid"></div>
+        <div class="side-stats">
+          <div class="mini-stat"><b id="sideAnswered">0</b><small>Answered</small></div>
+          <div class="mini-stat"><b id="sideRemaining">50</b><small>Remaining</small></div>
+        </div>
+        <button class="primary-btn submit-side" id="submitBtn" type="button">Submit quiz</button>
+      </aside>
+    </section>
 
-<div class="container">
-<h1>Math Quiz       <span id="timer"></span></h1>
-<div id="question"></div>
-<div class="options" id="options"></div>
+    <section id="resultScreen" class="result-wrap hidden">
+      <div class="card result-card">
+        <div class="result-hero">
+          <div class="eyebrow">Assessment completed</div>
+          <h1 id="resultHeading">Your result is ready</h1>
+          <p id="resultSubheading">Here is your performance summary.</p>
+          <div class="score-ring" id="scoreRing"><div><b id="resultPercent">0%</b><small>YOUR SCORE</small></div></div>
+        </div>
+        <div class="result-stats">
+          <div class="result-stat"><b id="resultTotal">50</b><small>Total questions</small></div>
+          <div class="result-stat"><b id="resultAttempted">0</b><small>Attempted</small></div>
+          <div class="result-stat"><b id="resultCorrect" style="color:var(--green)">0</b><small>Correct</small></div>
+          <div class="result-stat"><b id="resultWrong" style="color:var(--red)">0</b><small>Wrong / skipped</small></div>
+        </div>
+        <div class="email-status" id="emailStatus">Preparing your result email…</div>
+        <div class="result-actions">
+          <button class="secondary-btn" id="printBtn" type="button">Print result</button>
+          <button class="secondary-btn" id="reviewToggleBtn" type="button">Show answer review</button>
+          <button class="primary-btn" id="restartBtn" type="button">Try again</button>
+        </div>
+        <div class="review-list hidden" id="reviewList"></div>
+      </div>
+    </section>
+  </main>
+  <div id="toast" class="toast hidden" role="status"></div>
 
-<div class="controls">
-<button class="prev" id="prevBtn" onclick="prevQuestion()">Previous</button>
-<button class="next" id="nextBtn" onclick="nextQuestion()">Next</button>
-<button class="submit" id="submitBtn" onclick="submitQuiz()">Submit</button>
-</div>
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    const EMAILJS_CONFIG = {
+      publicKey: "VS2zZjRXbOFQt68fQ",
+      serviceId: "service_ux4v0sa",
+      templateId: "template_z4lof68"
+    };
 
-<div class="nav-grid" id="navGrid"></div>
-</div>
-
-<div class="score-panel" id="scorePanel">
-<h3>Score Panel</h3>
-<div class="score-box">Total: <span id="totalQ"></span></div>
-<div class="score-box">Attempted: <span id="attemptedQ"></span></div>
-<div class="score-box">Correct: <span id="correctQ"></span></div>
-<div class="score-box">Wrong: <span id="wrongQ"></span></div>
-<div class="score-box">Score %: <span id="percent"></span></div>
-</div>
-
-</div>
-
-<script>
-    
-
-let userEmail="";
-
-function startQuiz(){
-let email=document.getElementById("userEmail").value;
-if(email===""){ alert("Enter email"); return; }
-
-userEmail=email;
-document.getElementById("startScreen").style.display="none";
-document.querySelector(".wrapper").style.display="flex";
-
-init();
-}
-const questions = [
+    const questions = [
   {
-    q: "The population of a town increases by 20% in the first year, decreases by 15% in the second year, and increases by 25% in the third year. If the final population is 25,500, what was the original population?",
-    options: ["20,000", "21,000", "22,000", "24,000"],
-    ans: 0
+    "q": "The population of a town increases by 20% in the first year, decreases by 15% in the second year, and increases by 25% in the third year. If the final population is 25,500, what was the original population?",
+    "options": [
+      "20,000",
+      "21,000",
+      "22,000",
+      "24,000"
+    ],
+    "ans": 0
   },
   {
-    q: "A number is increased by 10% and then decreased by 20%. If the final result is 48 less than the original number, find the original number.",
-    options: ["300", "350", "400", "450"],
-    ans: 2
+    "q": "A number is increased by 10% and then decreased by 20%. If the final result is 48 less than the original number, find the original number.",
+    "options": [
+      "300",
+      "350",
+      "400",
+      "450"
+    ],
+    "ans": 2
   },
   {
-    q: "The price of a commodity increases by 25%. By what percentage must consumption be reduced to keep expenditure unchanged?",
-    options: ["15%", "20%", "25%", "30%"],
-    ans: 1
+    "q": "The price of a commodity increases by 25%. By what percentage must consumption be reduced to keep expenditure unchanged?",
+    "options": [
+      "15%",
+      "20%",
+      "25%",
+      "30%"
+    ],
+    "ans": 1
   },
   {
-    q: "In an election, a candidate receives 56% of the valid votes and wins by 1,056 votes. If 12% of the total votes are invalid, how many votes were cast in total?",
-    options: ["10,000", "11,000", "12,000", "9,000"],
-    ans: 0
+    "q": "In an election, a candidate receives 56% of the valid votes and wins by 1,056 votes. If 12% of the total votes are invalid, how many votes were cast in total?",
+    "options": [
+      "10,000",
+      "11,000",
+      "12,000",
+      "9,000"
+    ],
+    "ans": 0
   },
   {
-    q: "A person's income increases by 20%, while expenditure increases by 15%. Initially, the person saves 25% of their income. If the original income is ₹80,000, by what percentage do their savings increase?",
-    options: ["25%", "35%", "40%", "45%"],
-    ans: 1
+    "q": "A person's income increases by 20%, while expenditure increases by 15%. Initially, the person saves 25% of their income. If the original income is ₹80,000, by what percentage do their savings increase?",
+    "options": [
+      "25%",
+      "35%",
+      "40%",
+      "45%"
+    ],
+    "ans": 1
   },
   {
-    q: "A shopkeeper marks an article 60% above its cost price and gives successive discounts of 20% and 10%. What is his profit percentage?",
-    options: ["12%", "15%", "15.2%", "28%"],
-    ans: 2
+    "q": "A shopkeeper marks an article 60% above its cost price and gives successive discounts of 20% and 10%. What is his profit percentage?",
+    "options": [
+      "12%",
+      "15%",
+      "15.2%",
+      "28%"
+    ],
+    "ans": 2
   },
   {
-    q: "A trader sells two articles for ₹9,600 each. He makes a profit of 20% on one and a loss of 20% on the other. What is his overall result?",
-    options: ["4% profit", "4% loss", "No profit, no loss", "2% loss"],
-    ans: 1
+    "q": "A trader sells two articles for ₹9,600 each. He makes a profit of 20% on one and a loss of 20% on the other. What is his overall result?",
+    "options": [
+      "4% profit",
+      "4% loss",
+      "No profit, no loss",
+      "2% loss"
+    ],
+    "ans": 1
   },
   {
-    q: "A dishonest shopkeeper sells goods at the cost price per kilogram but uses a weight of 800 g instead of 1 kg. What is his profit percentage?",
-    options: ["20%", "22.5%", "25%", "30%"],
-    ans: 2
+    "q": "A dishonest shopkeeper sells goods at the cost price per kilogram but uses a weight of 800 g instead of 1 kg. What is his profit percentage?",
+    "options": [
+      "20%",
+      "22.5%",
+      "25%",
+      "30%"
+    ],
+    "ans": 2
   },
   {
-    q: "A trader sells an article at a profit of 25%. If both the original cost price and selling price were reduced by ₹60, the resulting profit would be 50%. Find the original cost price.",
-    options: ["₹100", "₹120", "₹150", "₹200"],
-    ans: 1
+    "q": "A trader sells an article at a profit of 25%. If both the original cost price and selling price were reduced by ₹60, the resulting profit would be 50%. Find the original cost price.",
+    "options": [
+      "₹100",
+      "₹120",
+      "₹150",
+      "₹200"
+    ],
+    "ans": 1
   },
   {
-    q: "A shopkeeper marks an article 40% above its cost price and gives a 10% discount. He earns a profit of ₹260. If he instead gives a 20% discount, what will his profit be?",
-    options: ["₹120", "₹140", "₹160", "₹180"],
-    ans: 0
+    "q": "A shopkeeper marks an article 40% above its cost price and gives a 10% discount. He earns a profit of ₹260. If he instead gives a 20% discount, what will his profit be?",
+    "options": [
+      "₹120",
+      "₹140",
+      "₹160",
+      "₹180"
+    ],
+    "ans": 0
   },
   {
-    q: "A person travels 40% of a journey at 40 km/h, 30% at 60 km/h, and the remaining 30% at 80 km/h. If the total journey takes 8.5 hours, find the total distance.",
-    options: ["1360/3 km", "450 km", "460 km", "480 km"],
-    ans: 0
+    "q": "A person travels 40% of a journey at 40 km/h, 30% at 60 km/h, and the remaining 30% at 80 km/h. If the total journey takes 8.5 hours, find the total distance.",
+    "options": [
+      "1360/3 km",
+      "450 km",
+      "460 km",
+      "480 km"
+    ],
+    "ans": 0
   },
   {
-    q: "A vehicle covers 40% of a journey at 60 km/h, 30% at 40 km/h, and the remaining 30% at 80 km/h. What is its average speed for the entire journey?",
-    options: ["2400/43 km/h", "55 km/h", "56 km/h", "60 km/h"],
-    ans: 0
+    "q": "A vehicle covers 40% of a journey at 60 km/h, 30% at 40 km/h, and the remaining 30% at 80 km/h. What is its average speed for the entire journey?",
+    "options": [
+      "2400/43 km/h",
+      "55 km/h",
+      "56 km/h",
+      "60 km/h"
+    ],
+    "ans": 0
   },
   {
-    q: "A person travels a fixed distance at a certain speed. If the speed is increased by 5 km/h, the journey takes 1 hour less. If the speed is decreased by 5 km/h, the journey takes 1 hour 40 minutes longer. Find the original speed.",
-    options: ["15 km/h", "18 km/h", "20 km/h", "25 km/h"],
-    ans: 2
+    "q": "A person travels a fixed distance at a certain speed. If the speed is increased by 5 km/h, the journey takes 1 hour less. If the speed is decreased by 5 km/h, the journey takes 1 hour 40 minutes longer. Find the original speed.",
+    "options": [
+      "15 km/h",
+      "18 km/h",
+      "20 km/h",
+      "25 km/h"
+    ],
+    "ans": 2
   },
   {
-    q: "Two people start simultaneously from places 420 km apart and travel towards each other. Their speeds are in the ratio 3:4. After they meet, the slower person takes 4 hours to reach the destination. How long does the faster person take to reach the other destination after meeting?",
-    options: ["2 hours", "9/4 hours", "3 hours", "4 hours"],
-    ans: 1
+    "q": "Two people start simultaneously from places 420 km apart and travel towards each other. Their speeds are in the ratio 3:4. After they meet, the slower person takes 4 hours to reach the destination. How long does the faster person take to reach the other destination after meeting?",
+    "options": [
+      "2 hours",
+      "9/4 hours",
+      "3 hours",
+      "4 hours"
+    ],
+    "ans": 1
   },
   {
-    q: "A thief is 18 km ahead of a policeman. The thief runs at 12 km/h, while the policeman runs at 30 km/h. How long will the policeman take to catch the thief?",
-    options: ["45 minutes", "50 minutes", "60 minutes", "75 minutes"],
-    ans: 2
+    "q": "A thief is 18 km ahead of a policeman. The thief runs at 12 km/h, while the policeman runs at 30 km/h. How long will the policeman take to catch the thief?",
+    "options": [
+      "45 minutes",
+      "50 minutes",
+      "60 minutes",
+      "75 minutes"
+    ],
+    "ans": 2
   },
   {
-    q: "Two trains of lengths 200 m and 300 m cross each other in 10 seconds while travelling in opposite directions. If the first train travels at 54 km/h, find the speed of the second train.",
-    options: ["72 km/h", "90 km/h", "108 km/h", "126 km/h"],
-    ans: 3
+    "q": "Two trains of lengths 200 m and 300 m cross each other in 10 seconds while travelling in opposite directions. If the first train travels at 54 km/h, find the speed of the second train.",
+    "options": [
+      "72 km/h",
+      "90 km/h",
+      "108 km/h",
+      "126 km/h"
+    ],
+    "ans": 3
   },
   {
-    q: "A train passes a man walking in the opposite direction at 6 km/h in 10 seconds. The same train crosses a 250 m platform in 25 seconds. Find the exact length of the train.",
-    options: ["1600/9 m", "190 m", "195 m", "1750/9 m"],
-    ans: 3
+    "q": "A train passes a man walking in the opposite direction at 6 km/h in 10 seconds. The same train crosses a 250 m platform in 25 seconds. Find the exact length of the train.",
+    "options": [
+      "1600/9 m",
+      "190 m",
+      "195 m",
+      "1750/9 m"
+    ],
+    "ans": 3
   },
   {
-    q: "Two trains of equal length cross a stationary point in 12 seconds and 15 seconds, respectively. How long will they take to cross each other when travelling in opposite directions?",
-    options: ["12 seconds", "40/3 seconds", "15 seconds", "18 seconds"],
-    ans: 1
+    "q": "Two trains of equal length cross a stationary point in 12 seconds and 15 seconds, respectively. How long will they take to cross each other when travelling in opposite directions?",
+    "options": [
+      "12 seconds",
+      "40/3 seconds",
+      "15 seconds",
+      "18 seconds"
+    ],
+    "ans": 1
   },
   {
-    q: "A train travelling at 72 km/h crosses a pole in 10 seconds and a platform in 20 seconds. Find the length of the platform.",
-    options: ["200 m", "300 m", "400 m", "500 m"],
-    ans: 0
+    "q": "A train travelling at 72 km/h crosses a pole in 10 seconds and a platform in 20 seconds. Find the length of the platform.",
+    "options": [
+      "200 m",
+      "300 m",
+      "400 m",
+      "500 m"
+    ],
+    "ans": 0
   },
   {
-    q: "Two trains start simultaneously from stations 360 km apart and travel towards each other at 72 km/h and 48 km/h. After meeting, how long does the slower train take to reach the station from which the faster train started?",
-    options: ["3 hours", "4 hours", "5 hours", "9/2 hours"],
-    ans: 3
+    "q": "Two trains start simultaneously from stations 360 km apart and travel towards each other at 72 km/h and 48 km/h. After meeting, how long does the slower train take to reach the station from which the faster train started?",
+    "options": [
+      "3 hours",
+      "4 hours",
+      "5 hours",
+      "9/2 hours"
+    ],
+    "ans": 3
   },
   {
-    q: "A boat travels 36 km downstream and 24 km upstream in 6 hours. It also travels 48 km downstream and 16 km upstream in 6 hours. Find its speed in still water.",
-    options: ["10 km/h", "12 km/h", "14 km/h", "16 km/h"],
-    ans: 0
+    "q": "A boat travels 36 km downstream and 24 km upstream in 6 hours. It also travels 48 km downstream and 16 km upstream in 6 hours. Find its speed in still water.",
+    "options": [
+      "10 km/h",
+      "12 km/h",
+      "14 km/h",
+      "16 km/h"
+    ],
+    "ans": 0
   },
   {
-    q: "A boat takes 3 hours to travel a certain distance downstream and 5 hours to travel the same distance upstream. If the stream speed is 4 km/h, find the speed of the boat in still water.",
-    options: ["12 km/h", "14 km/h", "16 km/h", "18 km/h"],
-    ans: 2
+    "q": "A boat takes 3 hours to travel a certain distance downstream and 5 hours to travel the same distance upstream. If the stream speed is 4 km/h, find the speed of the boat in still water.",
+    "options": [
+      "12 km/h",
+      "14 km/h",
+      "16 km/h",
+      "18 km/h"
+    ],
+    "ans": 2
   },
   {
-    q: "A boat travels downstream at 12 km/h and upstream at 8 km/h. If the total round-trip time is 8 hours, what is the one-way distance?",
-    options: ["32 km", "36 km", "38.4 km", "40 km"],
-    ans: 2
+    "q": "A boat travels downstream at 12 km/h and upstream at 8 km/h. If the total round-trip time is 8 hours, what is the one-way distance?",
+    "options": [
+      "32 km",
+      "36 km",
+      "38.4 km",
+      "40 km"
+    ],
+    "ans": 2
   },
   {
-    q: "A boat travels 30 km downstream and 18 km upstream in 5 hours. It also travels 20 km downstream and 24 km upstream in 5 hours. Find the speed of the stream.",
-    options: ["2 km/h", "2.4 km/h", "3 km/h", "4 km/h"],
-    ans: 1
+    "q": "A boat travels 30 km downstream and 18 km upstream in 5 hours. It also travels 20 km downstream and 24 km upstream in 5 hours. Find the speed of the stream.",
+    "options": [
+      "2 km/h",
+      "2.4 km/h",
+      "3 km/h",
+      "4 km/h"
+    ],
+    "ans": 1
   },
   {
-    q: "A can complete a job in 20 days and B in 30 days. They work together for 5 days. B and C then complete the remaining work in 10 days. How long would C alone take to complete the entire job?",
-    options: ["30 days", "35 days", "40 days", "45 days"],
-    ans: 2
+    "q": "A can complete a job in 20 days and B in 30 days. They work together for 5 days. B and C then complete the remaining work in 10 days. How long would C alone take to complete the entire job?",
+    "options": [
+      "30 days",
+      "35 days",
+      "40 days",
+      "45 days"
+    ],
+    "ans": 2
   },
   {
-    q: "Twelve men can complete a job in 18 days, while 15 women can complete the same job in 24 days. How many days will 8 men and 10 women take to complete the job together?",
-    options: ["108/7 days", "15 days", "16 days", "18 days"],
-    ans: 0
+    "q": "Twelve men can complete a job in 18 days, while 15 women can complete the same job in 24 days. How many days will 8 men and 10 women take to complete the job together?",
+    "options": [
+      "108/7 days",
+      "15 days",
+      "16 days",
+      "18 days"
+    ],
+    "ans": 0
   },
   {
-    q: "A and B together complete a job in 12 days, B and C in 15 days, and C and A in 20 days. How many days will all three take to complete the job together?",
-    options: ["8 days", "10 days", "12 days", "15 days"],
-    ans: 1
+    "q": "A and B together complete a job in 12 days, B and C in 15 days, and C and A in 20 days. How many days will all three take to complete the job together?",
+    "options": [
+      "8 days",
+      "10 days",
+      "12 days",
+      "15 days"
+    ],
+    "ans": 1
   },
   {
-    q: "A and B together can complete a job in 60/7 days, while B alone can complete it in 20 days. A and B work together for 4 days, after which B works alone for 5 days. C then completes the remaining work in 3 days. How long would C alone take to complete the entire job?",
-    options: ["12 days", "15 days", "180/17 days", "20 days"],
-    ans: 2
+    "q": "A and B together can complete a job in 60/7 days, while B alone can complete it in 20 days. A and B work together for 4 days, after which B works alone for 5 days. C then completes the remaining work in 3 days. How long would C alone take to complete the entire job?",
+    "options": [
+      "12 days",
+      "15 days",
+      "180/19 days",
+      "20 days"
+    ],
+    "ans": 2
   },
   {
-    q: "Twenty workers can complete a job in 30 days. They work for 10 days, after which 5 workers leave. After another 5 days, 10 new workers join. How many days from the beginning will the job be completed?",
-    options: ["25 days", "27 days", "28 days", "30 days"],
-    ans: 2
+    "q": "Twenty workers can complete a job in 30 days. They work for 10 days, after which 5 workers leave. After another 5 days, 10 new workers join. How many days from the beginning will the job be completed?",
+    "options": [
+      "25 days",
+      "27 days",
+      "28 days",
+      "30 days"
+    ],
+    "ans": 2
   },
   {
-    q: "A person walks 12 m north, 9 m east, 5 m south, 12 m east, 7 m north, and finally 7 m west. What is the shortest distance and direction from the starting point?",
-    options: ["14 m, East", "14√2 m, North-East", "20 m, North-East", "7√2 m, North-East"],
-    ans: 1
+    "q": "A person walks 12 m north, 9 m east, 5 m south, 12 m east, 7 m north, and finally 7 m west. What is the shortest distance and direction from the starting point?",
+    "options": [
+      "14 m, East",
+      "14√2 m, North-East",
+      "20 m, North-East",
+      "7√2 m, North-East"
+    ],
+    "ans": 1
   },
   {
-    q: "A person initially faces north. They turn 135° clockwise, then 225° anticlockwise, and finally 90° clockwise. Which direction are they facing now?",
-    options: ["North", "South", "East", "West"],
-    ans: 0
+    "q": "A person initially faces north. They turn 135° clockwise, then 225° anticlockwise, and finally 90° clockwise. Which direction are they facing now?",
+    "options": [
+      "North",
+      "South",
+      "East",
+      "West"
+    ],
+    "ans": 0
   },
   {
-    q: "A person walks 10 m east, 15 m north, and 10 m west. They then turn right and walk 5 m, turn right again, and walk 20 m. Find their final position relative to the starting point.",
-    options: ["20√2 m, North-East", "20 m, East", "15 m, North", "25 m, South-East"],
-    ans: 0
+    "q": "A person walks 10 m east, 15 m north, and 10 m west. They then turn right and walk 5 m, turn right again, and walk 20 m. Find their final position relative to the starting point.",
+    "options": [
+      "10√2 m, South-West",
+      "20 m, East",
+      "15 m, North",
+      "25 m, South-East"
+    ],
+    "ans": 0
   },
   {
-    q: "At sunrise, A and B stand facing each other. A's shadow falls directly behind A. Which direction is B facing?",
-    options: ["North", "South", "East", "West"],
-    ans: 3
+    "q": "At sunrise, A and B stand facing each other. A's shadow falls directly behind A. Which direction is B facing?",
+    "options": [
+      "North",
+      "South",
+      "East",
+      "West"
+    ],
+    "ans": 3
   },
   {
-    q: "Neha says, 'The man is the only son of my maternal grandfather. His daughter is my mother's niece.' How is the daughter related to Neha?",
-    options: ["Sister", "Aunt", "Cousin", "Niece"],
-    ans: 2
+    "q": "Neha says, 'The man is the only son of my maternal grandfather. His daughter is my mother's niece.' How is the daughter related to Neha?",
+    "options": [
+      "Sister",
+      "Aunt",
+      "Cousin",
+      "Niece"
+    ],
+    "ans": 2
   },
   {
-    q: "A is the mother of B. C is the brother of A. D is the father of both A and C. B is the mother of E. How is D related to E?",
-    options: ["Grandfather", "Great-grandfather", "Maternal great-grandfather", "Uncle"],
-    ans: 2
+    "q": "A is the mother of B. C is the brother of A. D is the father of both A and C. B is the mother of E. How is D related to E?",
+    "options": [
+      "Grandfather",
+      "Great-grandfather",
+      "Maternal great-grandfather",
+      "Uncle"
+    ],
+    "ans": 2
   },
   {
-    q: "A woman's mother is the only daughter of a man's mother. How is the woman related to the man?",
-    options: ["Daughter", "Sister", "Niece", "Cousin"],
-    ans: 2
+    "q": "A woman's mother is the only daughter of a man's mother. How is the woman related to the man?",
+    "options": [
+      "Daughter",
+      "Sister",
+      "Niece",
+      "Cousin"
+    ],
+    "ans": 2
   },
   {
-    q: "P is the brother of Q. Q is the mother of R. T is the sister of Q. How is T related to R?",
-    options: ["Maternal aunt", "Paternal aunt", "Sister", "Grandmother"],
-    ans: 0
+    "q": "P is the brother of Q. Q is the mother of R. T is the sister of Q. How is T related to R?",
+    "options": [
+      "Maternal aunt",
+      "Paternal aunt",
+      "Sister",
+      "Grandmother"
+    ],
+    "ans": 0
   },
   {
-    q: "The incomes of A, B, and C are in the ratio 5:7:9, and their expenditures are in the ratio 3:4:5. If their savings are ₹4,000, ₹6,000, and ₹8,000, respectively, find their total income.",
-    options: ["₹36,000", "₹40,000", "₹42,000", "₹48,000"],
-    ans: 2
+    "q": "The incomes of A, B, and C are in the ratio 5:7:9, and their expenditures are in the ratio 3:4:5. If their savings are ₹4,000, ₹6,000, and ₹8,000, respectively, find their total income.",
+    "options": [
+      "₹36,000",
+      "₹40,000",
+      "₹42,000",
+      "₹48,000"
+    ],
+    "ans": 2
   },
   {
-    q: "A, B, and C divide a sum of money in the ratio 2:3:5. If ₹4,000 is transferred from C to A, their new ratio becomes 4:3:3. Find the original total amount.",
-    options: ["₹18,000", "₹20,000", "₹24,000", "₹30,000"],
-    ans: 1
+    "q": "A, B, and C divide a sum of money in the ratio 2:3:5. If ₹4,000 is transferred from C to A, their new ratio becomes 4:3:3. Find the original total amount.",
+    "options": [
+      "₹18,000",
+      "₹20,000",
+      "₹24,000",
+      "₹30,000"
+    ],
+    "ans": 1
   },
   {
-    q: "If a:b = 3:4, b:c = 5:7, and c:d = 2:3, find a:d.",
-    options: ["5:14", "3:7", "5:12", "15:28"],
-    ans: 0
+    "q": "If a:b = 3:4, b:c = 5:7, and c:d = 2:3, find a:d.",
+    "options": [
+      "5:14",
+      "3:7",
+      "5:12",
+      "15:28"
+    ],
+    "ans": 0
   },
   {
-    q: "By the time the auditor arrives, the finance team ______ the accounts, ______ the discrepancies, and ______ the final report.",
-    options: [
+    "q": "By the time the auditor arrives, the finance team ______ the accounts, ______ the discrepancies, and ______ the final report.",
+    "options": [
       "completed; identifies; submits",
       "will have completed; identified; submitted",
       "has completed; will identify; submitted",
       "will complete; had identified; submits"
     ],
-    ans: 1
+    "ans": 1
   },
   {
-    q: "Since the new policy ______, the company ______ several complaints, but it ______ all of them yet.",
-    options: [
+    "q": "Since the new policy ______, the company ______ several complaints, but it ______ all of them yet.",
+    "options": [
       "was introduced; received; did not resolve",
       "has introduced; has received; has not resolved",
       "was introduced; has received; has not resolved",
       "had introduced; received; did not resolve"
     ],
-    ans: 2
+    "ans": 2
   },
   {
-    q: "The engineering team ______ the software for three months before it finally ______ the new version, but users ______ any major improvement yet.",
-    options: [
+    "q": "The engineering team ______ the software for three months before it finally ______ the new version, but users ______ any major improvement yet.",
+    "options": [
       "reviewed; implements; did not notice",
       "has reviewed; implemented; have not noticed",
       "had reviewed; has implemented; did not notice",
       "had been reviewing; implemented; have not noticed"
     ],
-    ans: 3
+    "ans": 3
   },
   {
-    q: "While the investigators ______ the records, they ______ a major discrepancy that the manager later ______.",
-    options: [
+    "q": "While the investigators ______ the records, they ______ a major discrepancy that the manager later ______.",
+    "options": [
       "examined; had detected; acknowledges",
       "were examining; detected; acknowledged",
       "had examined; detect; had acknowledged",
       "have examined; were detecting; acknowledges"
     ],
-    ans: 1
+    "ans": 1
   },
   {
-    q: "She ______ the company in 2020, and she ______ there ever since.",
-    options: [
+    "q": "She ______ the company in 2020, and she ______ there ever since.",
+    "options": [
       "has joined; worked",
       "joins; has worked",
       "joined; has worked",
       "had joined; works"
     ],
-    ans: 2
+    "ans": 2
   },
   {
-    q: "If I ______ about the meeting yesterday, I would have attended it.",
-    options: ["knew", "had known", "have known", "would know"],
-    ans: 1
+    "q": "If I ______ about the meeting yesterday, I would have attended it.",
+    "options": [
+      "knew",
+      "had known",
+      "have known",
+      "would know"
+    ],
+    "ans": 1
   },
   {
-    q: "If the engineers had tested the system properly, they ______ the failure.",
-    options: [
+    "q": "If the engineers had tested the system properly, they ______ the failure.",
+    "options": [
       "would have prevented",
       "will prevent",
       "would prevent",
       "had prevented"
     ],
-    ans: 0
+    "ans": 0
   },
   {
-    q: "No sooner ______ the presentation begun than the electricity went out.",
-    options: ["had", "has", "did", "was"],
-    ans: 0
+    "q": "No sooner ______ the presentation begun than the electricity went out.",
+    "options": [
+      "had",
+      "has",
+      "did",
+      "was"
+    ],
+    "ans": 0
   },
   {
-    q: "Employees ______ safety equipment while operating the machinery, and the equipment ______ inspected regularly.",
-    options: [
+    "q": "Employees ______ safety equipment while operating the machinery, and the equipment ______ inspected regularly.",
+    "options": [
       "must wearing; should be",
       "should wear; must being",
       "must wear; should be",
       "must wore; should have"
     ],
-    ans: 2
+    "ans": 2
   },
   {
-    q: "The incomes of A, B, and C are in the ratio 5:7:9, and their expenditures are in the ratio 3:4:5. If A saves ₹4,000 and B saves ₹6,000, find their total income.",
-    options: ["₹36,000", "₹40,000", "₹42,000", "₹45,000"],
-    ans: 2
+    "q": "The incomes of A, B, and C are in the ratio 5:7:9, and their expenditures are in the ratio 3:4:5. If A saves ₹4,000 and B saves ₹6,000, find their total income.",
+    "options": [
+      "₹36,000",
+      "₹40,000",
+      "₹42,000",
+      "₹45,000"
+    ],
+    "ans": 2
   }
 ];
-    //[
-//   {
-//     q: "A trader purchases an article for ₹12,000. He marks it 50% above cost price and gives successive discounts of 20% and 10%. He also incurs ₹360 on transportation. What is his actual profit percentage?",
-//     options: ["4.50%", "4.85%", "5.25%", "6%"],
-//     ans: "4.85%"
-//   },
-//   {
-//     q: "A trader sells 40% of his stock at 25% profit, 35% at 10% loss, and the remaining stock at x% profit. If his overall profit is 12%, find x.",
-//     options: ["18%", "20%", "22%", "24%"],
-//     ans: "22%"
-//   },
-//   {
-//     q: "A shopkeeper buys 20 identical articles at ₹600 each. Five articles are damaged and cannot be sold. The remaining 15 articles are sold at ₹1,000 each. What is the overall profit percentage?",
-//     options: ["20%", "22.5%", "25%", "30%"],
-//     ans: "25%"
-//   },
-//   {
-//     q: "A shopkeeper buys an article at ₹80 per kg. He marks it at ₹100 per kg and gives a 10% discount. However, instead of giving 1 kg, he gives only 800 grams. What is his actual gain percentage?",
-//     options: ["35.625%", "40.625%", "42.5%", "45%"],
-//     ans: "40.625%"
-//   },
-//   {
-//     q: "Two articles are sold at the same selling price. One is sold at a profit of 20% and the other at a loss of 30%. What is the overall result?",
-//     options: ["10% loss", "11.58% loss", "12.5% loss", "13.33% loss"],
-//     ans: "11.58% loss"
-//   },
-//   {
-//     q: "A trader buys an article for ₹10,000. He marks it 50% above the cost price and gives a discount of 20%. He also spends ₹600 on transportation and packaging. What is his actual profit percentage?",
-//     options: ["12.5%", "13.21%", "14%", "15%"],
-//     ans: "13.21%"
-//   },
-//   {
-//     q: "The price of rice increases by 25%. If a person wants to keep his total expenditure on rice unchanged, by what percentage must he reduce his consumption?",
-//     options: ["16%", "18%", "20%", "25%"],
-//     ans: "20%"
-//   },
-//   {
-//     q: "A manufacturer sells an article to a wholesaler at a loss of 15%. The wholesaler sells it to a retailer at a profit of 20%, and the retailer sells it to the final customer at a loss of 10%. If the manufacturer's cost price is ₹20,000, what is the final selling price and overall result?",
-//     options: ["₹18,000, 10% loss", "₹18,360, 8.2% loss", "₹18,500, 7.5% loss", "₹19,000, 5% loss"],
-//     ans: "₹18,360, 8.2% loss"
-//   },
-//   {
-//     q: "Three articles have equal cost prices. They are sold at profits of 20% and 14%, and a loss of 10%, respectively. What is the overall profit percentage?",
-//     options: ["6%", "7%", "8%", "9%"],
-//     ans: "8%"
-//   },
-//   {
-//     q: "The total cost price of two articles is ₹11,000. The first article is sold at a profit of 20% and the second at a loss of 10%. If the total selling price is ₹11,250, what is the cost price of the first article?",
-//     options: ["₹4,000", "₹4,500", "₹5,000", "₹5,500"],
-//     ans: "₹4,500"
-//   },
+    const STORAGE_KEY = "quizsphere_active_attempt_v1";
+    const state = {
+      email: "", current: 0, answers: Array(questions.length).fill(null),
+      marked: Array(questions.length).fill(false), submitted: false,
+      remainingSeconds: questions.length * 90, timerId: null, startedAt: null
+    };
 
-//   {
-//     q: "A boat travels 30 km downstream in 2 hours and 18 km upstream in 2 hours. What are the speeds of the boat in still water and the stream respectively?",
-//     options: ["10 km/h, 5 km/h", "12 km/h, 3 km/h", "13 km/h, 2 km/h", "15 km/h, 3 km/h"],
-//     ans: "12 km/h, 3 km/h"
-//   },
-//   {
-//     q: "A boat travels 72 km downstream and then 72 km upstream. If its speed in still water is 18 km/h and the stream speed is 6 km/h, how much total time does the journey take?",
-//     options: ["8 hours", "9 hours", "10 hours", "12 hours"],
-//     ans: "9 hours"
-//   },
-//   {
-//     q: "A boat covers 36 km downstream and 24 km upstream in a total of 6 hours. If its speed in still water is 10 km/h, what is the speed of the stream?",
-//     options: ["1 km/h", "2 km/h", "3 km/h", "4 km/h"],
-//     ans: "2 km/h"
-//   },
-//   {
-//     q: "A boat covers 56 km upstream in 7 hours and the same distance downstream in 4 hours. What are the speeds of the boat in still water and the stream respectively?",
-//     options: ["10 km/h, 4 km/h", "11 km/h, 3 km/h", "12 km/h, 2 km/h", "14 km/h, 3 km/h"],
-//     ans: "11 km/h, 3 km/h"
-//   },
-//   {
-//     q: "A boat covers 60 km downstream in 4 hours and the same distance upstream in 6 hours. What is the speed of the stream?",
-//     options: ["2 km/h", "2.5 km/h", "3 km/h", "3.5 km/h"],
-//     ans: "2.5 km/h"
-//   },
-//   {
-//     q: "A boat takes 2 hours to cover a certain distance downstream and 3 hours to cover the same distance upstream. The speed of the stream is what percentage of the speed of the boat in still water?",
-//     options: ["15%", "20%", "25%", "30%"],
-//     ans: "20%"
-//   },
-//   {
-//     q: "The speed of a boat in still water is 10 km/h and the speed of the stream is 2 km/h. How much time will it take to travel 24 km downstream and return to the starting point upstream?",
-//     options: ["4 hours", "4.5 hours", "5 hours", "5.5 hours"],
-//     ans: "5 hours"
-//   },
-//   {
-//     q: "The speed of a boat in still water is 15 km/h. It covers 45 km downstream in 2.5 hours. How much time will it take to cover 45 km upstream?",
-//     options: ["3 hours", "3.25 hours", "3.5 hours", "3.75 hours"],
-//     ans: "3.75 hours"
-//   },
-//   {
-//     q: "A swimmer can swim at 5 m/s in still water. The river flows at 3 m/s. If the river is 100 m wide, how much time will the swimmer take to reach the point directly opposite on the other bank?",
-//     options: ["20 seconds", "25 seconds", "30 seconds", "40 seconds"],
-//     ans: "25 seconds"
-//   },
-//   {
-//     q: "The speed of a boat in still water is 10 km/h and the stream speed is 4 km/h. A boat travels 30 km upstream. If the stream speed increases by 2 km/h while the boat's still-water speed remains unchanged, how much time will the boat now take to cover the same 30 km upstream?",
-//     options: ["6 hours", "6.5 hours", "7 hours", "7.5 hours"],
-//     ans: "7.5 hours"
-//   },
+    const $ = id => document.getElementById(id);
+    const letters = ["A", "B", "C", "D"];
+    let toastTimer;
 
-//   {
-//     q: "Rahul is a male. Pointing to a woman, he says, 'She is the daughter of the only son of my paternal grandfather.' How is the woman related to Rahul?",
-//     options: ["Mother", "Sister", "Aunt", "Cousin"],
-//     ans: "Sister"
-//   },
-//   {
-//     q: "Neha is a female. Pointing to a man, she says, 'He is the son of the only daughter of my maternal grandmother.' How is the man related to Neha?",
-//     options: ["Father", "Brother", "Maternal Uncle", "Cousin"],
-//     ans: "Brother"
-//   },
-//   {
-//     q: "In a certain code, A+B means A is the mother of B, A-B means A is the brother of B, A×B means A is the husband of B, and A÷B means A is the sister of B. What is the relation of P to T in the expression P×Q+R-T?",
-//     options: ["Father", "Uncle", "Brother", "Grandfather"],
-//     ans: "Father"
-//   },
-//   {
-//     q: "Rohan points to a photograph of a woman and says, 'The woman in the photograph is the wife of the only son of my paternal grandfather.' How is the woman related to Rohan?",
-//     options: ["Mother", "Aunt", "Sister", "Grandmother"],
-//     ans: "Mother"
-//   },
-//   {
-//     q: "P is the brother of Q. Q is the daughter of R. R is the wife of S. S is the brother of T. How is T related to P?",
-//     options: ["Maternal Uncle", "Paternal Uncle", "Brother", "Cousin"],
-//     ans: "Paternal Uncle"
-//   },
-//   {
-//     q: "Aman is a male. Pointing to a boy, he says, 'He is the son of the daughter of the only son of my maternal grandfather.' How is the boy related to Aman?",
-//     options: ["Brother", "Nephew", "First Cousin Once Removed", "Uncle"],
-//     ans: "First Cousin Once Removed"
-//   },
-//   {
-//     q: "X is the brother of Y. Y is the mother of Z. Z is the sister of W. W is the father of V. How is X related to V?",
-//     options: ["Uncle", "Great-Uncle", "Grandfather", "Cousin"],
-//     ans: "Great-Uncle"
-//   },
-//   {
-//     q: "A is the father of B. B is the sister of C. C is the father of E. How is E related to B?",
-//     options: ["Son", "Nephew", "Brother", "Cousin"],
-//     ans: "Nephew"
-//   },
-//   {
-//     q: "In a certain code, A@B means A is the father of B, A#B means A is the sister of B, A$B means A is the husband of B, and A%B means A is the mother of B. What is the relation of A to F in the expression A$B%C#D#F?",
-//     options: ["Uncle", "Father", "Grandfather", "Brother"],
-//     ans: "Father"
-//   },
-//   {
-//     q: "A is the father of B. B is the sister of C. C is the husband of D. D has a daughter E. How is E related to A?",
-//     options: ["Daughter", "Granddaughter", "Niece", "Sister"],
-//     ans: "Granddaughter"
-//   }
-// ];
-//     const questions = [
-//   {
-//     q: "A company's workforce increases by 20% in the first year, decreases by 10% in the second year, and increases by 25% in the third year. If the workforce at the beginning was 8,000, what is the workforce after three years?",
-//     options: ["9,600", "10,200", "10,800", "11,000"],
-//     ans: "10,800"
-//   },
-//   {
-//     q: "In an election, candidate A receives 56% of the valid votes while candidate B receives 44%. A wins by 2,160 votes. If 10% of the total votes polled were declared invalid, how many total votes were polled?",
-//     options: ["18,000", "19,200", "20,000", "21,600"],
-//     ans: "20,000"
-//   },
-//   {
-//     q: "A's salary is 25% higher than B's salary. A's salary is then reduced by 10%, while B's salary is reduced by 20%. By what percentage is A's new salary higher than B's new salary?",
-//     options: ["37.5%", "40%", "40.625%", "42.5%"],
-//     ans: "40.625%"
-//   },
-//   {
-//     q: "In a class, boys constitute 40% of the students and girls constitute 60%. If 15 boys leave the class and 15 girls join it, the percentage of boys becomes 25%. What was the original number of students?",
-//     options: ["80", "90", "100", "120"],
-//     ans: "100"
-//   },
-//   {
-//     q: "In a certain code, every consonant is replaced by the next consonant in the English alphabet, skipping vowels, while every vowel is replaced by the previous vowel cyclically (A→U, E→A, I→E, O→I, U→O). How will the word 'LOGIC' be coded?",
-//     options: ["MIHED", "MIGED", "NIHED", "MIHFD"],
-//     ans: "MIHED"
-//   },
-//   {
-//     q: "In a coding system, letters in odd positions are shifted 2 places forward and letters in even positions are shifted 1 place backward. Using this rule, how will the word 'MOBILE' be coded?",
-//     options: ["ONDHND", "ONEHND", "ONCHND", "PNDHND"],
-//     ans: "ONDHND"
-//   },
-//   {
-//     q: "A shopkeeper marks an article 30% above its cost price and then offers a discount of 10% on the marked price. If the cost price is ₹2,400, what is his profit percentage?",
-//     options: ["15%", "16%", "17%", "18%"],
-//     ans: "17%"
-//   },
-//   {
-//     q: "A trader sells two articles for ₹3,600 each. On the first article he gains 20%, while on the second he loses 20%. Considering both transactions together, what is the overall result?",
-//     options: ["2% loss", "4% loss", "4% gain", "5% loss"],
-//     ans: "4% loss"
-//   },
-//   {
-//     q: "A dishonest shopkeeper marks an article at ₹800 per kilogram and gives a 10% discount. However, instead of giving 1 kg, he gives only 900 g. If his cost price is ₹600 per kilogram, what is his effective profit percentage?",
-//     options: ["30%", "33⅓%", "35%", "37½%"],
-//     ans: "33⅓%"
-//   },
-//   {
-//     q: "An article is sold after two successive discounts of 20% and 10%. What single discount is equivalent to these two successive discounts?",
-//     options: ["26%", "28%", "30%", "32%"],
-//     ans: "28%"
-//   },
-//   {
-//     q: "A is the brother of B. C is the mother of both A and B. D is the father of C. E is the daughter of B. How is D related to E?",
-//     options: ["Grandfather", "Great-grandfather", "Great-uncle", "Granduncle"],
-//     ans: "Great-grandfather"
-//   },
-//   {
-//     q: "P's mother's only brother is Q. Q has a daughter R. If P and R have no other family connection, how is R related to P?",
-//     options: ["Sister", "Cousin", "Niece", "Aunt"],
-//     ans: "Cousin"
-//   },
-//   {
-//     q: "Five years ago, A was four times as old as B. Their present ages add up to 50 years. What is the difference between their present ages?",
-//     options: ["20 years", "22 years", "24 years", "26 years"],
-//     ans: "24 years"
-//   },
-//   {
-//     q: "Twelve years from now, a father will be twice as old as his son. Six years ago, the father was five times as old as his son. What is the sum of their present ages?",
-//     options: ["42 years", "45 years", "48 years", "50 years"],
-//     ans: "48 years"
-//   },
-//   {
-//     q: "A person walks 8 km north, then 6 km east, then 8 km south, and finally 10 km west. In which direction and at what minimum distance is he from his starting point?",
-//     options: ["4 km west", "4 km east", "6 km west", "6 km east"],
-//     ans: "4 km west"
-//   },
-//   {
-//     q: "A person starts facing north. He walks 5 m, turns right and walks 12 m, turns right and walks 5 m, and then turns left and walks 4 m. Where is he located with respect to his starting point?",
-//     options: ["12 m east", "16 m east", "16 m west", "21 m east"],
-//     ans: "16 m east"
-//   },
-//   {
-//     q: "A train 180 m long crosses a stationary pole in 12 seconds. What is the speed of the train?",
-//     options: ["45 km/h", "48 km/h", "54 km/h", "60 km/h"],
-//     ans: "54 km/h"
-//   },
-//   {
-//     q: "A train 250 m long crosses a platform 350 m long in 30 seconds. What is the speed of the train?",
-//     options: ["60 km/h", "66 km/h", "72 km/h", "75 km/h"],
-//     ans: "72 km/h"
-//   },
-//   {
-//     q: "Two trains of lengths 180 m and 220 m are moving in opposite directions at 54 km/h and 72 km/h respectively. How long will they take to completely cross each other?",
-//     options: ["10 seconds", "80/7 seconds", "12 seconds", "14 seconds"],
-//     ans: "80/7 seconds"
-//   },
-//   {
-//     q: "A train 240 m long moving at 54 km/h overtakes another train 160 m long moving in the same direction at 36 km/h. How much time does the faster train take to completely overtake the slower train?",
-//     options: ["60 seconds", "72 seconds", "80 seconds", "90 seconds"],
-//     ans: "80 seconds"
-//   },
-//   {
-//     q: "The ratio A:B is 3:5 and B:C is 10:7. If the total of A, B and C is 4,600, what is the value of B?",
-//     options: ["1,600", "1,800", "2,000", "2,200"],
-//     ans: "2,000"
-//   },
-//   {
-//     q: "The incomes of A and B are in the ratio 5:7, while their expenditures are in the ratio 3:5. If each saves ₹1,800 per month, what is their combined monthly income?",
-//     options: ["₹9,000", "₹10,800", "₹11,200", "₹12,600"],
-//     ans: "₹10,800"
-//   },
-//   {
-//     q: "A vessel contains milk and water in the ratio 7:3. From 100 litres of this mixture, 20 litres are removed and replaced with 20 litres of water. What will be the new ratio of milk to water?",
-//     options: ["7:10", "7:11", "7:12", "7:13"],
-//     ans: "7:13"
-//   },
-//   {
-//     q: "A can complete a piece of work in 12 days and B can complete the same work in 18 days. If they work together from the beginning, how many days will they take to complete the work?",
-//     options: ["6 days", "7 days", "36/5 days", "8 days"],
-//     ans: "36/5 days"
-//   },
-//   {
-//     q: "A and B together can complete a work in 10 days, B and C together in 15 days, and C and A together in 12 days. If all three work together, how many days will they take to complete the work?",
-//     options: ["6 days", "7 days", "8 days", "9 days"],
-//     ans: "8 days"
-//   },
-//   {
-//     q: "A can complete a work in 20 days and B can complete it in 30 days. They work together for 6 days, after which A leaves. How many additional days will B require to finish the remaining work?",
-//     options: ["12 days", "15 days", "18 days", "20 days"],
-//     ans: "15 days"
-//   },
-//   {
-//     q: "Pipe A can fill a tank in 12 hours, pipe B can fill it in 18 hours, and pipe C can empty it in 36 hours. If all three pipes are opened simultaneously, how long will it take to fill the tank?",
-//     options: ["8 hours", "9 hours", "10 hours", "12 hours"],
-//     ans: "9 hours"
-//   },
-//   {
-//     q: "Pipe A can fill a tank in 15 hours and pipe B can fill it in 20 hours. A is opened alone for 5 hours, after which B is also opened. How much total time is required to fill the tank?",
-//     options: ["10 hours", "75/7 hours", "11 hours", "12 hours"],
-//     ans: "75/7 hours"
-//   },
-//   {
-//     q: "If 1 January 2025 was a Wednesday, what day of the week was 1 March 2025?",
-//     options: ["Thursday", "Friday", "Saturday", "Sunday"],
-//     ans: "Saturday"
-//   },
-//   {
-//     q: "15 August 1947 was a Friday. Taking leap years into account, what day of the week was 15 August 2027?",
-//     options: ["Friday", "Saturday", "Sunday", "Monday"],
-//     ans: "Sunday"
-//   },
-//   {
-//     q: "A sum of ₹8,000 is invested at a simple interest rate of 7.5% per annum for 2 years. What amount will be received at the end of the period?",
-//     options: ["₹9,000", "₹9,100", "₹9,200", "₹9,400"],
-//     ans: "₹9,200"
-//   },
-//   {
-//     q: "The sum of the simple interests earned on a certain principal at 6% per annum for 4 years and at 8% per annum for 3 years is ₹3,000. What is the principal?",
-//     options: ["₹5,000", "₹6,000", "₹6,250", "₹7,500"],
-//     ans: "₹6,250"
-//   },
-//   {
-//     q: "A boat travels downstream at 18 km/h and upstream at 10 km/h. If it travels for 2 hours downstream and 3 hours upstream, what total distance does it cover?",
-//     options: ["60 km", "64 km", "66 km", "68 km"],
-//     ans: "66 km"
-//   },
-//   {
-//     q: "Choose the grammatically correct sentence based on the rules of subject-verb agreement.",
-//     options: [
-//       "Neither the manager nor the employees was willing to accept the proposal.",
-//       "Neither the manager nor the employees were willing to accept the proposal.",
-//       "Neither the manager nor the employees is willing to accept the proposal.",
-//       "Neither the manager nor the employees has willing to accept the proposal."
-//     ],
-//     ans: "Neither the manager nor the employees were willing to accept the proposal."
-//   },
-//   {
-//     q: "Choose the sentence in which the verb form is used correctly.",
-//     options: [
-//       "The reports, along with the supporting documents, is submitted yesterday.",
-//       "The reports, along with the supporting documents, were submitted yesterday.",
-//       "The reports, along with the supporting documents, was submitted yesterday.",
-//       "The reports, along with the supporting documents, has submitted yesterday."
-//     ],
-//     ans: "The reports, along with the supporting documents, were submitted yesterday."
-//   },
-//   {
-//     q: "Complete the sentence using the appropriate verb form: 'Had the company ___ the warning issued by the auditors, the financial loss could have been avoided.'",
-//     options: ["heed", "heeded", "heeding", "has heeded"],
-//     ans: "heeded"
-//   },
-//   {
-//     q: "Choose the sentence with the correct use of the verb.",
-//     options: [
-//       "The committee have decided to postpone the meeting.",
-//       "The committee has decided to postpone the meeting.",
-//       "The committee are decides to postpone the meeting.",
-//       "The committee having decide to postpone the meeting."
-//     ],
-//     ans: "The committee has decided to postpone the meeting."
-//   },
-//   {
-//     q: "The project deadline is tomorrow, and all required documents have already been prepared. Which modal best completes the sentence? 'The team ___ submit the final report before 5 PM tomorrow.'",
-//     options: ["might", "could", "must", "would"],
-//     ans: "must"
-//   },
-//   {
-//     q: "Choose the modal that correctly expresses a past obligation that was not fulfilled: 'You ___ have informed the manager about the issue before making the change.'",
-//     options: ["may", "can", "should", "should have"],
-//     ans: "should have"
-//   },
-//   {
-//     q: "Choose the most appropriate modal for the following rule: 'No employee ___ enter the laboratory without proper authorization.'",
-//     options: ["can", "may", "may not", "could"],
-//     ans: "may not"
-//   }
-// ];
-//     const questions = [
-//   {
-//     q: "In an examination, 30% of the candidates failed in Mathematics, 25% failed in Physics, and 12% failed in both. If 1,848 candidates passed in both subjects, what was the total number of candidates?",
-//     options: ["2,400", "2,800", "3,000", "3,200"],
-//     ans: "2,800"
-//   },
-//   {
-//     q: "The population of a town increases by 20% in the first year and decreases by 10% in the second year. In the third year, it increases by 25%. If the population at the end of the third year is 59,400, what was the population initially?",
-//     options: ["40,000", "42,000", "44,000", "45,000"],
-//     ans: "44,000"
-//   },
-//   {
-//     q: "A person's salary is first increased by 25% and then reduced by 20%. After this change, his salary is ₹48,000. If an additional 10% bonus is calculated on his final salary, what amount does he receive including the bonus?",
-//     options: ["₹50,400", "₹51,840", "₹52,800", "₹54,000"],
-//     ans: "₹52,800"
-//   },
-//   {
-//     q: "In a company, 40% of the employees are women. If 25% of the women and 20% of the men work remotely, and the total number of employees working remotely is 216, what is the total number of employees?",
-//     options: ["900", "1,000", "1,200", "1,500"],
-//     ans: "1,000"
-//   },
-//   {
-//     q: "The price of a machine is increased by 15%, then discounted by 10%, and finally increased by 20% due to additional installation charges. If the final amount paid is ₹62,100, what was the original price of the machine?",
-//     options: ["₹45,000", "₹48,000", "₹50,000", "₹52,000"],
-//     ans: "₹50,000"
-//   },
-
-//   {
-//     q: "In a certain coding system, each letter of a word is replaced by the letter that is 2 positions ahead of it in the alphabet, and then the entire resulting word is reversed. If the code for MARKET is 'VGTCMO', what would be the code for SYSTEM using the same rule?",
-//     options: ["OGVUWU", "OGVUWQ", "OGVUWU", "OGVUXU"],
-//     ans: "OGVUWU"
-//   },
-//   {
-//     q: "In a certain language, 'PAPER' is coded as 'QBQFS', 'TABLE' is coded as 'UBCMF', and 'CHAIR' is coded as 'DIBJS'. If every letter is transformed according to the same rule, how will 'PLANT' be coded?",
-//     options: ["QMB OU", "QMBOU", "QMBNT", "QKZMS"],
-//     ans: "QMBOU"
-//   },
-//   {
-//     q: "If in a certain coding system, COMPUTER is written as RFUVQNPC, where the first half and second half of the word follow different transformations, and MACHINE is written as FOJIDBN, then how will NETWORK be written using the same coding pattern?",
-//     options: ["LSPXUFO", "LSPXUFW", "MTPYVFO", "KROWTEN"],
-//     ans: "LSPXUFO"
-//   },
-//   {
-//     q: "In a certain code, 'ROAD' is written as 'URDG', 'TRAIN' is written as 'WUDLQ', and 'PLANE' is written as 'SODQH'. If the same pattern is followed, how will 'BRIDGE' be coded?",
-//     options: ["EULGJH", "EULFJH", "DSKFIH", "EVMGKI"],
-//     ans: "EULGJH"
-//   },
-//   {
-//     q: "In a coding language, the word 'CANDLE' is represented as 3-1-14-4-12-5, while 'BRIGHT' is represented as 2-18-9-7-8-20. A second operation is then applied in which every number is increased by its position number. What will be the final representation of 'CANDLE'?",
-//     options: ["4-3-17-9-17-11", "4-3-17-8-17-11", "3-2-16-8-17-10", "4-2-16-8-17-10"],
-//     ans: "4-3-17-8-17-11"
-//   },
-
-//   {
-//     q: "A shopkeeper marks an article 40% above its cost price and gives two successive discounts of 10% and 15%. If the selling price is ₹10,710, what is the cost price of the article?",
-//     options: ["₹9,000", "₹10,000", "₹10,500", "₹11,000"],
-//     ans: "₹10,000"
-//   },
-//   {
-//     q: "A trader purchases an article at 20% below its marked price. He then sells it at a 15% discount on the marked price. If he earns a profit of ₹1,200, what is the marked price of the article?",
-//     options: ["₹20,000", "₹24,000", "₹25,000", "₹30,000"],
-//     ans: "₹24,000"
-//   },
-//   {
-//     q: "A dealer buys two machines for a total of ₹1,20,000. He sells the first machine at a profit of 25% and the second at a loss of 10%. If his total profit is ₹9,000, what was the cost price of the first machine?",
-//     options: ["₹40,000", "₹50,000", "₹60,000", "₹70,000"],
-//     ans: "₹60,000"
-//   },
-//   {
-//     q: "A shopkeeper sells an article at a 20% profit. Had he purchased the article for 10% less and sold it for ₹60 less, his profit would have been 25%. What was the original cost price of the article?",
-//     options: ["₹1,000", "₹1,200", "₹1,500", "₹2,000"],
-//     ans: "₹1,200"
-//   },
-//   {
-//     q: "A dishonest dealer claims to sell sugar at cost price but uses a weight that is 20% less than the actual kilogram. He then gives an additional 5% discount on the displayed price. What is his effective profit percentage?",
-//     options: ["14.74%", "16%", "18.75%", "20%"],
-//     ans: "14.74%"
-//   },
-
-//   {
-//     q: "A boat travels 36 km downstream in 3 hours and the same distance upstream in 4.5 hours. If the boat travels 48 km downstream and then 24 km upstream, how much total time will it take?",
-//     options: ["6 hours", "6.5 hours", "7 hours", "7.5 hours"],
-//     ans: "7 hours"
-//   },
-//   {
-//     q: "A boat takes 5 hours to travel 60 km downstream and 10 hours to travel the same distance upstream. If the speed of the stream increases by 2 km/h, how much time will the boat take to travel 60 km upstream?",
-//     options: ["12 hours", "15 hours", "20 hours", "30 hours"],
-//     ans: "30 hours"
-//   },
-//   {
-//     q: "A man rows a boat 24 km downstream in 2 hours and returns to the starting point in 3 hours. If he rests for 30 minutes at the destination before returning, how much total time does the complete journey take?",
-//     options: ["5 hours", "5.5 hours", "6 hours", "6.5 hours"],
-//     ans: "5.5 hours"
-//   },
-//   {
-//     q: "The speed of a boat in still water is 15 km/h and the speed of the stream is 3 km/h. The boat travels downstream for 2 hours and then upstream for 3 hours. How far is it from its starting point?",
-//     options: ["18 km", "24 km", "30 km", "36 km"],
-//     ans: "30 km"
-//   },
-//   {
-//     q: "A boat takes 8 hours to cover a certain distance downstream and 12 hours to cover the same distance upstream. If the speed of the boat in still water is 10 km/h, what is the distance covered?",
-//     options: ["72 km", "80 km", "96 km", "120 km"],
-//     ans: "96 km"
-//   },
-
-//   {
-//     q: "A person starts from point A and walks 12 km towards the north. He then turns right and walks 16 km, turns right again and walks 7 km, and finally turns left and walks 8 km. What is the shortest distance between his final position and point A?",
-//     options: ["15 km", "17 km", "19 km", "21 km"],
-//     ans: "17 km"
-//   },
-//   {
-//     q: "Rahul walks 10 km towards the east, turns left and walks 6 km, then turns left and walks 10 km. He then turns right and walks 8 km. In which direction and at what distance is he from his starting point?",
-//     options: ["North, 14 km", "South, 14 km", "North, 12 km", "East, 14 km"],
-//     ans: "North, 14 km"
-//   },
-//   {
-//     q: "A person walks 15 km towards the south, then 8 km towards the west, followed by 9 km towards the north and finally 8 km towards the east. How far and in which direction is he from the starting point?",
-//     options: ["6 km South", "6 km North", "8 km South", "9 km North"],
-//     ans: "6 km South"
-//   },
-//   {
-//     q: "A man is facing north. He turns 135° clockwise, then 90° anticlockwise, and finally 180° clockwise. In which direction is he facing now?",
-//     options: ["North-East", "South-East", "South-West", "North-West"],
-//     ans: "South-West"
-//   },
-//   {
-//     q: "A person travels 20 km north from point A, then 15 km east, then 8 km south, and finally 9 km west. How far is he from point A, and in which direction?",
-//     options: ["12 km North-East", "13 km North-East", "15 km North-East", "17 km North-West"],
-//     ans: "13 km North-East"
-//   },
-
-//   {
-//     q: "A train 240 m long crosses a pole in 12 seconds. It crosses another train of length 360 m traveling in the opposite direction in 15 seconds. What is the speed of the second train?",
-//     options: ["36 km/h", "48 km/h", "60 km/h", "72 km/h"],
-//     ans: "48 km/h"
-//   },
-//   {
-//     q: "A train 180 m long is running at 54 km/h. It crosses a platform in 24 seconds. Another train running in the opposite direction at 72 km/h crosses the same platform in 18 seconds. What is the length of the second train?",
-//     options: ["180 m", "200 m", "210 m", "240 m"],
-//     ans: "180 m"
-//   },
-//   {
-//     q: "Two trains of lengths 250 m and 350 m are running in the same direction at speeds of 72 km/h and 54 km/h respectively. How much time will the faster train take to completely overtake the slower train?",
-//     options: ["100 seconds", "110 seconds", "120 seconds", "150 seconds"],
-//     ans: "120 seconds"
-//   },
-//   {
-//     q: "A train crosses a man standing on a platform in 10 seconds and crosses a 300 m long platform in 25 seconds. What is the length and speed of the train?",
-//     options: ["200 m, 72 km/h", "180 m, 64.8 km/h", "150 m, 54 km/h", "250 m, 90 km/h"],
-//     ans: "200 m, 72 km/h"
-//   },
-//   {
-//     q: "Two trains are moving towards each other from stations 600 km apart. The first train travels at 80 km/h and the second at 70 km/h. After 2 hours, the first train stops for 30 minutes while the second continues moving. How much time from the start will they take to meet?",
-//     options: ["4 hours", "4 hours 15 minutes", "4 hours 30 minutes", "5 hours"],
-//     ans: "4 hours 15 minutes"
-//   }
-// ];
-//     const questions = [
-//   {
-//     q: "A, B and C invest in a business in the ratio 3:4:5. After 3 months, A doubles his investment; after 6 months, B withdraws half his investment; after 8 months, C withdraws 40% of his investment. If the annual profit is ₹55,200, what is B's share?",
-//     options: ["₹14,400", "₹15,600", "₹16,800", "₹18,000"],
-//     ans: "₹16,800"
-//   },
-//   {
-//     q: "Find the least number which when divided by 16, 20, 24 and 30 leaves remainders 9, 13, 17 and 23 respectively.",
-//     options: ["233", "249", "289", "313"],
-//     ans: "233"
-//   },
-//   {
-//     q: "A number is increased by 30% and then reduced by x%. If the final value is 9% greater than the original value, find x.",
-//     options: ["15%", "16.15%", "17%", "18%"],
-//     ans: "16.15%"
-//   },
-//   {
-//     q: "A work is completed by 16 men in 25 days working 8 hours daily. After 5 days, the work is increased by 20%. If 4 men leave and the remaining men work 10 hours daily, how many total days are required to complete the work?",
-//     options: ["25 days", "27 days", "29 days", "31 days"],
-//     ans: "29 days"
-//   },
-//   {
-//     q: "The HCF of two numbers is 14 and their LCM is 840. If one number is 70, find the other number.",
-//     options: ["140", "154", "168", "180"],
-//     ans: "168"
-//   },
-//   {
-//     q: "A person's expenditure is 80% of his income. His income increases by 25% and expenditure increases by 20%. If his savings increase by ₹6,000, find his original income.",
-//     options: ["₹40,000", "₹45,000", "₹50,000", "₹60,000"],
-//     ans: "₹40,000"
-//   },
-//   {
-//     q: "A factory has 24 workers who can complete an order in 18 days working 7 hours daily. After 6 days, 25% of the remaining work is cancelled. If only 18 workers remain and they work 8 hours daily, how many additional days are needed?",
-//     options: ["8 days", "9 days", "10 days", "12 days"],
-//     ans: "9 days"
-//   },
-//   {
-//     q: "Three numbers are in the ratio 2:3:5 and their HCF is 14. What is their LCM?",
-//     options: ["210", "420", "630", "840"],
-//     ans: "420"
-//   },
-//   {
-//     q: "A trader sells two articles at the same selling price. On one he gains 20% and on the other he loses 20%. If the difference between their cost prices is ₹600, what is the total cost price of both articles?",
-//     options: ["₹7,200", "₹7,500", "₹7,800", "₹8,000"],
-//     ans: "₹7,500"
-//   }
-//         ,
-//   {
-//     q: "A contractor planned to complete a project in 36 days using 48 workers working 7 hours per day. After 12 days, only 25% of the work was completed. He then increased the daily working hours to 8 and added 12 workers, but after another 8 days, 10% of the remaining work was found to be defective and had to be redone. How many more days are required to finish the project?",
-//     options: ["14 days", "16 days", "18 days", "20 days"],
-//     ans: "18 days"
-//   },
-//   {
-//     q: "The HCF of two positive integers is 18 and their LCM is 7560. If their difference is 342, what is the sum of the two numbers?",
-//     options: ["666", "702", "738", "774"],
-//     ans: "738"
-//   },
-//   {
-//     q: "A company's revenue increases by 40%, while its cost of production increases by 25%. Initially, the profit was 20% of the cost. If the original cost was ₹8,00,000, by what percentage does the profit increase?",
-//     options: ["85%", "90%", "100%", "110%"],
-//     ans: "100%"
-//   },
-//   {
-//     q: "A, B and C start a business with capitals in the ratio 5:6:8. After 4 months, A increases his capital by 40%, B withdraws 25% of his capital, and C withdraws 20%. After another 4 months, A withdraws 25% of his then capital while C doubles his remaining capital. If the total annual profit is ₹1,08,000, what is B's share?",
-//     options: ["₹30,000", "₹32,000", "₹34,000", "₹36,000"],
-//     ans: "₹32,000"
-//   },
-//   {
-//     q: "Find the smallest positive integer N such that when N is divided by 18, 24, 30 and 42, the remainders are respectively 7, 13, 19 and 31. If N is also divisible by 11, find N.",
-//     options: ["1519", "1739", "1959", "2179"],
-//     ans: "1739"
-//   },
-//   {
-//     q: "The population of a city increases by 20% in the first year, decreases by 15% in the second year, and increases by 25% in the third year. The population after three years is 25% greater than the original population. If the third-year increase was 30,000 people, what was the original population?",
-//     options: ["1,20,000", "1,25,000", "1,30,000", "1,50,000"],
-//     ans: "1,25,000"
-//   },
-//   {
-//     q: "18 men can complete a work in 24 days working 8 hours per day. After 8 days, 6 men leave. The remaining men increase their efficiency by 20% and work 9 hours per day. After 5 more days, 25% of the remaining work is assigned to another team of 8 men working at 75% of the original efficiency for 6 hours per day. How many additional days are required for the two teams together to finish the remaining work?",
-//     options: ["5 days", "6 days", "7 days", "8 days"],
-//     ans: "6 days"
-//   },
-//   {
-//     q: "Two numbers are in the ratio 7:11. Their HCF is 24 and their LCM is 1848. If 6 is added to each number, their HCF becomes 30. What is the difference between the original numbers?",
-//     options: ["72", "84", "96", "108"],
-//     ans: "96"
-//   },
-//   {
-//     q: "A trader purchases an article at a 20% discount on its marked price. He spends 10% of the purchase price on transportation and then sells the article at a 25% profit on his total cost. If the marked price is increased by 20% while the discount is changed to 25%, what percentage change in the final selling price is required to maintain the same profit amount?",
-//     options: ["8%", "10%", "12.5%", "15%"],
-//     ans: "10%"
-//   },
-//   {
-//     q: "A and B enter into a partnership. A invests ₹80,000 for 9 months. B invests ₹1,20,000 initially, withdraws 25% after 4 months, and invests an additional ₹30,000 after another 3 months. If the total profit is ₹67,500, what is A's share?",
-//     options: ["₹27,000", "₹30,000", "₹31,500", "₹33,750"],
-//     ans: "₹30,000"
-//   },
-//   {
-//     q: "Find the least number which leaves remainder 5 when divided by 12, remainder 11 when divided by 16, remainder 17 when divided by 22, and remainder 23 when divided by 28.",
-//     options: ["347", "443", "539", "635"],
-//     ans: "443"
-//   },
-//   {
-//     q: "A person's income consists of salary and commission. Salary is 60% of his income. His salary increases by 25%, while commission decreases by 10%. His total income therefore increases by ₹4,500. What was his original income?",
-//     options: ["₹36,000", "₹40,000", "₹45,000", "₹50,000"],
-//     ans: "₹40,000"
-//   },
-//   {
-//     q: "A machine can manufacture 1,200 units in 10 hours using 5 operators. A second machine is 25% more efficient per hour but requires 8 operators. If both machines operate together for 6 hours, and after 2 hours the efficiency of the first machine falls by 20%, how many total units are produced?",
-//     options: ["1,420", "1,480", "1,520", "1,560"],
-//     ans: "1,480"
-//   },
-//   {
-//     q: "The HCF of three numbers is 16 and their LCM is 17,280. Two of the numbers are 144 and 192. If the third number is less than 500 and divisible by 16, how many possible values can the third number have?",
-//     options: ["2", "3", "4", "5"],
-//     ans: "3"
-//   },
-//   {
-//     q: "In an examination, 30% of the candidates failed in Mathematics, 25% failed in Physics, and 12% failed in both. If 1,848 candidates passed in both subjects, what was the total number of candidates?",
-//     options: ["2,400", "2,800", "3,000", "3,200"],
-//     ans: "2,800"
-//   },
-//   {
-//     q: "A, B and C invest in a business in the ratio 4:5:6. A keeps his investment for the entire year. B withdraws 20% after 5 months. C increases his investment by 50% after 4 months and withdraws 25% of the increased amount after another 4 months. If B receives ₹18,000 as profit, what is the total profit?",
-//     options: ["₹54,000", "₹60,000", "₹66,000", "₹72,000"],
-//     ans: "₹60,000"
-//   },
-//   {
-//     q: "Find the greatest number that divides 4387, 5731 and 7087 leaving remainders 7, 11 and 19 respectively.",
-//     options: ["24", "36", "48", "60"],
-//     ans: "48"
-//   },
-//   {
-//     q: "A commodity's price is increased by 30%. A consumer reduces consumption so that his expenditure increases by only 4%. Later, the price decreases by 20% from the increased price, while his consumption rises by 25% from the reduced level. Compared with the original expenditure, what is the final percentage change in expenditure?",
-//     options: ["0%", "2.5% increase", "4% increase", "5% decrease"],
-//     ans: "2.5% increase"
-//   },
-//   {
-//     q: "12 skilled workers can complete a project in 25 days working 8 hours per day. 8 unskilled workers have only 60% of the efficiency of a skilled worker. If 6 skilled workers and 12 unskilled workers work together for 10 hours daily, how many days are required to complete the project?",
-//     options: ["15 days", "16 days", "18 days", "20 days"],
-//     ans: "18 days"
-//   },
-//   {
-//     q: "Two numbers have HCF 21 and LCM 2310. If their sum is 231, find the smaller number.",
-//     options: ["63", "77", "84", "105"],
-//     ans: "77"
-//   },
-//   {
-//     q: "A trader buys 40 articles at ₹750 each. He sells 60% of them at a profit of 20% and the remaining at a loss of 10%. He pays a fixed transportation cost of ₹6,000. What percentage profit or loss does he make overall?",
-//     options: ["2% profit", "4% profit", "5% loss", "6% profit"],
-//     ans: "4% profit"
-//   },
-//   {
-//     q: "A work is to be completed by 30 men in 24 days. After 6 days, 20% of the work remains unfinished due to rework. The workers then increase their efficiency by 25%, but 5 workers leave. How many total days are required to complete the project?",
-//     options: ["24 days", "25 days", "26 days", "28 days"],
-//     ans: "26 days"
-//   },
-//   {
-//     q: "Find the smallest number which is divisible by 24, 36, 45 and 60 and is a perfect cube.",
-//     options: ["27,000", "54,000", "216,000", "270,000"],
-//     ans: "216,000"
-//   },
-//   {
-//     q: "A company's number of employees increases by 25%, but average salary decreases by 12%. If the total salary bill originally was ₹24,00,000 per month, what is the percentage change in the salary bill?",
-//     options: ["8% increase", "10% increase", "10% decrease", "12% increase"],
-//     ans: "10% increase"
-//   },
-//   {
-//     q: "A, B and C invest ₹60,000, ₹80,000 and ₹1,00,000 respectively. After 3 months, A doubles his capital. After 6 months, B withdraws ₹20,000 and C withdraws 20% of his capital. At the end of the year, B receives ₹8,000 less profit than C. What is the total profit?",
-//     options: ["₹72,000", "₹80,000", "₹88,000", "₹96,000"],
-//     ans: "₹88,000"
-//   },
-//   {
-//     q: "The HCF of two numbers is 12. Their product is 1,036,800 and their difference is 1,008. Find the LCM.",
-//     options: ["8,640", "9,600", "10,080", "11,520"],
-//     ans: "8,640"
-//   },
-//   {
-//     q: "A number is first increased by 15%, then decreased by 20%, then increased by 25%, and finally decreased by 10%. The final result is 8,100. What was the original number?",
-//     options: ["7,500", "8,000", "8,250", "9,000"],
-//     ans: "8,000"
-//   },
-//   {
-//     q: "A contractor uses 40 workers for 18 days, working 7 hours daily. After 5 days, 10 workers leave. The contractor increases the working hours by 2 hours per day and recruits workers whose efficiency is 80% of the original workers. If 5 such workers are recruited, how many additional days are needed?",
-//     options: ["10 days", "11 days", "12 days", "13 days"],
-//     ans: "12 days"
-//   },
-//   {
-//     q: "Three numbers are in the ratio 3:5:7. Their HCF is 18. If their LCM is increased by 25%, what will be the new LCM?",
-//     options: ["945", "1,008", "1,134", "1,260"],
-//     ans: "1,260"
-//   },
-//   {
-//     q: "The marked price of an article is 60% above its cost price. A shopkeeper gives two successive discounts of 15% and 20%. He then charges 5% GST on the discounted price. If the customer pays ₹8,568, what was the cost price?",
-//     options: ["₹7,000", "₹7,200", "₹7,500", "₹8,000"],
-//     ans: "₹7,500"
-//   },
-//   {
-//     q: "A, B and C can complete a work individually in 24, 36 and 48 days respectively. They work together for 6 days, after which A leaves. B and C work for another 8 days, after which B's efficiency decreases by 25%. How many more days will C alone require to finish the remaining work?",
-//     options: ["3 days", "4 days", "5 days", "6 days"],
-//     ans: "4 days"
-//   },
-//   {
-//     q: "Find the smallest positive integer which when divided by 15, 18, 24 and 32 leaves remainders 4, 7, 13 and 21 respectively, and is divisible by 7.",
-//     options: ["517", "697", "877", "1057"],
-//     ans: "697"
-//   },
-//   {
-//     q: "A population is increased by 10%, then 20%, and then decreased by 25%. The resulting population is 1,98,000. If 10,000 people had migrated into the city immediately before the final decrease, what was the population before the first increase?",
-//     options: ["1,80,000", "1,90,000", "2,00,000", "2,10,000"],
-//     ans: "2,00,000"
-//   },
-//   {
-//     q: "20 men can complete 40% of a project in 12 days working 8 hours per day. For the remaining project, 16 men work 10 hours daily for 8 days, after which 25% of the remaining work is completed by another team. How many man-hours of work still remain?",
-//     options: ["4,800", "5,120", "5,760", "6,400"],
-//     ans: "5,760"
-//   },
-//   {
-//     q: "The HCF of two numbers is 16 and their LCM is 3,360. If one number is 224, what is the other number?",
-//     options: ["192", "240", "256", "280"],
-//     ans: "240"
-//   },
-//   {
-//     q: "A person spends 70% of his income. His income increases by 20%, while his expenditure increases by 15%. If his savings increase by ₹7,000, what was his original income?",
-//     options: ["₹50,000", "₹60,000", "₹70,000", "₹80,000"],
-//     ans: "₹70,000"
-//   },
-//   {
-//     q: "A, B and C invest capitals in the ratio 3:4:5. A invests for 12 months, B for 9 months, and C for 6 months. A then transfers 20% of his capital to C for the final 3 months. If C's profit is ₹18,000, what is the total profit?",
-//     options: ["₹54,000", "₹60,000", "₹66,000", "₹72,000"],
-//     ans: "₹60,000"
-//   },
-//   {
-//     q: "Find the greatest number which divides 1001, 2003 and 4007 leaving the same remainder in all three cases.",
-//     options: ["2", "4", "6", "8"],
-//     ans: "2"
-//   },
-//   {
-//     q: "An article is sold at a 25% profit. If both the cost price and selling price are increased by ₹400, the profit percentage becomes 20%. Find the original cost price.",
-//     options: ["₹1,600", "₹1,800", "₹2,000", "₹2,400"],
-//     ans: "₹2,000"
-//   },
-//   {
-//     q: "A team of 15 workers can complete a project in 32 days. After 8 days, 5 workers leave. The remaining workers work 25% longer hours and improve their efficiency by 10%. How many total days will the project take?",
-//     options: ["27 days", "28 days", "29 days", "30 days"],
-//     ans: "29 days"
-//   },
-//   {
-//     q: "The LCM of two numbers is 4,620 and their HCF is 14. If one number is 210, find the other number.",
-//     options: ["264", "286", "308", "330"],
-//     ans: "308"
-//   },
-//   {
-//     q: "A trader marks an article 80% above cost price. He gives a discount of 25%, followed by another discount of 10%. If the article is sold for ₹4,860, what is the cost price?",
-//     options: ["₹3,600", "₹4,000", "₹4,200", "₹4,500"],
-//     ans: "₹4,000"
-//   },
-//   {
-//     q: "A project requires 9,600 man-hours. 40 workers work for 6 hours daily for 20 days. During the first 8 days, their efficiency is 20% below normal; during the remaining days, efficiency is 25% above normal. How many man-hours of work remain after 20 days?",
-//     options: ["1,200", "1,280", "1,360", "1,440"],
-//     ans: "1,280"
-//   },
-//   {
-//     q: "Find the least number which when divided by 20, 28, 36 and 45 leaves remainders 13, 21, 29 and 38 respectively, and is exactly divisible by 17.",
-//     options: ["1,393", "1,573", "1,753", "1,933"],
-//     ans: "1,573"
-//   },
-//   {
-//     q: "A salary is increased by 20%, then decreased by 10%, then increased by 25%. The employee's final salary is ₹79,200. If 10% of the final salary is deducted as tax, what percentage of the original salary does the post-tax salary represent?",
-//     options: ["99%", "108%", "110%", "112.5%"],
-//     ans: "108%"
-//   },
-//   {
-//     q: "A, B and C start a business with investments of ₹90,000, ₹1,20,000 and ₹1,50,000. After 4 months, A withdraws one-third of his capital. After 6 months, B doubles his capital. After 8 months, C withdraws 40% of his capital. If the final profit is ₹1,02,000, what is A's share?",
-//     options: ["₹18,000", "₹20,000", "₹22,000", "₹24,000"],
-//     ans: "₹20,000"
-//   },
-//   {
-//     q: "The HCF of three numbers is 24. Their ratio is 5:7:11 and their LCM is 9,240. If each number is increased by 24, what is the HCF of the resulting numbers?",
-//     options: ["24", "36", "48", "60"],
-//     ans: "48"
-//   },
-//   {
-//     q: "A product's price is increased by 25%. The seller then offers a discount of 12%. If the original selling price was ₹5,000, what is the percentage change in the new selling price?",
-//     options: ["10% increase", "12% increase", "15% increase", "18% increase"],
-//     ans: "10% increase"
-//   },
-//   {
-//     q: "A work can be completed by 24 men in 30 days working 8 hours daily. After 10 days, 25% of the completed work is rejected and must be redone. The remaining workers increase their efficiency by 20%, but 6 workers leave. If they work 10 hours daily, how many more days are required?",
-//     options: ["15 days", "16 days", "18 days", "20 days"],
-//     ans: "18 days"
-//   },
-//   {
-//     q: "Two numbers have HCF 18 and LCM 1,620. If their sum is 414, find the difference between them.",
-//     options: ["126", "144", "162", "180"],
-//     ans: "162"
-//   },
-//   {
-//     q: "In a company, 40% of employees are in department A, 35% in B, and the rest in C. The number of employees in A increases by 25%, B decreases by 20%, and C increases by 50%. If the total workforce increases by 11%, what percentage of the original workforce was in department C?",
-//     options: ["20%", "25%", "30%", "35%"],
-//     ans: "30%"
-//   },
-//   {
-//     q: "A contractor planned to employ 60 workers for 30 days. After 10 days, he realizes that 35% of the work is complete. He dismisses 10 workers and increases the efficiency of each remaining worker by 25%. How many days from the start will the project take?",
-//     options: ["27 days", "28 days", "29 days", "30 days"],
-//     ans: "29 days"
-//   },
-//   {
-//     q: "Find the smallest number which is divisible by 18, 24, 40 and 45 and is also a perfect square and a multiple of 11.",
-//     options: ["19,800", "39,600", "79,200", "158,400"],
-//     ans: "39,600"
-//   },
-//   {
-//     q: "A person's expenditure is 75% of income. His income increases by 16%, expenditure increases by 12%, and he additionally saves ₹2,400 from a reduction in unnecessary expenses. If his final savings are ₹20,400, what was his original income?",
-//     options: ["₹48,000", "₹50,000", "₹52,000", "₹54,000"],
-//     ans: "₹50,000"
-//   },
-//   {
-//     q: "A, B and C invest ₹50,000, ₹75,000 and ₹1,00,000 respectively. A invests for 12 months, B for 8 months and C for 6 months. After 6 months, B transfers 20% of his capital to C. If the total profit is ₹72,000, what is C's share?",
-//     options: ["₹27,000", "₹30,000", "₹32,000", "₹36,000"],
-//     ans: "₹30,000"
-//   },
-//   {
-//     q: "The HCF of two numbers is 25 and their LCM is 7,500. If their difference is 250, find the sum of the numbers.",
-//     options: ["750", "800", "850", "900"],
-//     ans: "850"
-//   },
-//   {
-//     q: "A commodity is sold after two successive discounts of 20% and 15%. The shopkeeper still makes a profit of 2%. If the marked price is ₹12,750, what was the cost price?",
-//     options: ["₹8,000", "₹8,250", "₹8,500", "₹8,750"],
-//     ans: "₹8,500"
-//   }
-// ];
-//  const questions =  [
-// {
-//   q: "A train 240 m long crosses a bridge in 24 seconds and a platform in 18 seconds. If another train, 360 m long, travels at a speed 20% higher than the first train, then the time taken by the second train to cross a platform equal to the bridge is:",
-//   options: ["20 s", "21 s", "22 s", "24 s"],
-//   ans: "22 s"
-// },
-// {
-//   q: "A boat travels 36 km downstream and 24 km upstream in 5 hours. In another trip it travels 48 km downstream and 16 km upstream in 4 hours. The speed of the current is:",
-//   options: ["1 km/h", "2 km/h", "3 km/h", "4 km/h"],
-//   ans: "2 km/h"
-// },
-// {
-//   q: "A car covers the first 40% of a journey at 60 km/h, the next 30% at 80 km/h and the remaining distance at 120 km/h. If the total distance is 300 km, the average speed for the entire journey is:",
-//   options: ["78.75 km/h", "79.50 km/h", "80.00 km/h", "81.25 km/h"],
-//   ans: "79.50 km/h"
-// },
-// {
-//   q: "Two trains of lengths 180 m and 220 m moving in opposite directions cross each other in 10 seconds. If the faster train is moving at 72 km/h, the speed of the slower train is:",
-//   options: ["54 km/h", "60 km/h", "66 km/h", "72 km/h"],
-//   ans: "72 km/h"
-// },
-// {
-//   q: "A man rows 12 km upstream and 18 km downstream in 4 hours 30 minutes. If he rows 30 km downstream and 15 km upstream in 5 hours, then his speed in still water is:",
-//   options: ["8 km/h", "9 km/h", "10 km/h", "11 km/h"],
-//   ans: "10 km/h"
-// },
-// {
-//   q: "A train running at 90 km/h crosses a signal post in 12 seconds. How long will it take to cross a tunnel 650 m long?",
-//   options: ["34 s", "36 s", "38 s", "40 s"],
-//   ans: "38 s"
-// },
-// {
-//   q: "A cyclist rides from A to B at 20 km/h and returns from B to A at 30 km/h. If he stops for 15 minutes at B and the total time for the round trip is 5 hours 15 minutes, the distance between A and B is:",
-//   options: ["54 km", "57 km", "60 km", "63 km"],
-//   ans: "60 km"
-// },
-// {
-//   q: "A boat covers a certain distance downstream in 3 hours. The same distance upstream takes 5 hours. If the speed of the current is 3 km/h, the distance is:",
-//   options: ["45 km", "48 km", "54 km", "60 km"],
-//   ans: "45 km"
-// },
-// {
-//   q: "Two trains start simultaneously from stations A and B towards each other. They meet after 4 hours. If the train from A is 20% faster than the train from B and the distance between A and B is 792 km, then the speed of the train from A is:",
-//   options: ["102 km/h", "108 km/h", "114 km/h", "120 km/h"],
-//   ans: "108 km/h"
-// },
-// {
-//   q: "A person walks the first 12 km at 4 km/h, the next 18 km at 6 km/h and the last 20 km at 5 km/h. His average speed for the whole journey is:",
-//   options: ["4.92 km/h", "5.00 km/h", "5.08 km/h", "5.20 km/h"],
-//   ans: "5.00 km/h"
-// },
-//     {
-//   q: "A train 300 m long crosses a platform in 20 seconds and another platform in 32 seconds. If the difference in platform lengths is 240 m, then the speed of the train is:",
-//   options: ["45 km/h", "54 km/h", "60 km/h", "72 km/h"],
-//   ans: "54 km/h"
-// },
-// {
-//   q: "A boat travels 40 km downstream and 24 km upstream in 4 hours 48 minutes. If the current speed increases by 2 km/h, the same trip takes 4 hours 16 minutes. The original speed of the current is:",
-//   options: ["2 km/h", "3 km/h", "4 km/h", "5 km/h"],
-//   ans: "3 km/h"
-// },
-// {
-//   q: "A car covers half of a distance at 50 km/h and the remaining half at 75 km/h. If the total distance is 300 km, the total time taken is:",
-//   options: ["4 h 30 min", "4 h 48 min", "5 h", "5 h 12 min"],
-//   ans: "5 h"
-// },
-// {
-//   q: "Two trains of equal length moving in the same direction at 72 km/h and 54 km/h cross a platform of length 240 m in 30 seconds and 40 seconds respectively. The length of each train is:",
-//   options: ["300 m", "330 m", "360 m", "420 m"],
-//   ans: "360 m"
-// },
-// {
-//   q: "A motorboat can travel 84 km downstream in the same time in which it travels 60 km upstream. If the speed of the stream is 3 km/h, the speed of the boat in still water is:",
-//   options: ["15 km/h", "18 km/h", "21 km/h", "24 km/h"],
-//   ans: "18 km/h"
-// },
-// {
-//   q: "A train 210 m long crosses a man walking at 6 km/h in the opposite direction in 9 seconds. The same train crosses a platform 390 m long in 24 seconds. The speed of the train is:",
-//   options: ["78 km/h", "84 km/h", "90 km/h", "96 km/h"],
-//   ans: "84 km/h"
-// },
-// {
-//   q: "A boat travels 56 km downstream and returns upstream over the same distance. The total time taken is 16 hours. If the speed of the current is 2 km/h, the speed of the boat in still water is:",
-//   options: ["6 km/h", "8 km/h", "10 km/h", "12 km/h"],
-//   ans: "8 km/h"
-// },
-// {
-//   q: "A person covers one-third of a journey at 40 km/h, one-fourth at 60 km/h and the remaining distance at 80 km/h. If the total distance is 480 km, the average speed is:",
-//   options: ["58 km/h", "60 km/h", "62 km/h", "64 km/h"],
-//   ans: "60 km/h"
-// },
-// {
-//   q: "Two trains of lengths 180 m and 240 m are moving in opposite directions at speeds of 54 km/h and 72 km/h. The time taken to cross each other completely is:",
-//   options: ["10 s", "11 s", "12 s", "14 s"],
-//   ans: "12 s"
-// },
-// {
-//   q: "A boat travels 18 km upstream in the same time that it travels 30 km downstream. If the speed of the stream is 2 km/h, then the speed of the boat in still water is:",
-//   options: ["6 km/h", "7 km/h", "8 km/h", "10 km/h"],
-//   ans: "8 km/h"
-//     },
-//     {
-//   q: "A train crosses a signal post in 15 seconds and a bridge 450 m long in 33 seconds. If the speed of the train is 72 km/h, the length of the train is:",
-//   options: ["240 m", "300 m", "360 m", "420 m"],
-//   ans: "300 m"
-// },
-// {
-//   q: "A car covers the first 150 km at 50 km/h and the next 150 km at 75 km/h. The average speed for the entire journey is:",
-//   options: ["58 km/h", "60 km/h", "62.5 km/h", "64 km/h"],
-//   ans: "60 km/h"
-// },
-// {
-//   q: "Two trains start simultaneously from stations 720 km apart and move towards each other. One travels at 80 km/h while the other travels at 100 km/h. They meet after:",
-//   options: ["3 h 30 min", "4 h", "4 h 30 min", "5 h"],
-//   ans: "4 h"
-// },
-// {
-//   q: "A boat covers 24 km downstream in 2 hours and the same distance upstream in 3 hours. The speed of the current is:",
-//   options: ["1 km/h", "2 km/h", "3 km/h", "4 km/h"],
-//   ans: "2 km/h"
-// },
-// {
-//   q: "A train 320 m long moving at 90 km/h overtakes another train 180 m long moving at 54 km/h. The time taken to completely overtake is:",
-//   options: ["45 s", "50 s", "55 s", "60 s"],
-//   ans: "50 s"
-// },
-// {
-//   q: "A man walks 15 km at 5 km/h and another 25 km at 10 km/h. His average speed is:",
-//   options: ["7 km/h", "7.5 km/h", "8 km/h", "8.5 km/h"],
-//   ans: "8 km/h"
-// },
-// {
-//   q: "A boat goes 48 km downstream in 3 hours and returns upstream in 6 hours. The speed of the boat in still water is:",
-//   options: ["10 km/h", "11 km/h", "12 km/h", "14 km/h"],
-//   ans: "12 km/h"
-// },
-// {
-//   q: "Two trains of equal lengths moving in opposite directions at 60 km/h and 84 km/h cross each other in 15 seconds. The length of each train is:",
-//   options: ["120 m", "150 m", "180 m", "210 m"],
-//   ans: "150 m"
-// },
-// {
-//   q: "A car covers 360 km. It travels the first half at 60 km/h and the second half at 90 km/h. The average speed is:",
-//   options: ["70 km/h", "72 km/h", "75 km/h", "78 km/h"],
-//   ans: "72 km/h"
-// },
-// {
-//   q: "A boat can travel 72 km downstream in the same time that it travels 48 km upstream. If the speed of the stream is 3 km/h, the speed of the boat in still water is:",
-//   options: ["12 km/h", "15 km/h", "18 km/h", "21 km/h"],
-//   ans: "15 km/h"
-// }
-// ]
-   /*  [
-  {
-    "q": "A shopkeeper marks goods 60% above CP and gives successive discounts of 20% and 10%. If SP = 1152, find CP.",
-    "options": ["1000", "900", "800", "1200"],
-    "ans": "1000"
-  },
-  {
-    "q": "A’s age is 3 times B. 10 years ago, ratio was 5:2. Find present ages.",
-    "options": ["A=45, B=15", "A=36, B=12", "A=30, B=10", "A=42, B=14"],
-    "ans": "A=45, B=15"
-  },
-  {
-    "q": "Price increases by 25% and consumption decreases by 20%. Find net change in expenditure.",
-    "options": ["No change", "5% increase", "5% decrease", "10% increase"],
-    "ans": "No change"
-  },
-  {
-    "q": "Milk and water in ratio 5:3. 16L removed and replaced with water → ratio becomes 1:1. Find initial quantity.",
-    "options": ["64L", "80L", "96L", "72L"],
-    "ans": "80L"
-  },
-  {
-    "q": "Rice mixed in ratio 3:2 with prices 40 and 60. Sold at 20% profit. Find SP per kg.",
-    "options": ["60", "72", "66", "68"],
-    "ans": "60"
-  },
-  {
-    "q": "A sells at 20% profit. If CP reduced by 25% and SP increased by 10%, profit becomes 50%. Find CP.",
-    "options": ["400", "500", "600", "450"],
-    "ans": "500"
-  },
-  {
-    "q": "Sum of ages of A and B is 50. 10 years ago ratio was 3:2. Find A.",
-    "options": ["30", "28", "32", "26"],
-    "ans": "30"
-  },
-  {
-    "q": "A mixture of 60L contains 30% alcohol. 20L removed and replaced with pure alcohol twice. Find final %. ",
-    "options": ["65%", "62%", "63%", "64%"],
-    "ans": "63%"
-  },
-  {
-    "q": "Marked price = 2500. Discounts 10%, 20%, 10%. Final SP = 1620. Find CP if profit = 8%.",
-    "options": ["1500", "1400", "1350", "1300"],
-    "ans": "1500"
-  },
-  {
-    "q": "Father is 4 times son. After 15 years, ratio becomes 2:1. Find father's age.",
-    "options": ["60", "50", "45", "55"],
-    "ans": "60"
-  },
-
-  {
-    "q": "Trader gives 20% discount and gains 25%. CP = 800. Find MP.",
-    "options": ["1250", "1200", "1300", "1400"],
-    "ans": "1250"
-  },
-  {
-    "q": "Mixture has 40% milk. 10L removed and replaced twice → milk becomes 25.6%. Find total.",
-    "options": ["50L", "40L", "60L", "80L"],
-    "ans": "50L"
-  },
-  {
-    "q": "Income = 1000, saving = 200. Income ↑20%, expenditure ↑15%. Find new saving.",
-    "options": ["350", "300", "320", "280"],
-    "ans": "350"
-  },
-  {
-    "q": "A is twice B. 5 years ago ratio was 3:1. Find present ages.",
-    "options": ["A=40, B=20", "A=30, B=15", "A=20, B=10", "A=50, B=25"],
-    "ans": "A=40, B=20"
-  },
-  {
-    "q": "CP increases 25% but SP same. Initial profit = 20%. New profit %?",
-    "options": ["-4%", "0%", "5%", "10%"],
-    "ans": "-4%"
-  },
-  {
-    "q": "Buys 20 articles for 15 and sells 15 for 20. Find profit %. ",
-    "options": ["77.77%", "66.66%", "80%", "75%"],
-    "ans": "77.77%"
-
-     // [
-          },
-  {
-    "q": "100L mixture ratio 7:3. 20L removed and replaced with water. Find new ratio.",
-    "options": ["14:6", "21:19", "5:3", "6:4"],
-    "ans": "14:6"
-  },
-  {
-    "q": "Population: +10%, +20%, then -10%. Net change?",
-    "options": ["18.8% increase", "20%", "15%", "17%"],
-    "ans": "18.8% increase"
-  },
-  {
-    "q": "Bought at 20% discount, sold at MP. Find profit %. ",
-    "options": ["25%", "20%", "30%", "15%"],
-    "ans": "25%"
-  },
-  {
-    "q": "Ratio of ages 5:3. After 8 years → 7:5. Find A.",
-    "options": ["25", "35", "30", "40"],
-    "ans": "40"
-  }
-];*/
-//   { "q": "Profit is 40% and CP is 250. Find SP.", "options": ["300", "325", "350", "360"], "ans": "350" },
-//   { "q": "A number increased by 10% then 20%. Net increase?", "options": ["30%", "32%", "28%", "35%"], "ans": "32%" },
-//   { "q": "A:B = 3:4 and B:C = 5:6. If A = 15, find C.", "options": ["20", "24", "30", "36"], "ans": "30" },
-//   { "q": "Loss is 20% and CP is 400. Find SP.", "options": ["300", "320", "350", "360"], "ans": "320" },
-//   { "q": "Difference of ages is 8 and ratio is 3:5. Find younger.", "options": ["10", "12", "16", "20"], "ans": "10" },
-//   { "q": "Price decreases by 10%. How much should consumption increase to keep expenditure same?", "options": ["10%", "11.11%", "9%", "12%"], "ans": "11.11%" },
-//   { "q": "CP = 800 with 20% loss. Find SP.", "options": ["600", "640", "700", "720"], "ans": "640" },
-//   { "q": "A is 25% more than B. B is what percent less than A?", "options": ["20%", "25%", "30%", "15%"], "ans": "20%" },
-//   { "q": "Ratio of father and son is 7:2. After 10 years it becomes 9:4. Find father's age.", "options": ["35", "42", "49", "56"], "ans": "49" },
-//   { "q": "MP = 1000, discount 20%, profit 25%. Find CP.", "options": ["600", "640", "700", "750"], "ans": "640" },
-//   { "q": "A's age after 10 years is twice his age 10 years ago. Find present age.", "options": ["10", "15", "20", "25"], "ans": "20" },
-//   { "q": "Profit is 25% and SP is 250. Find CP.", "options": ["150", "180", "200", "220"], "ans": "200" },
-//   { "q": "A number becomes 150 after 25% increase. Find original.", "options": ["100", "110", "120", "130"], "ans": "120" },
-//   { "q": "Father is 5 times son. After 10 years he becomes 3 times. Find son.", "options": ["5", "10", "15", "20"], "ans": "10" },
-//   { "q": "CP = 500 and SP = 600. Find profit percent.", "options": ["10%", "15%", "20%", "25%"], "ans": "20%" },
-//   { "q": "A is 3 years older than B and B is twice C. Sum is 27. Find C.", "options": ["3", "4", "5", "6"], "ans": "4" },
-//   { "q": "A number increased by 50% then decreased by 50%. Result?", "options": ["Same", "-25%", "+25%", "-50%"], "ans": "-25%" },
-//   { "q": "MP = 500, discount 10%, profit 20%. Find CP.", "options": ["300", "350", "375", "400"], "ans": "375" },
-//   { "q": "Sum of ages of A and B is 40. After 5 years ratio becomes 3:2. Find A.", "options": ["24", "26", "28", "30"], "ans": "28" },
-//   { "q": "25% of a number is 50. Find number.", "options": ["150", "200", "250", "300"], "ans": "200" },
-
-//   { "q": "Profit is 33.33% and CP is 300. Find SP.", "options": ["350", "375", "400", "450"], "ans": "400" },
-//   { "q": "Sum of three persons is 72 and ratio is 2:3:4. Find youngest.", "options": ["12", "16", "18", "20"], "ans": "16" },
-//   { "q": "Marked price is 1000 with 20% discount. Find SP.", "options": ["700", "750", "800", "850"], "ans": "800" },
-//   { "q": "Population increases by 20% then decreases by 25%. Net change?", "options": ["0%", "-5%", "+5%", "-10%"], "ans": "0%" },
-//   { "q": "A is 6 years older than B. After 6 years ratio is 4:3. Find B.", "options": ["12", "18", "24", "30"], "ans": "18" },
-//   { "q": "Profit is 50% and SP is 450. Find CP.", "options": ["250", "300", "350", "400"], "ans": "300" },
-//   { "q": "A:B = 4:5. After 8 years ratio becomes 6:7. Find A.", "options": ["16", "24", "32", "40"], "ans": "24" },
-//   { "q": "60% of x is 90. Find x.", "options": ["120", "150", "180", "200"], "ans": "150" },
-//   { "q": "Loss is 25% and SP is 300. Find CP.", "options": ["350", "375", "400", "450"], "ans": "400" },
-//   { "q": "A is 50% more than B. B is what percent of A?", "options": ["66.66%", "75%", "50%", "80%"], "ans": "66.66%" },
-
-//   { "q": "Father is 4 times son. After 20 years he becomes twice. Find son's age.", "options": ["10", "12", "15", "20"], "ans": "10" },
-//   { "q": "Successive discounts of 10% and 20%. Net discount?", "options": ["30%", "28%", "32%", "25%"], "ans": "28%" },
-//   { "q": "Sold at 10% loss. CP = 1000. Find SP.", "options": ["800", "850", "900", "950"], "ans": "900" },
-//   { "q": "Ratio becomes 6:5 after 20% increase. Find original ratio.", "options": ["5:4", "4:3", "3:2", "2:1"], "ans": "5:4" },
-//   { "q": "A is 25% younger than B. If B is 40, find A.", "options": ["25", "30", "32", "35"], "ans": "30" },
-//   { "q": "A is twice B. After 10 years ratio becomes 3:2. Find B.", "options": ["10", "15", "20", "25"], "ans": "15" },
-//   { "q": "Profit is 10% and SP is 550. Find CP.", "options": ["450", "500", "520", "530"], "ans": "500" },
-//   { "q": "A number doubled then decreased by 50%. Result?", "options": ["Same", "Double", "Half", "Zero"], "ans": "Same" },
-//   { "q": "40% of A equals 60% of B. Find A:B.", "options": ["2:3", "3:2", "4:5", "5:4"], "ans": "3:2" },
-//   { "q": "Sum of ages is 50. Ratio before 5 years was 2:3. Find older.", "options": ["25", "30", "35", "40"], "ans": "35" },
-
-//   { "q": "Income increases by 10% and savings by 20%. What about expenditure?", "options": ["Increase", "Decrease", "Same", "Can't determine"], "ans": "Can't determine" },
-//   { "q": "A is 20% of B and B is 50. Find A.", "options": ["5", "10", "15", "20"], "ans": "10" },
-//   { "q": "A number decreased by 20% becomes 80. Find original.", "options": ["90", "100", "120", "110"], "ans": "100" },
-//   { "q": "MP = 800 with 25% discount. Find SP.", "options": ["500", "550", "600", "650"], "ans": "600" },
-//   { "q": "A number increased by 40% then decreased by 20%. Net change?", "options": ["+20%", "+12%", "+16%", "+10%"], "ans": "+12%" },
-//   { "q": "Father is 3 times son. After 15 years sum is 90. Find son.", "options": ["10", "12", "15", "18"], "ans": "15" },
-//   { "q": "Loss is 10% and SP is 450. Find CP.", "options": ["500", "550", "480", "520"], "ans": "500" },
-//   { "q": "30% of 200 + 20% of 300 equals?", "options": ["120", "150", "180", "200"], "ans": "120" },
-//   { "q": "Ratio of ages of A and B is 4:5. After 5 years it becomes 5:6. Find A's present age.", "options": ["20", "24", "25", "30"], "ans": "24" },
-//   { "q": "Difference is 12. After 6 years ratio becomes 5:7. Find younger.", "options": ["18", "24", "30", "36"], "ans": "18" },
-//  {
-//     "q": "A shopkeeper marks goods 50% above CP and gives a discount of 20%. Find profit %. ",
-//     "options": ["20%", "25%", "30%", "15%"],
-//     "ans": "20%"
-//   },
-//   {
-//     "q": "A’s age is 4 times B. After 10 years, A will be twice B. Find present age of B.",
-//     "options": ["10", "15", "20", "12"],
-//     "ans": "10"
-//   },
-//   {
-//     "q": "Price increases by 20% and consumption decreases by 10%. Find change in expenditure.",
-//     "options": ["8% increase", "10% increase", "5% increase", "2% decrease"],
-//     "ans": "8% increase"
-//   },
-//   {
-//     "q": "A mixture contains milk and water in ratio 4:1. 10L mixture removed and replaced with water → ratio becomes 3:2. Find total mixture.",
-//     "options": ["40L", "50L", "60L", "30L"],
-//     "ans": "40L"
-//   },
-//   {
-//     "q": "A sells an article at 20% profit. If he had sold it for 50 more, profit would be 30%. Find CP.",
-//     "options": ["500", "400", "600", "450"],
-//     "ans": "500"
-//   },
-//   {
-//     "q": "Income increases by 25% and expenditure increases by 20%. What happens to savings?",
-//     "options": ["Increase", "Decrease", "Same", "Cannot determine"],
-//     "ans": "Increase"
-//   },
-//   {
-//     "q": "A is 6 years older than B. 6 years ago, A was twice B. Find present age of B.",
-//     "options": ["6", "12", "18", "10"],
-//     "ans": "6"
-//   },
-//   {
-//     "q": "Two successive discounts of 30% and 20% are equivalent to single discount of?",
-//     "options": ["44%", "50%", "40%", "42%"],
-//     "ans": "44%"
-//   },
-//   {
-//     "q": "Milk is 75% in mixture. 10L removed and replaced with water → becomes 60%. Find total mixture.",
-//     "options": ["40L", "50L", "60L", "30L"],
-//     "ans": "40L"
-//   },
-//   {
-//     "q": "A trader mixes 10kg rice at 20/kg with 20kg rice at 40/kg. Find average price.",
-//     "options": ["33.33/kg", "30/kg", "35/kg", "32/kg"],
-//     "ans": "33.33/kg"
-//   }
-// ];
-  
-let totalTime = 0;
-let timerInterval = null;
-const timerElement = document.getElementById("timer");
-
-function startTimer() {
-    totalTime = Math.floor( (questions.length*1.5) * 60);
-
-    function updateTimer() {
-        let hours = Math.floor(totalTime / 3600);
-        let minutes = Math.floor((totalTime % 3600) / 60);
-        let seconds = totalTime % 60;
-
-        // Format to 2 digits
-        hours = hours < 10 ? "0" + hours : hours;
-        minutes = minutes < 10 ? "0" + minutes : minutes;
-        seconds = seconds < 10 ? "0" + seconds : seconds;
-
-        timerElement.innerText = hours + ":" + minutes + ":" + seconds;
-
-        if (totalTime > 0) {
-            totalTime--;
-        } else {
-            clearInterval(timerInterval);
-
-            if (!submitted) {
-                submitQuiz(); // AUTO SUBMIT
-                alert("Time's up! Quiz submitted.");
-            }
-        }
+    function showToast(message) {
+      $("toast").textContent = message;
+      $("toast").classList.remove("hidden");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => $("toast").classList.add("hidden"), 2400);
     }
 
-    updateTimer();
-    timerInterval = setInterval(updateTimer, 1000);
-}
-let current=0;
-let answers=new Array(questions.length).fill(null);
-let submitted=false;
+    function validEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
 
-const qText=document.getElementById("question");
-const optionsDiv=document.getElementById("options");
-const navGrid=document.getElementById("navGrid");
+    function saveProgress() {
+      if (state.submitted || !state.email) return;
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify({
+          email: state.email, current: state.current, answers: state.answers,
+          marked: state.marked, remainingSeconds: state.remainingSeconds,
+          startedAt: state.startedAt
+        }));
+      } catch (error) {
+        console.warn("Progress could not be saved in this browser.", error);
+      }
+    }
 
-function init(){
-document.getElementById("totalQ").innerText=questions.length;
-createNav();
-loadQuestion();
-startTimer();
-}
+    function restoreProgress(email) {
+      try {
+        const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+        if (!saved || saved.email.toLowerCase() !== email.toLowerCase()) return false;
+        if (!Array.isArray(saved.answers) || saved.answers.length !== questions.length) return false;
+        state.email = email;
+        state.current = Math.min(Math.max(Number(saved.current) || 0, 0), questions.length - 1);
+        state.answers = saved.answers.map((answer, i) =>
+          Number.isInteger(answer) && answer >= 0 && answer < questions[i].options.length ? answer : null
+        );
+        state.marked = Array.isArray(saved.marked) && saved.marked.length === questions.length
+          ? saved.marked.map(Boolean) : Array(questions.length).fill(false);
+        state.remainingSeconds = Math.max(0, Number(saved.remainingSeconds) || questions.length * 90);
+        state.startedAt = saved.startedAt || Date.now();
+        return true;
+      } catch {
+        return false;
+      }
+    }
 
-function createNav(){
-questions.forEach((q,i)=>{
-const box=document.createElement("div");
-box.className="nav-box";
-box.innerText=i+1;
-box.id="nav"+i;
-box.onclick=()=>jump(i);
-navGrid.appendChild(box);
-});
-}
+    function startQuiz() {
+      const email = $("userEmail").value.trim();
+      if (!validEmail(email)) {
+        $("userEmail").setCustomValidity("Enter a valid email address.");
+        $("userEmail").reportValidity();
+        $("userEmail").setCustomValidity("");
+        return;
+      }
+      const restored = restoreProgress(email);
+      if (!restored) {
+        state.email = email;
+        state.current = 0;
+        state.answers = Array(questions.length).fill(null);
+        state.marked = Array(questions.length).fill(false);
+        state.remainingSeconds = questions.length * 90;
+        state.startedAt = Date.now();
+      }
+      $("startScreen").classList.add("hidden");
+      $("quizScreen").classList.remove("hidden");
+      renderPalette();
+      renderQuestion();
+      updateProgress();
+      startTimer();
+      if (restored) showToast("Your previous progress has been restored.");
+    }
 
-function loadQuestion(){
-const q=questions[current];
-qText.innerText=(current+1)+". "+q.q;
-optionsDiv.innerHTML="";
+    function startTimer() {
+      updateTimer();
+      state.timerId = setInterval(() => {
+        if (state.submitted) return;
+        state.remainingSeconds = Math.max(0, state.remainingSeconds - 1);
+        updateTimer();
+        if (state.remainingSeconds % 5 === 0) saveProgress();
+        if (state.remainingSeconds === 0) finishQuiz(true);
+      }, 1000);
+    }
 
-q.options.forEach((opt,i)=>{
-const btn=document.createElement("div");
-btn.className="option";
-let text=opt;
+    function updateTimer() {
+      const mins = Math.floor(state.remainingSeconds / 60);
+      const secs = state.remainingSeconds % 60;
+      $("timer").querySelector("span").textContent =
+        `${String(mins).padStart(2,"0")}:${String(secs).padStart(2,"0")}`;
+      $("timer").classList.toggle("warning", state.remainingSeconds <= 300);
+    }
 
-if(submitted){
-if(opt===q.ans){
-btn.classList.add("correct");
-text+=" ✔";
-}
-if(answers[current]===i && opt!==q.ans){
-btn.classList.add("wrong");
-text+=" ✖";
-}
-}else{
-if(answers[current]===i){
-btn.classList.add("selected");
-}
-btn.onclick=()=>select(i);
-}
+    function renderQuestion() {
+      const q = questions[state.current];
+      $("questionCount").textContent = `QUESTION ${String(state.current + 1).padStart(2,"0")}`;
+      $("questionText").textContent = q.q;
+      $("options").replaceChildren();
+      q.options.forEach((option, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "option";
+        if (state.answers[state.current] === index) button.classList.add("selected");
+        button.innerHTML = `<span class="option-letter">${letters[index]}</span><span></span>`;
+        button.lastElementChild.textContent = option;
+        button.setAttribute("aria-pressed", state.answers[state.current] === index ? "true" : "false");
+        button.addEventListener("click", () => chooseAnswer(index));
+        $("options").appendChild(button);
+      });
+      $("markBtn").classList.toggle("active", state.marked[state.current]);
+      $("markBtn").textContent = state.marked[state.current] ? "★ Marked for review" : "☆ Mark for review";
+      $("prevBtn").disabled = state.current === 0;
+      $("nextBtn").textContent = state.current === questions.length - 1 ? "Finish →" : "Next →";
+      updateProgress();
+      updatePalette();
+    }
 
-btn.innerText=text;
-optionsDiv.appendChild(btn);
-});
+    function chooseAnswer(index) {
+      if (state.submitted) return;
+      state.answers[state.current] = index;
+      saveProgress();
+      renderQuestion();
+    }
 
-updateButtons();
-updateNav();
-}
+    function updateProgress() {
+      const answered = state.answers.filter(value => value !== null).length;
+      $("progressText").textContent = `Question ${state.current + 1} of ${questions.length}`;
+      $("answeredText").textContent = `${answered} answered`;
+      $("progressFill").style.width = `${(answered / questions.length) * 100}%`;
+      $("sideAnswered").textContent = answered;
+      $("sideRemaining").textContent = questions.length - answered;
+    }
 
-function select(i){
-answers[current]=i;
-loadQuestion();
-}
+    function renderPalette() {
+      $("navGrid").replaceChildren();
+      questions.forEach((_, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "nav-box";
+        button.textContent = index + 1;
+        button.addEventListener("click", () => {
+          state.current = index;
+          renderQuestion();
+          saveProgress();
+        });
+        $("navGrid").appendChild(button);
+      });
+      updatePalette();
+    }
 
-function updateButtons(){
-prevBtn.disabled=(current===0);
-if(current===questions.length-1){
-nextBtn.style.display="none";
-submitBtn.style.display="inline-block";
-}else{
-nextBtn.style.display="inline-block";
-submitBtn.style.display="none";
-}
-}
-
-function updateNav(){
-questions.forEach((q,i)=>{
-const box=document.getElementById("nav"+i);
-
-if(i===current){
-box.style.border="2px solid #4a90e2";
-}else{
-box.style.border="1px solid #ccc";
-}
-
-if(!submitted){
-if(answers[i]!==null){
-box.style.background="black";
-box.style.color="white";
-}else{
-box.style.background="white";
-box.style.color="black";
-}
-}else{
-if(answers[i]===null){
-box.style.background="#bdc3c7";
-}
-else if(questions[i].options[answers[i]]===q.ans){
-box.style.background="#27ae60";
-}
-else{
-box.style.background="#c0392b";
-}
-box.style.color="white";
-}
-
-box.onclick=()=>jump(i);
-});
-}
-
-function nextQuestion(){ current++; loadQuestion(); }
-function prevQuestion(){ current--; loadQuestion(); }
-function jump(i){ current=i; loadQuestion(); }
-
-function submitQuiz(){
-
-    clearInterval(timerInterval);
-
-    submitted = true;
-
-    document.getElementById("scorePanel").style.display = "block";
-
-    let attempted = 0,
-        correct = 0,
-        wrong = 0;
-
-    answers.forEach((a,i)=>{
-        if(a!==null){
-            attempted++;
-            if(questions[i].options[a]===questions[i].ans){
-                correct++;
-            }else{
-                wrong++;
-            }
+    function updatePalette() {
+      [...$("navGrid").children].forEach((button, index) => {
+        button.className = "nav-box";
+        if (state.submitted) {
+          const answer = state.answers[index];
+          button.classList.add(answer === null ? "unanswered" :
+            answer === questions[index].ans ? "correct" : "wrong");
+        } else if (state.answers[index] !== null) {
+          button.classList.add("answered");
         }
+        if (state.marked[index] && !state.submitted) button.classList.add("review");
+        if (index === state.current) button.classList.add("current");
+        button.setAttribute("aria-label", `Question ${index + 1}${state.answers[index] === null ? ", unanswered" : ", answered"}${state.marked[index] ? ", marked for review" : ""}`);
+      });
+    }
+
+    function goNext() {
+      if (state.current === questions.length - 1) {
+        finishQuiz(false);
+        return;
+      }
+      state.current++;
+      renderQuestion();
+      saveProgress();
+    }
+
+    function goPrevious() {
+      if (state.current > 0) {
+        state.current--;
+        renderQuestion();
+        saveProgress();
+      }
+    }
+
+    function toggleMark() {
+      state.marked[state.current] = !state.marked[state.current];
+      renderQuestion();
+      saveProgress();
+    }
+
+    function clearAnswer() {
+      state.answers[state.current] = null;
+      renderQuestion();
+      saveProgress();
+    }
+
+    function finishQuiz(autoSubmitted = false) {
+      if (state.submitted) return;
+      const unanswered = state.answers.filter(value => value === null).length;
+      if (!autoSubmitted && unanswered > 0) {
+        const confirmed = confirm(`You have ${unanswered} unanswered question(s). Submit the quiz anyway?`);
+        if (!confirmed) return;
+      }
+      state.submitted = true;
+      clearInterval(state.timerId);
+      localStorage.removeItem(STORAGE_KEY);
+
+      const attempted = state.answers.filter(value => value !== null).length;
+      const correct = state.answers.reduce((sum, answer, index) =>
+        sum + (answer !== null && answer === questions[index].ans ? 1 : 0), 0);
+      const wrong = attempted - correct;
+      const percentage = Math.round((correct / questions.length) * 100);
+      const skipped = questions.length - attempted;
+
+      $("quizScreen").classList.add("hidden");
+      $("resultScreen").classList.remove("hidden");
+      $("resultPercent").textContent = `${percentage}%`;
+      $("scoreRing").style.setProperty("--score", `${percentage}%`);
+      $("resultTotal").textContent = questions.length;
+      $("resultAttempted").textContent = attempted;
+      $("resultCorrect").textContent = correct;
+      $("resultWrong").textContent = wrong + skipped;
+      $("resultHeading").textContent = percentage >= 80 ? "Excellent work!" :
+        percentage >= 60 ? "Good effort!" : "Keep practising!";
+      $("resultSubheading").textContent = `${correct} correct, ${wrong} incorrect and ${skipped} unanswered.`;
+      buildReview();
+      sendResultEmail({ score: correct, total: questions.length, percentage, attempted, wrong, skipped, autoSubmitted });
+    }
+
+    function buildReview() {
+      $("reviewList").replaceChildren();
+      questions.forEach((q, index) => {
+        const answer = state.answers[index];
+        const correct = answer === q.ans;
+        const item = document.createElement("article");
+        item.className = "review-item";
+        const heading = document.createElement("h4");
+        heading.textContent = `${index + 1}. ${q.q}`;
+        const yourAnswer = document.createElement("p");
+        yourAnswer.className = correct ? "good" : "bad";
+        yourAnswer.textContent = `Your answer: ${answer === null ? "Not answered" : q.options[answer]}`;
+        const correctAnswer = document.createElement("p");
+        correctAnswer.className = "good";
+        correctAnswer.textContent = `Correct answer: ${q.options[q.ans]}`;
+        item.append(heading, yourAnswer, correctAnswer);
+        $("reviewList").appendChild(item);
+      });
+    }
+
+    async function sendResultEmail(result) {
+      if (!window.emailjs || !EMAILJS_CONFIG.publicKey || !EMAILJS_CONFIG.serviceId || !EMAILJS_CONFIG.templateId) {
+        $("emailStatus").textContent = "Email could not be sent because the EmailJS SDK or configuration is unavailable. Your result is still shown above.";
+        return;
+      }
+      $("emailStatus").textContent = `Sending your result to ${state.email}…`;
+      try {
+        emailjs.init({ publicKey: EMAILJS_CONFIG.publicKey });
+        await emailjs.send(EMAILJS_CONFIG.serviceId, EMAILJS_CONFIG.templateId, {
+          to_email: state.email,
+          score: result.score,
+          total: result.total,
+          percentage: `${result.percentage}%`,
+          attempted: result.attempted,
+          wrong: result.wrong,
+          unanswered: result.skipped
+        });
+        $("emailStatus").textContent = `Result email sent successfully to ${state.email}.`;
+      } catch (error) {
+        console.error("EmailJS send failed:", error);
+        $("emailStatus").textContent = "Your quiz was evaluated, but the result email could not be sent. Check the EmailJS service, template ID, public key, and the template variable named to_email, then try again.";
+      }
+    }
+
+    function restartQuiz() {
+      clearInterval(state.timerId);
+      localStorage.removeItem(STORAGE_KEY);
+      state.email = "";
+      state.current = 0;
+      state.answers = Array(questions.length).fill(null);
+      state.marked = Array(questions.length).fill(false);
+      state.submitted = false;
+      state.remainingSeconds = questions.length * 90;
+      state.startedAt = null;
+      $("resultScreen").classList.add("hidden");
+      $("quizScreen").classList.add("hidden");
+      $("startScreen").classList.remove("hidden");
+      $("userEmail").value = "";
+    }
+
+    $("startBtn").addEventListener("click", startQuiz);
+    $("userEmail").addEventListener("keydown", event => { if (event.key === "Enter") startQuiz(); });
+    $("prevBtn").addEventListener("click", goPrevious);
+    $("nextBtn").addEventListener("click", goNext);
+    $("submitBtn").addEventListener("click", () => finishQuiz(false));
+    $("markBtn").addEventListener("click", toggleMark);
+    $("clearBtn").addEventListener("click", clearAnswer);
+    $("printBtn").addEventListener("click", () => window.print());
+    $("restartBtn").addEventListener("click", restartQuiz);
+    $("reviewToggleBtn").addEventListener("click", () => {
+      $("reviewList").classList.toggle("hidden");
+      $("reviewToggleBtn").textContent = $("reviewList").classList.contains("hidden") ? "Show answer review" : "Hide answer review";
     });
-
-    let percentage = Math.round((correct/questions.length)*100);
-
-    document.getElementById("attemptedQ").innerText = attempted;
-    document.getElementById("correctQ").innerText = correct;
-    document.getElementById("wrongQ").innerText = wrong;
-    document.getElementById("percent").innerText = percentage + "%";
-
-    loadQuestion();
-    updateNav();
-
-    emailjs.send("service_ux4v0sa","template_z4lof68",{
-        to_email:userEmail,
-        score:correct,
-        total:questions.length,
-        percentage:percentage+"%"
+    $("themeBtn").addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      $("themeBtn").textContent = document.body.classList.contains("dark") ? "☀" : "☾";
+      localStorage.setItem("quizsphere_theme", document.body.classList.contains("dark") ? "dark" : "light");
     });
-}
-</script>
-
+    if (localStorage.getItem("quizsphere_theme") === "dark") {
+      document.body.classList.add("dark");
+      $("themeBtn").textContent = "☀";
+    }
+    document.addEventListener("keydown", event => {
+      if ($("quizScreen").classList.contains("hidden") || state.submitted) return;
+      if (["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) return;
+      if (["1", "2", "3", "4"].includes(event.key)) chooseAnswer(Number(event.key) - 1);
+      if (event.key === "ArrowRight") goNext();
+      if (event.key === "ArrowLeft") goPrevious();
+    });
+    window.addEventListener("beforeunload", saveProgress);
+  </script>
 </body>
 </html>
