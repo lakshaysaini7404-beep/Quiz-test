@@ -148,7 +148,7 @@
         <input class="email-input" type="email" id="userEmail" placeholder="you@example.com" autocomplete="email" required>
         <button class="primary-btn start-btn" id="startBtn" type="button">Start quiz <span aria-hidden="true">→</span></button>
         <div class="feature-row">
-          <span class="feature-pill">{questions.length} questions</span><span class="feature-pill">Timed assessment</span>
+          <span class="feature-pill" id="featureQuestionCount"></span><span class="feature-pill">Timed assessment</span>
           <span class="feature-pill">Instant evaluation</span><span class="feature-pill">Answer review</span>
         </div>
         <p style="font-size:11px;margin:20px 0 0">Your email is used only to send your quiz result. Do not use a shared device if you do not want your session retained in the browser.</p>
@@ -161,7 +161,7 @@
           <div><div class="eyebrow">Assessment in progress</div><h2>Math & Aptitude Quiz</h2></div>
           <div class="timer" id="timer" aria-live="off">◷ <span>--:--</span></div>
         </div>
-        <div class="progress-meta"><span id="progressText">Question 1 of 50</span><span id="answeredText">0 answered</span></div>
+        <div class="progress-meta"><span id="progressText">Question 1</span><span id="answeredText">0 answered</span></div>
         <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
         <div class="question-meta">
           <span class="question-count" id="questionCount">QUESTION 01</span>
@@ -179,7 +179,7 @@
         </div>
       </div>
       <aside class="card sidebar">
-        <div class="side-title"><h3>Question palette</h3><span id="paletteCount" style="font-size:11px;color:var(--muted)">50 total</span></div>
+        <div class="side-title"><h3>Question palette</h3><span id="paletteCount" style="font-size:11px;color:var(--muted)">0 total</span></div>
         <div class="legend">
           <span><i class="dot answered"></i> Answered</span><span><i class="dot review"></i> Review</span>
           <span><i class="dot current"></i> Current</span><span><i class="dot"></i> Unanswered</span>
@@ -187,7 +187,7 @@
         <div class="nav-grid" id="navGrid"></div>
         <div class="side-stats">
           <div class="mini-stat"><b id="sideAnswered">0</b><small>Answered</small></div>
-          <div class="mini-stat"><b id="sideRemaining">50</b><small>Remaining</small></div>
+          <div class="mini-stat"><b id="sideRemaining">0</b><small>Remaining</small></div>
         </div>
         <button class="primary-btn submit-side" id="submitBtn" type="button">Submit quiz</button>
       </aside>
@@ -202,7 +202,7 @@
           <div class="score-ring" id="scoreRing"><div><b id="resultPercent">0%</b><small>YOUR SCORE</small></div></div>
         </div>
         <div class="result-stats">
-          <div class="result-stat"><b id="resultTotal">50</b><small>Total questions</small></div>
+          <div class="result-stat"><b id="resultTotal">0</b><small>Total questions</small></div>
           <div class="result-stat"><b id="resultAttempted">0</b><small>Attempted</small></div>
           <div class="result-stat"><b id="resultCorrect" style="color:var(--green)">0</b><small>Correct</small></div>
           <div class="result-stat"><b id="resultWrong" style="color:var(--red)">0</b><small>Wrong / skipped</small></div>
@@ -397,6 +397,17 @@ const questions = [
     const letters = ["A", "B", "C", "D"];
     let toastTimer;
 
+    function updateQuestionTotals() {
+      const total = questions.length;
+      $("featureQuestionCount").textContent = `${total} questions`;
+      $("progressText").textContent = `Question 1 of ${total}`;
+      $("paletteCount").textContent = `${total} total`;
+      $("sideRemaining").textContent = total;
+      $("resultTotal").textContent = total;
+    }
+
+    updateQuestionTotals();
+
     function showToast(message) {
       $("toast").textContent = message;
       $("toast").classList.remove("hidden");
@@ -524,6 +535,7 @@ const questions = [
       $("progressFill").style.width = `${(answered / questions.length) * 100}%`;
       $("sideAnswered").textContent = answered;
       $("sideRemaining").textContent = questions.length - answered;
+      $("paletteCount").textContent = `${questions.length} total`;
     }
 
     function renderPalette() {
