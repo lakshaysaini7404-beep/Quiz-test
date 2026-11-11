@@ -227,164 +227,535 @@
       templateId: "template_z4lof68"
     };
 
-    
+   
 const questions = [
+  // QUANTITATIVE APTITUDE
+
+  // 1. Percentage
   {
-    "q": "A trader marks an article 80% above its cost price. He gives successive discounts of 20% and 10%. He also uses a weight of 900 g instead of 1 kg while selling. If his actual profit is ₹2,200, find the cost price of 1 kg of the article.",
-    "options": ["₹4,000", "₹4,500", "₹5,000", "₹6,000"],
-    "ans": 2
+    q: "A's salary is 25% more than B's. B's salary is 20% less than C's. If C earns ₹50,000, what is the difference between A's and B's salaries?",
+    options: ["₹7,500", "₹8,000", "₹10,000", "₹12,500"],
+    ans: 2
   },
+
+  // 2. Profit, Loss and Discount
   {
-    "q": "A invests ₹60,000 for 12 months. B invests ₹80,000 after 3 months and increases his investment by 50% after completing 4 months of his investment. C invests ₹1,20,000 after 5 months. If the total annual profit is ₹1,24,000, find B's share.",
-    "options": ["₹44,000", "₹46,000", "₹48,000", "₹50,000"],
-    "ans": 1
+    q: "A shopkeeper marks an article 50% above cost price and gives successive discounts of 20% and 10%. If the cost price is ₹1,000, find his profit percentage.",
+    options: ["8%", "10%", "12%", "15%"],
+    ans: 0
   },
+
+  // 3. Ratio and Proportion
   {
-    "q": "A solution contains milk and water in the ratio 7:3. Twenty litres of this solution are removed and replaced with water. The resulting mixture has milk and water in the ratio 7:13. Find the original quantity of the mixture.",
-    "options": ["40 litres", "50 litres", "60 litres", "70 litres"],
-    "ans": 0
+    q: "The incomes of A and B are in the ratio 3:4 and their expenditures are in the ratio 2:3. If A saves ₹2,000 and B saves ₹3,000, find their total income.",
+    options: ["₹12,000", "₹14,000", "₹16,000", "₹18,000"],
+    ans: 1
   },
+
+  // 4. Average
   {
-    "q": "The population of a city increases by 20% in the first year, decreases by 10% in the second year and increases by 25% in the third year. At the end of the third year, the female population is 25,920, representing 40% of the total population. Find the original population.",
-    "options": ["40,000", "44,000", "48,000", "52,000"],
-    "ans": 2
+    q: "The average of 8 numbers is 24. One number, 18, is replaced by 30. What is the new average?",
+    options: ["24.5", "25", "25.5", "26"],
+    ans: 2
   },
+
+  // 5. Compound Interest
   {
-    "q": "A person covers 40% of a journey at 30 km/h, 30% at 45 km/h and the remaining distance at 60 km/h. During the journey, he rests for 30 minutes. If the total elapsed time is 6 hours 30 minutes, find the total distance.",
-    "options": ["180 km", "210 km", "240 km", "270 km"],
-    "ans": 2
+    q: "Find the compound interest on ₹10,000 at 10% per annum for 2 years, compounded annually.",
+    options: ["₹2,000", "₹2,100", "₹2,200", "₹2,400"],
+    ans: 1
   },
+
+  // 6. Time and Work
   {
-    "q": "Two trains of lengths 180 m and 220 m travel in opposite directions and cross each other in 8 seconds. Their speeds are in the ratio 3:2, and the 180 m train is faster. The faster train crosses a platform in 20 seconds. Find the platform length.",
-    "options": ["380 m", "400 m", "420 m", "440 m"],
-    "ans": 2
+    q: "A can complete a work in 12 days and B in 18 days. They work together for 4 days. How many additional days will A alone require to finish the remaining work?",
+    options: ["4 days", "16/3 days", "6 days", "20/3 days"],
+    ans: 1
   },
+
+  // 7. Pipes and Cisterns
   {
-    "q": "A boat covers 48 km downstream and 24 km upstream in 7 hours. It also covers 36 km downstream and 24 km upstream in 6 hours. Find the speed of the stream and the speed of the boat in still water, respectively.",
-    "options": ["2 km/h, 10 km/h", "3 km/h, 12 km/h", "4 km/h, 12 km/h", "4 km/h, 14 km/h"],
-    "ans": 0
+    q: "Pipe A fills a tank in 6 hours, B fills it in 8 hours, and a leak empties it in 12 hours. If all three are opened together, how long will the tank take to fill?",
+    options: ["4 hours", "24/5 hours", "5 hours", "6 hours"],
+    ans: 1
   },
+
+  // 8. Time, Speed and Distance
   {
-    "q": "A can complete a work in 24 days and B in 36 days. They work together for 6 days. C then joins them, and all three complete the remaining work in 8 days. If the total wages are ₹18,000 and wages are distributed according to individual work contributed, find C's share.",
-    "options": ["₹400", "₹450", "₹500", "₹600"],
-    "ans": 2
+    q: "A person covers 60 km at 30 km/h and another 60 km at 60 km/h. Find the average speed for the complete journey.",
+    options: ["36 km/h", "40 km/h", "45 km/h", "48 km/h"],
+    ans: 1
   },
+
+  // 9. Trains
   {
-    "q": "15 men or 24 women can complete a project in 20 days. Twelve men and 16 women work together for 5 days, after which 5 men leave and 8 additional women join. How many additional days are required to complete the remaining work?",
-    "options": ["90/11 days", "95/11 days", "100/11 days", "105/11 days"],
-    "ans": 1
+    q: "A train of length 180 m crosses a pole in 12 seconds. How long is the platform if the train crosses it in 20 seconds?",
+    options: ["100 m", "110 m", "120 m", "140 m"],
+    ans: 2
   },
+
+  // 10. Boats and Streams
   {
-    "q": "A sum becomes ₹13,310 in 3 years at 10% compound interest compounded annually. What would be the compound interest on the same principal at 20% per annum for 2 years, compounded half-yearly?",
-    "options": ["₹4,641", "₹4,841", "₹5,041", "₹5,241"],
-    "ans": 0
+    q: "A boat travels downstream at 15 km/h and upstream at 9 km/h. Find the speed of the boat in still water and the speed of the stream.",
+    options: ["10 km/h, 5 km/h", "12 km/h, 3 km/h", "11 km/h, 4 km/h", "13 km/h, 2 km/h"],
+    ans: 1
   },
+
+  // 11. Mixture and Alligation
   {
-    "q": "A sum of ₹25,000 is divided into two parts. One part is invested at 12% simple interest for 3 years, while the other is invested at 10% compound interest annually for 2 years. If the total interest earned is ₹7,050, find the amount invested at 12% simple interest.",
-    "options": ["₹10,000", "₹12,000", "₹15,000", "₹18,000"],
-    "ans": 1
+    q: "A 30-litre mixture contains milk and water in the ratio 2:3. If 10 litres of water are added, what is the new ratio of milk to water?",
+    options: ["2:5", "3:7", "4:7", "5:8"],
+    ans: 1
   },
+
+  // 12. HCF and LCM
   {
-    "q": "A bag contains 6 red, 5 blue and 4 green balls. Three balls are drawn randomly without replacement. What is the probability that exactly two balls are of the same colour and the third ball is of a different colour?",
-    "options": ["41/65", "42/65", "43/65", "44/65"],
-    "ans": 2
+    q: "The HCF and LCM of two numbers are 12 and 180 respectively. If their difference is 24, find their sum.",
+    options: ["84", "90", "96", "108"],
+    ans: 2
   },
+
+  // 13. Simplification
   {
-    "q": "In how many ways can the letters of the word MATHEMATICS be arranged if all vowels must be together and the two M's must never be adjacent?",
-    "options": ["75,600", "80,640", "90,720", "100,800"],
-    "ans": 2
+    q: "Evaluate: (3/4 × 240) + (25% of 360) - √625.",
+    options: ["225", "235", "245", "255"],
+    ans: 2
   },
+
+  // 14. Ages
   {
-    "q": "A committee of 5 people is selected from 6 men and 5 women. The committee must contain at least 2 women and at least 2 men. Two particular men refuse to serve together. How many different committees can be formed?",
-    "options": ["280", "290", "300", "310"],
-    "ans": 2
+    q: "The present ages of a father and his son are in the ratio 5:2. Ten years later, their ages will be in the ratio 2:1. Find the sum of their present ages.",
+    options: ["60 years", "65 years", "70 years", "75 years"],
+    ans: 2
   },
+
+  // 15. Partnership
   {
-    "q": "The present ages of A and B are in the ratio 5:7. Eight years ago, the ratio of their ages was 3:5. C is 6 years younger than A. Find the ratio of B's age after 4 years to C's age 6 years ago.",
-    "options": ["3:1", "4:1", "5:2", "7:2"],
-    "ans": 1
+    q: "A invests ₹40,000 for 12 months and B invests ₹60,000 for 8 months. If the total profit is ₹24,000, find A's share.",
+    options: ["₹10,000", "₹12,000", "₹14,000", "₹16,000"],
+    ans: 1
   },
+
+  // 16. Probability
   {
-    "q": "A number when divided by 5 leaves a remainder of 3, when divided by 7 leaves a remainder of 4, and when divided by 9 leaves a remainder of 6. Find the smallest positive number satisfying all three conditions.",
-    "options": ["113", "123", "133", "143"],
-    "ans": 1
+    q: "A bag contains 5 red, 4 blue and 3 green balls. Two balls are selected randomly without replacement. Find the probability that both are of different colours.",
+    options: ["7/11", "8/11", "47/66", "49/66"],
+    ans: 2
   },
+
+  // 17. Permutation and Combination
   {
-    "q": "The HCF and LCM of two positive integers are 12 and 720, respectively. If their difference is 84, find the sum of their squares.",
-    "options": ["22,336", "23,336", "24,336", "25,336"],
-    "ans": 2
+    q: "How many distinct arrangements can be made using all the letters of the word LEVEL?",
+    options: ["20", "30", "40", "60"],
+    ans: 1
   },
+
+  // 18. Surface Area and Volume
   {
-    "q": "If x + 1/x = 3, find the exact value of x^6 + 1/x^6.",
-    "options": ["320", "321", "322", "323"],
-    "ans": 2
+    q: "Find the total surface area of a sphere whose radius is 7 cm. Use π = 22/7.",
+    options: ["308 cm²", "462 cm²", "616 cm²", "784 cm²"],
+    ans: 2
   },
+
+  // 19. Parabola
   {
-    "q": "The length of a rectangle is increased by 20% and its breadth is decreased by 10%. The resulting area is 1,080 cm². If the original length and breadth were in the ratio 5:4, find the original perimeter.",
-    "options": ["80√2 cm", "85√2 cm", "90√2 cm", "95√2 cm"],
-    "ans": 2
+    q: "For the parabola y = x² - 6x + 5, find its vertex and minimum value.",
+    options: ["(3, -4), -4", "(3, 4), 4", "(−3, −4), −4", "(6, 5), 5"],
+    ans: 0
   },
+
+  // 20. Number System and LCM
   {
-    "q": "A cylindrical vessel of radius 7 cm contains water up to a height of 20 cm. A solid sphere of radius 3.5 cm is completely submerged in it. Find the rise in water level. Use π = 22/7.",
-    "options": ["1 cm", "7/6 cm", "4/3 cm", "3/2 cm"],
-    "ans": 1
+    q: "Three bells ring at intervals of 18, 24 and 30 seconds. If they ring together at 10:00 AM, when will they next ring together?",
+    options: ["10:04 AM", "10:05 AM", "10:06 AM", "10:08 AM"],
+    ans: 2
   },
+
+  // 21. Remainders
   {
-    "q": "A person walks 15 m north, 8 m east, 9 m south, 12 m west, and then 6 m north. He then turns 90° clockwise from north and walks 5 m. Find his shortest distance and direction from the starting point.",
-    "options": ["√145 m, North-East", "√145 m, North-West", "13 m, North-East", "15 m, North-West"],
-    "ans": 0
+    q: "Find the smallest positive integer divisible by 8, 12 and 15 that leaves a remainder of 5 when divided by 7.",
+    options: ["360", "480", "600", "720"],
+    ans: 2
   },
+
+  // 22. Average Speed
   {
-    "q": "A man points towards a photograph and says, 'The woman in the photograph is the daughter of the only son of my paternal grandfather.' Assuming the speaker is male, how is the woman related to him?",
-    "options": ["Mother", "Sister", "Daughter", "Cousin"],
-    "ans": 1
+    q: "A car travels 120 km at 40 km/h and returns the same distance at 60 km/h. Find its average speed for the entire journey.",
+    options: ["45 km/h", "48 km/h", "50 km/h", "52 km/h"],
+    ans: 1
   },
+
+  // 23. Mixture and Alligation
   {
-    "q": "A man walks 8 km downstream in 40 minutes and returns the same distance upstream in 60 minutes. He then walks 12 km on a road at the speed of his boat in still water. Find the total time taken for all three journeys.",
-    "options": ["2 hours 42 minutes", "2 hours 52 minutes", "3 hours 2 minutes", "3 hours 12 minutes"],
-    "ans": 1
+    q: "Twenty litres of a 30% alcohol solution are mixed with 30 litres of a 50% alcohol solution. Find the final alcohol concentration.",
+    options: ["38%", "40%", "42%", "45%"],
+    ans: 2
   },
+
+  // 24. Simple and Compound Interest
   {
-    "q": "A candidate scores 35% in an examination and fails by 18 marks. Another candidate scores 52% and obtains 33 marks more than the passing marks. Find the maximum marks.",
-    "options": ["250", "300", "350", "400"],
-    "ans": 1
+    q: "Find the difference between compound interest and simple interest on ₹10,000 at 10% per annum for 2 years.",
+    options: ["₹90", "₹100", "₹110", "₹120"],
+    ans: 1
   },
+
+  // 25. Time and Work with Efficiency
   {
-    "q": "A shopkeeper buys 80 articles at ₹250 each. He sells 60% of them at a profit of 25% and the remaining at a loss of 10%. He spends an additional ₹1,200 on transportation. Find his overall profit percentage on the total expenditure.",
-    "options": ["200/53%", "225/53%", "250/53%", "275/53%"],
-    "ans": 2
+    q: "Eight men can complete a work in 12 days, while 6 women can complete the same work in 16 days. How many days will 4 men and 4 women take to complete it?",
+    options: ["10 days", "11 days", "12 days", "14 days"],
+    ans: 2
   },
+
+  // 26. Pipes and Cisterns
   {
-    "q": "A and B can complete a task in 15 and 20 days, respectively. They start together, but A leaves after some days. B alone completes the remaining work in 10 days. For how many days did A work?",
-    "options": ["20/7 days", "25/7 days", "30/7 days", "35/7 days"],
-    "ans": 2
+    q: "Two pipes can fill a tank in 10 and 15 hours respectively. A third pipe can empty it in 30 hours. If all are opened together, find the time required to fill the tank.",
+    options: ["4 hours", "5 hours", "6 hours", "8 hours", "7.5 hours"],
+    ans: 4
   },
+
+  // 27. Trains and Relative Speed
   {
-    "q": "A train passes a pole in 12 seconds and a platform 180 m long in 24 seconds. A man running at 6 km/h in the same direction is crossed by the train in 13.5 seconds. Find the train's speed.",
-    "options": ["45 km/h", "48 km/h", "54 km/h", "60 km/h"],
-    "ans": 2
+    q: "Two trains of lengths 150 m and 250 m travel in the same direction at 72 km/h and 54 km/h respectively. How long will the faster train take to overtake the slower train completely?",
+    options: ["60 seconds", "70 seconds", "80 seconds", "90 seconds"],
+    ans: 2
   },
+
+  // 28. Boats and Streams
   {
-    "q": "If the roots of the quadratic equation x² - 7x + k = 0 differ by 1, find the value of k and the sum of the squares of the roots.",
-    "options": ["k = 10, 39", "k = 12, 25", "k = 12, 49", "k = 10, 25"],
-    "ans": 1
+    q: "A boat travels 36 km downstream and 36 km upstream. Its speed in still water is 10 km/h and the stream speed is 2 km/h. Find the total journey time.",
+    options: ["6 hours", "7 hours", "15/2 hours", "8 hours"],
+    ans: 2
   },
+
+  // 29. Partnership
   {
-    "q": "A, B and C invest in a business in the ratio 4:5:6. After 4 months, A doubles his investment, B withdraws 20% of his investment and C increases his investment by 50%. If the total annual profit is ₹1,71,000, find C's share.",
-    "options": ["₹66,000", "₹69,000", "₹72,000", "₹75,000"],
-    "ans": 2
+    q: "A invests ₹50,000 for 12 months and B invests ₹40,000 for 15 months. If their total profit is ₹30,000, find B's share.",
+    options: ["₹12,000", "₹15,000", "₹18,000", "₹20,000"],
+    ans: 1
   },
+
+  // 30. Probability and Combination
   {
-    "q": "By the time the audit committee ______ its final report, the finance department ______ all discrepancies that ______ during the investigation.",
-    "options": [
-      "will submit; will have resolved; had emerged",
-      "submits; will have resolved; emerged",
-      "will have submitted; resolved; have emerged",
-      "submitted; had resolved; will emerge"
+    q: "A group contains 4 men and 3 women. Three people are selected randomly. Find the probability of selecting exactly 2 women.",
+    options: ["9/35", "12/35", "15/35", "18/35"],
+    ans: 1
+  },
+
+  // 31. Combination with Restrictions
+  {
+    q: "A committee of 4 people is formed from 5 men and 4 women. It must contain at least 2 women. Two particular men cannot be selected together. How many committees are possible?",
+    options: ["64", "70", "74", "80", "75"],
+    ans: 4
+  },
+
+  // 32. Ages and Ratio
+  {
+    q: "A father is twice as old as his son. Eight years ago, the father's age was three times the son's age. Find the sum of their present ages.",
+    options: ["40 years", "44 years", "48 years", "52 years"],
+    ans: 2
+  },
+
+  // 33. Simplification and Powers
+  {
+    q: "Evaluate: (2⁵ × 3²) ÷ (12 × 6).",
+    options: ["2", "3", "4", "6"],
+    ans: 2
+  },
+
+  // 34. Parabola and Quadratic Equations
+  {
+    q: "For y = x² - 8x + 12, find the coordinates of the vertex and the minimum value of y.",
+    options: ["(4, -4), -4", "(4, 4), 4", "(−4, -4), -4", "(8, 12), 12"],
+    ans: 0
+  },
+
+  // 35. Tenses and Verbs
+  {
+    q: "By the end of next month, she ______ the project, which she ______ on for the past six months.",
+    options: [
+      "will complete; worked",
+      "will have completed; has been working",
+      "has completed; had worked",
+      "had completed; will work"
     ],
-    "ans": 1
+    ans: 1
+  },
+
+  // LOGICAL REASONING
+
+  // 36. Number Series
+  {
+    q: "Find the next number: 3, 8, 18, 38, 78, ?",
+    options: ["148", "156", "158", "160"],
+    ans: 2
+  },
+
+  // 37. Coding-Decoding
+  {
+    q: "If CAT is coded as ECV by shifting every letter two positions forward in the alphabet, how will DOG be coded?",
+    options: ["FQI", "FQH", "EPH", "GQJ"],
+    ans: 0
+  },
+
+  // 38. Blood Relations
+  {
+    q: "A is the brother of B. B is the mother of C. How is A related to C?",
+    options: ["Paternal uncle", "Maternal uncle", "Grandfather", "Brother"],
+    ans: 1
+  },
+
+  // 39. Direction Sense
+  {
+    q: "A person walks 10 m north, 6 m east, 10 m south and 8 m west. How far and in which direction is the person from the starting point?",
+    options: ["2 m east", "2 m west", "4 m west", "6 m north"],
+    ans: 1
+  },
+
+  // 40. Seating Arrangement
+  {
+    q: "Five people P, Q, R, S and T sit in a straight row facing north. P sits at the extreme left, Q sits immediately to the right of P, T sits at the extreme right, and R sits immediately between Q and S. Who occupies the middle position?",
+    options: ["P", "Q", "R", "S"],
+    ans: 2
+  },
+
+  // 41. Syllogism
+  {
+    q: "Statements: All pens are books. Some books are papers. Conclusions: I. Some books are pens. II. Some papers are definitely pens. Which conclusion follows? Assume pens exist.",
+    options: [
+      "Only I follows",
+      "Only II follows",
+      "Both follow",
+      "Neither follows"
+    ],
+    ans: 0
+  },
+
+  // 42. Clocks
+  {
+    q: "What is the smaller angle between the hour hand and minute hand at 3:40?",
+    options: ["120°", "125°", "130°", "140°"],
+    ans: 2
+  },
+
+  // 43. Calendars
+  {
+    q: "If 1 January 2024 was a Monday, what day of the week was 1 March 2024? Assume 2024 is a leap year.",
+    options: ["Wednesday", "Thursday", "Friday", "Saturday"],
+    ans: 2
+  },
+
+  // 44. Alphabet Series
+  {
+    q: "Find the next letter: A, C, F, J, O, ?",
+    options: ["T", "U", "V", "W"],
+    ans: 1
+  },
+
+  // 45. Coding-Decoding
+  {
+    q: "In a certain code, each letter is replaced by its opposite letter in the English alphabet (A↔Z, B↔Y, etc.). How is CHAIR coded?",
+    options: ["XSZRI", "XSAIR", "XSZIR", "WTSRI"],
+    ans: 0
+  },
+
+  // 46. Blood Relations
+  {
+    q: "A man says, 'The girl is the daughter of my mother's only son.' Assuming the speaker is male, how is the girl related to him?",
+    options: ["Sister", "Niece", "Daughter", "Cousin"],
+    ans: 2
+  },
+
+  // 47. Direction and Turns
+  {
+    q: "A person faces north, turns 90° clockwise, then 180° anticlockwise, and finally 270° clockwise. Which direction is the person facing?",
+    options: ["North", "South", "East", "West"],
+    ans: 1
+  },
+
+  // 48. Circular Seating
+  {
+    q: "Six people A, B, C, D, E and F sit around a circular table in clockwise order A, B, C, D, E, F. Who sits opposite C?",
+    options: ["A", "B", "D", "F"],
+    ans: 3
+  },
+
+  // 49. Syllogism
+  {
+    q: "Statements: All roses are flowers. No flower is a stone. Conclusions: I. No rose is a stone. II. Some stones are roses. Which conclusion follows?",
+    options: [
+      "Only I follows",
+      "Only II follows",
+      "Both follow",
+      "Neither follows"
+    ],
+    ans: 0
+  },
+
+  // 50. Number Series
+  {
+    q: "Find the missing number: 2, 6, 15, 31, 56, ?",
+    options: ["82", "86", "92", "96"],
+    ans: 2
   }
 ];
+ 
+// const questions = [
+//   {
+//     "q": "A trader marks an article 80% above its cost price. He gives successive discounts of 20% and 10%. He also uses a weight of 900 g instead of 1 kg while selling. If his actual profit is ₹2,200, find the cost price of 1 kg of the article.",
+//     "options": ["₹4,000", "₹4,500", "₹5,000", "₹6,000"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "A invests ₹60,000 for 12 months. B invests ₹80,000 after 3 months and increases his investment by 50% after completing 4 months of his investment. C invests ₹1,20,000 after 5 months. If the total annual profit is ₹1,24,000, find B's share.",
+//     "options": ["₹44,000", "₹46,000", "₹48,000", "₹50,000"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "A solution contains milk and water in the ratio 7:3. Twenty litres of this solution are removed and replaced with water. The resulting mixture has milk and water in the ratio 7:13. Find the original quantity of the mixture.",
+//     "options": ["40 litres", "50 litres", "60 litres", "70 litres"],
+//     "ans": 0
+//   },
+//   {
+//     "q": "The population of a city increases by 20% in the first year, decreases by 10% in the second year and increases by 25% in the third year. At the end of the third year, the female population is 25,920, representing 40% of the total population. Find the original population.",
+//     "options": ["40,000", "44,000", "48,000", "52,000"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "A person covers 40% of a journey at 30 km/h, 30% at 45 km/h and the remaining distance at 60 km/h. During the journey, he rests for 30 minutes. If the total elapsed time is 6 hours 30 minutes, find the total distance.",
+//     "options": ["180 km", "210 km", "240 km", "270 km"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "Two trains of lengths 180 m and 220 m travel in opposite directions and cross each other in 8 seconds. Their speeds are in the ratio 3:2, and the 180 m train is faster. The faster train crosses a platform in 20 seconds. Find the platform length.",
+//     "options": ["380 m", "400 m", "420 m", "440 m"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "A boat covers 48 km downstream and 24 km upstream in 7 hours. It also covers 36 km downstream and 24 km upstream in 6 hours. Find the speed of the stream and the speed of the boat in still water, respectively.",
+//     "options": ["2 km/h, 10 km/h", "3 km/h, 12 km/h", "4 km/h, 12 km/h", "4 km/h, 14 km/h"],
+//     "ans": 0
+//   },
+//   {
+//     "q": "A can complete a work in 24 days and B in 36 days. They work together for 6 days. C then joins them, and all three complete the remaining work in 8 days. If the total wages are ₹18,000 and wages are distributed according to individual work contributed, find C's share.",
+//     "options": ["₹400", "₹450", "₹500", "₹600"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "15 men or 24 women can complete a project in 20 days. Twelve men and 16 women work together for 5 days, after which 5 men leave and 8 additional women join. How many additional days are required to complete the remaining work?",
+//     "options": ["90/11 days", "95/11 days", "100/11 days", "105/11 days"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "A sum becomes ₹13,310 in 3 years at 10% compound interest compounded annually. What would be the compound interest on the same principal at 20% per annum for 2 years, compounded half-yearly?",
+//     "options": ["₹4,641", "₹4,841", "₹5,041", "₹5,241"],
+//     "ans": 0
+//   },
+//   {
+//     "q": "A sum of ₹25,000 is divided into two parts. One part is invested at 12% simple interest for 3 years, while the other is invested at 10% compound interest annually for 2 years. If the total interest earned is ₹7,050, find the amount invested at 12% simple interest.",
+//     "options": ["₹10,000", "₹12,000", "₹15,000", "₹18,000"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "A bag contains 6 red, 5 blue and 4 green balls. Three balls are drawn randomly without replacement. What is the probability that exactly two balls are of the same colour and the third ball is of a different colour?",
+//     "options": ["41/65", "42/65", "43/65", "44/65"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "In how many ways can the letters of the word MATHEMATICS be arranged if all vowels must be together and the two M's must never be adjacent?",
+//     "options": ["75,600", "80,640", "90,720", "100,800"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "A committee of 5 people is selected from 6 men and 5 women. The committee must contain at least 2 women and at least 2 men. Two particular men refuse to serve together. How many different committees can be formed?",
+//     "options": ["280", "290", "300", "310"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "The present ages of A and B are in the ratio 5:7. Eight years ago, the ratio of their ages was 3:5. C is 6 years younger than A. Find the ratio of B's age after 4 years to C's age 6 years ago.",
+//     "options": ["3:1", "4:1", "5:2", "7:2"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "A number when divided by 5 leaves a remainder of 3, when divided by 7 leaves a remainder of 4, and when divided by 9 leaves a remainder of 6. Find the smallest positive number satisfying all three conditions.",
+//     "options": ["113", "123", "133", "143"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "The HCF and LCM of two positive integers are 12 and 720, respectively. If their difference is 84, find the sum of their squares.",
+//     "options": ["22,336", "23,336", "24,336", "25,336"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "If x + 1/x = 3, find the exact value of x^6 + 1/x^6.",
+//     "options": ["320", "321", "322", "323"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "The length of a rectangle is increased by 20% and its breadth is decreased by 10%. The resulting area is 1,080 cm². If the original length and breadth were in the ratio 5:4, find the original perimeter.",
+//     "options": ["80√2 cm", "85√2 cm", "90√2 cm", "95√2 cm"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "A cylindrical vessel of radius 7 cm contains water up to a height of 20 cm. A solid sphere of radius 3.5 cm is completely submerged in it. Find the rise in water level. Use π = 22/7.",
+//     "options": ["1 cm", "7/6 cm", "4/3 cm", "3/2 cm"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "A person walks 15 m north, 8 m east, 9 m south, 12 m west, and then 6 m north. He then turns 90° clockwise from north and walks 5 m. Find his shortest distance and direction from the starting point.",
+//     "options": ["√145 m, North-East", "√145 m, North-West", "13 m, North-East", "15 m, North-West"],
+//     "ans": 0
+//   },
+//   {
+//     "q": "A man points towards a photograph and says, 'The woman in the photograph is the daughter of the only son of my paternal grandfather.' Assuming the speaker is male, how is the woman related to him?",
+//     "options": ["Mother", "Sister", "Daughter", "Cousin"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "A man walks 8 km downstream in 40 minutes and returns the same distance upstream in 60 minutes. He then walks 12 km on a road at the speed of his boat in still water. Find the total time taken for all three journeys.",
+//     "options": ["2 hours 42 minutes", "2 hours 52 minutes", "3 hours 2 minutes", "3 hours 12 minutes"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "A candidate scores 35% in an examination and fails by 18 marks. Another candidate scores 52% and obtains 33 marks more than the passing marks. Find the maximum marks.",
+//     "options": ["250", "300", "350", "400"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "A shopkeeper buys 80 articles at ₹250 each. He sells 60% of them at a profit of 25% and the remaining at a loss of 10%. He spends an additional ₹1,200 on transportation. Find his overall profit percentage on the total expenditure.",
+//     "options": ["200/53%", "225/53%", "250/53%", "275/53%"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "A and B can complete a task in 15 and 20 days, respectively. They start together, but A leaves after some days. B alone completes the remaining work in 10 days. For how many days did A work?",
+//     "options": ["20/7 days", "25/7 days", "30/7 days", "35/7 days"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "A train passes a pole in 12 seconds and a platform 180 m long in 24 seconds. A man running at 6 km/h in the same direction is crossed by the train in 13.5 seconds. Find the train's speed.",
+//     "options": ["45 km/h", "48 km/h", "54 km/h", "60 km/h"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "If the roots of the quadratic equation x² - 7x + k = 0 differ by 1, find the value of k and the sum of the squares of the roots.",
+//     "options": ["k = 10, 39", "k = 12, 25", "k = 12, 49", "k = 10, 25"],
+//     "ans": 1
+//   },
+//   {
+//     "q": "A, B and C invest in a business in the ratio 4:5:6. After 4 months, A doubles his investment, B withdraws 20% of his investment and C increases his investment by 50%. If the total annual profit is ₹1,71,000, find C's share.",
+//     "options": ["₹66,000", "₹69,000", "₹72,000", "₹75,000"],
+//     "ans": 2
+//   },
+//   {
+//     "q": "By the time the audit committee ______ its final report, the finance department ______ all discrepancies that ______ during the investigation.",
+//     "options": [
+//       "will submit; will have resolved; had emerged",
+//       "submits; will have resolved; emerged",
+//       "will have submitted; resolved; have emerged",
+//       "submitted; had resolved; will emerge"
+//     ],
+//     "ans": 1
+//   }
+// ];
 
     const STORAGE_KEY = "quizsphere_active_attempt_v1";
     const state = {
